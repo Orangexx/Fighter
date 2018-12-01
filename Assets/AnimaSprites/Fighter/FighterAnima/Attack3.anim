@@ -20,27 +20,23 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: f3a5def9759e5f64cb416fcfe4e43567, type: 3}
-    - time: 0.125
+    - time: 0.1
       value: {fileID: 21300000, guid: c50f2811346de7140b6ac3f8678694ec, type: 3}
-    - time: 0.25
+    - time: 0.2
       value: {fileID: 21300000, guid: 0e898e588a486f244aef7d37dcb6e85c, type: 3}
-    - time: 0.375
+    - time: 0.3
       value: {fileID: 21300000, guid: 49a926ac49c51474abd0e52c12af0d59, type: 3}
-    - time: 0.5
+    - time: 0.4
       value: {fileID: 21300000, guid: 1390e6e0e549c8a449cae3a53d55a05e, type: 3}
-    - time: 0.625
+    - time: 0.5
       value: {fileID: 21300000, guid: b59896b972e5627448e4d68655215fbf, type: 3}
-    - time: 0.75
+    - time: 0.6
       value: {fileID: 21300000, guid: d2b1f766da9a1f34bab27c941b4eebb4, type: 3}
-    - time: 0.875
-      value: {fileID: 21300000, guid: 8ca398edc94cf8d428dbd5a10a96f554, type: 3}
-    - time: 1
-      value: {fileID: 21300000, guid: 3d4ebfab5a91c0042a66fb5fe669145c, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 8
+  m_SampleRate: 10
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -62,19 +58,17 @@ AnimationClip:
     - {fileID: 21300000, guid: 1390e6e0e549c8a449cae3a53d55a05e, type: 3}
     - {fileID: 21300000, guid: b59896b972e5627448e4d68655215fbf, type: 3}
     - {fileID: 21300000, guid: d2b1f766da9a1f34bab27c941b4eebb4, type: 3}
-    - {fileID: 21300000, guid: 8ca398edc94cf8d428dbd5a10a96f554, type: 3}
-    - {fileID: 21300000, guid: 3d4ebfab5a91c0042a66fb5fe669145c, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.125
+    m_StopTime: 0.70000005
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0

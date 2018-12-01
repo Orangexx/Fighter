@@ -835,6 +835,12 @@
       "readme": {
         "items": [
           {
+            "version": "v0.0.12",
+            "content": "添加 UIMgr.CloseAllPanel 方法，对所有的界面进行关闭。",
+            "author": "liangxie",
+            "date": "now"
+          },
+          {
             "version": "v0.0.11",
             "content": "上传一次插件",
             "author": "liangxie",
@@ -897,6 +903,20 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.12",
+          "DownloadUrl": "http://liangxiegame.com/media/3.UIKit_v0.0.12.unitypackage",
+          "InstallPath": "Assets/QFramework/Framework/3.UIKit/",
+          "Readme": {
+            "version": "v0.0.12",
+            "content": "添加 UIMgr.CloseAllPanel 方法，对所有的界面进行关闭。",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "3.UIKit",
+          "VersionNumber": 12,
+          "FileName": "3.UIKit_v0.0.12.unitypackage"
+        },
         {
           "Version": "v0.0.11",
           "DownloadUrl": "http://liangxiegame.com/media/3.UIKit_v0.0.11.unitypackage",
@@ -1038,10 +1058,10 @@
           "FileName": "3.UIKit_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.11",
-      "DownloadUrl": "http://liangxiegame.com/media/3.UIKit_v0.0.11.unitypackage",
+      "Version": "v0.0.12",
+      "DownloadUrl": "http://liangxiegame.com/media/3.UIKit_v0.0.12.unitypackage",
       "InstallPath": "Assets/QFramework/Framework/3.UIKit/",
-      "VersionNumber": 11,
+      "VersionNumber": 12,
       "Installed": true
     },
     {
@@ -1357,6 +1377,12 @@
       "readme": {
         "items": [
           {
+            "version": "v0.0.33",
+            "content": "添加网络连接状态判断",
+            "author": "liangxie",
+            "date": "now"
+          },
+          {
             "version": "v0.0.32",
             "content": "上传一次插件",
             "author": "liangxie",
@@ -1540,6 +1566,20 @@
       },
       "PackageVersions": [
         {
+          "Version": "v0.0.33",
+          "DownloadUrl": "http://liangxiegame.com/media/6.PackageManager_v0.0.33.unitypackage",
+          "InstallPath": "Assets/QFramework/Framework/6.PackageManager/",
+          "Readme": {
+            "version": "v0.0.33",
+            "content": "添加网络连接状态判断",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "6.PackageManager",
+          "VersionNumber": 33,
+          "FileName": "6.PackageManager_v0.0.33.unitypackage"
+        },
+        {
           "Version": "v0.0.32",
           "DownloadUrl": "http://liangxiegame.com/media/6.PackageManager_v0.0.32.unitypackage",
           "InstallPath": "Assets/QFramework/Framework/6.PackageManager/",
@@ -1695,20 +1735,6 @@
         },
         {
           "Version": "v0.0.22",
-          "DownloadUrl": "http://liangxiegame.com/media/6.PackageManager_v0.0.22.unitypackage",
-          "InstallPath": "Assets/QFramework/Framework/6.PackageManager/",
-          "Readme": {
-            "version": "v0.0.22",
-            "content": "上传部分的 progress 暂时隐藏掉。",
-            "author": "liangxie",
-            "date": "now"
-          },
-          "Name": "6.PackageManager",
-          "VersionNumber": 22,
-          "FileName": "6.PackageManager_v0.0.22.unitypackage"
-        },
-        {
-          "Version": "v0.0.22",
           "DownloadUrl": "http://liangxiegame.com/media/6.PackageManager_v0.0.22_ApqlwZ6.unitypackage",
           "InstallPath": "Assets/QFramework/Framework/6.PackageManager/",
           "Readme": {
@@ -1724,6 +1750,20 @@
         {
           "Version": "v0.0.22",
           "DownloadUrl": "http://liangxiegame.com/media/6.PackageManager_v0.0.22_EWZFrZB.unitypackage",
+          "InstallPath": "Assets/QFramework/Framework/6.PackageManager/",
+          "Readme": {
+            "version": "v0.0.22",
+            "content": "上传部分的 progress 暂时隐藏掉。",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "6.PackageManager",
+          "VersionNumber": 22,
+          "FileName": "6.PackageManager_v0.0.22.unitypackage"
+        },
+        {
+          "Version": "v0.0.22",
+          "DownloadUrl": "http://liangxiegame.com/media/6.PackageManager_v0.0.22.unitypackage",
           "InstallPath": "Assets/QFramework/Framework/6.PackageManager/",
           "Readme": {
             "version": "v0.0.22",
@@ -2016,10 +2056,10 @@
           "FileName": "6.PackageManager_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.32",
-      "DownloadUrl": "http://liangxiegame.com/media/6.PackageManager_v0.0.32.unitypackage",
+      "Version": "v0.0.33",
+      "DownloadUrl": "http://liangxiegame.com/media/6.PackageManager_v0.0.33.unitypackage",
       "InstallPath": "Assets/QFramework/Framework/6.PackageManager/",
-      "VersionNumber": 32,
+      "VersionNumber": 33,
       "Installed": true
     },
     {

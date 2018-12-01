@@ -10,11 +10,12 @@ using System.Collections.Generic;
 /// </summary>
 public class XFSMLite
 {
-    private CompositeDisposable EveryUpdateDisposables = new CompositeDisposable();
-    /// <summary>
-    /// FSM callfunc.
-    /// </summary>
-    public delegate void FSMCallfunc(params object[] param);
+    private CompositeDisposable InStateDisposables = new CompositeDisposable();
+    private CompositeDisposable ToNextStateDisposables = new CompositeDisposable();
+
+    public delegate void ToNextStateFunc(params object[] param);
+    public delegate void InStateFunc(params object[] param);
+
 
     /// <summary>
     /// QFSM state.
@@ -27,16 +28,18 @@ public class XFSMLite
         {
             Name = name;
         }
-        public QFSMState(string name, FSMCallfunc inState)
+        public QFSMState(string name, InStateFunc inState)
         {
             Name = name;
             InState = inState;
         }
 
-        public FSMCallfunc InState; // 回调函数
-                                    /// <summary>
-                                    /// The translation dict.
-                                    /// </summary>
+        //当前状态的监听方法
+        public InStateFunc InState;
+                                   
+        /// <summary>
+        /// 图中的指出的有向线段
+        /// </summary>
         public readonly Dictionary<string, QFSMTranslation> TranslationDict = new Dictionary<string, QFSMTranslation>();
     }
 
@@ -48,9 +51,9 @@ public class XFSMLite
         public string FromState;
         public string Name;
         public string ToState;
-        public FSMCallfunc OnTranslationCallback; // 回调函数
+        public ToNextStateFunc OnTranslationCallback; // 回调函数
 
-        public QFSMTranslation(string fromState, string name, string toState, FSMCallfunc onTranslationCallback)
+        public QFSMTranslation(string fromState, string name, string toState, ToNextStateFunc onTranslationCallback)
         {
             FromState = fromState;
             ToState = toState;
@@ -74,16 +77,12 @@ public class XFSMLite
     /// </summary>
     Dictionary<string, QFSMState> mStateDict = new Dictionary<string, QFSMState>();
 
-    /// <summary>
-    /// Adds the state.
-    /// </summary>
-    /// <param name="name">Name.</param>
     public void AddState(string name)
     {
         mStateDict[name] = new QFSMState(name);
     }
 
-    public void AddState(string name, FSMCallfunc inState)
+    public void AddState(string name, InStateFunc inState)
     {
         mStateDict[name] = new QFSMState(name, inState);
     }
@@ -100,7 +99,7 @@ public class XFSMLite
     /// <param name="name">Name.</param>
     /// <param name="toState">To state.</param>
     /// <param name="callfunc">Callfunc.</param>
-    public void AddTranslation(string fromState, string name, string toState, FSMCallfunc callfunc)
+    public void AddTranslation(string fromState, string name, string toState, ToNextStateFunc callfunc)
     {
         mStateDict[fromState].TranslationDict[name] = new QFSMTranslation(fromState, name, toState, callfunc);
     }
@@ -111,12 +110,12 @@ public class XFSMLite
     /// <param name="name">Name.</param>
     public void Start(string name)
     {
-        EveryUpdateDisposables.Clear();
+        InStateDisposables.Clear();
 
         Observable.EveryUpdate()
             .Subscribe(_ =>
             { mStateDict[name].InState(); })
-            .AddTo(EveryUpdateDisposables);
+            .AddTo(InStateDisposables);
         mCurState = name;
 
     }
@@ -130,17 +129,19 @@ public class XFSMLite
     {
         if (mCurState != null && mStateDict[mCurState].TranslationDict.ContainsKey(name))
         {
+            ToNextStateDisposables.Clear();
+
             var tempTranslation = mStateDict[mCurState].TranslationDict[name];
             tempTranslation.OnTranslationCallback(param);
 
             if (mStateDict[tempTranslation.ToState].InState != null)
             {
-                EveryUpdateDisposables.Clear();
+                InStateDisposables.Clear();
 
                 Observable.EveryUpdate()
                     .Subscribe(_ =>
                     { mStateDict[tempTranslation.ToState].InState(); })
-                    .AddTo(EveryUpdateDisposables);
+                    .AddTo(InStateDisposables);
             }
 
 
