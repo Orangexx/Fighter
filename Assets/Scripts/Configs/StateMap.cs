@@ -1,6 +1,7 @@
 /****************************************************************************
- * 2018.11 DESKTOP-CFTQOJO
+ * 2018.12 DESKTOP-CFTQOJO
  ****************************************************************************/
+
 public partial class StateMap : IConfig
 {
 	[ConfigField("ID")]
@@ -9,8 +10,11 @@ public partial class StateMap : IConfig
 	[ConfigField("StateName")]
 	public string StateName { get; set; }
 
-	[ConfigField("NextStateNames")]
-	public string NextStateNames { get; set; }
+	[ConfigField("MoveSpeedTriggers")]
+	public string MoveSpeedTriggers { get; set; }
+
+	[ConfigField("StateTriggers")]
+	public string StateTriggers { get; set; }
 
 	[ConfigField("StateInfoID")]
 	public int StateInfoID  { get; set; }

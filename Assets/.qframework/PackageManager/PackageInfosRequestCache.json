@@ -2309,6 +2309,12 @@
       "readme": {
         "items": [
           {
+            "version": "v0.0.3",
+            "content": "commit : add camerashake",
+            "author": "liangxie",
+            "date": "now"
+          },
+          {
             "version": "v0.0.2",
             "content": "commit : add CameraShake",
             "author": "liangxie",
@@ -2317,6 +2323,20 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.3",
+          "DownloadUrl": "http://liangxiegame.com/media/9.ZED9587_v0.0.3.unitypackage",
+          "InstallPath": "Assets/QFramework/Framework/9.ZED9587",
+          "Readme": {
+            "version": "v0.0.3",
+            "content": "commit : add camerashake",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "9.ZED9587",
+          "VersionNumber": 3,
+          "FileName": "9.ZED9587_v0.0.3.unitypackage"
+        },
         {
           "Version": "v0.0.2",
           "DownloadUrl": "http://liangxiegame.com/media/9.ZED9587_v0.0.2_ih3eCqL.unitypackage",
@@ -2346,10 +2366,10 @@
           "FileName": "9.ZED9587_v0.0.2.unitypackage"
         }
       ],
-      "Version": "v0.0.2",
-      "DownloadUrl": "http://liangxiegame.com/media/9.ZED9587_v0.0.2_ih3eCqL.unitypackage",
+      "Version": "v0.0.3",
+      "DownloadUrl": "http://liangxiegame.com/media/9.ZED9587_v0.0.3.unitypackage",
       "InstallPath": "Assets/QFramework/Framework/9.ZED9587",
-      "VersionNumber": 2,
+      "VersionNumber": 3,
       "Installed": false
     },
     {

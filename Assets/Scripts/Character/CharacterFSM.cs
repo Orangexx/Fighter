@@ -17,14 +17,22 @@ public class CharacterFSM : MonoBehaviour
     }
 
     private delegate void InState();
+    private delegate void MoveFunc();
 
     [SerializeField] private Animator mAnimator;
+    [SerializeField] private Rigidbody2D mRigbody;
+    [SerializeField] private SpriteRenderer mSpriteRenderer; 
 
     private float time = 0.0f;
     private Sqlite mSqlite;
     private List<StateMap> mStates;
     private XFSMLite mQFSMLite;
-    private bool mLastL;
+    private bool mLookLeft;
+    private Bool mIsGrounded = new Bool(false);
+    private float mHSpeed = 0;
+    private float mVSpeed = 0;
+    private float mDistToGround = 0.35f;
+    const float NORMALSPEED = 20f;
     private Dictionary<string, Bool> mTriggerKeys;
 
     private void Awake()
@@ -44,6 +52,7 @@ public class CharacterFSM : MonoBehaviour
     {
         mTriggerKeys = new Dictionary<string, Bool>()
         {
+            { "isGrounded",mIsGrounded},
             {"攻击",InputController.Instance.Battack},
             {"方向",InputController.Instance.isMoving},
             { "跳跃",InputController.Instance.Bjump },
@@ -68,7 +77,12 @@ public class CharacterFSM : MonoBehaviour
             Debug.LogFormat("[character]: {0}", state.StateName);
             if (!mQFSMLite.HasState(state.StateName))
             {
-                mQFSMLite.AddState(state.StateName, _GetTriggerFunc(triggers));
+                mQFSMLite.AddState(state.StateName, new XFSMLite.InStateFunc((target) =>
+                {
+                    if (_GetMoveFunc(state.GetStateMoves()) != null)
+                        _GetMoveFunc(state.GetStateMoves())();
+                    _GetTriggerFunc(triggers)();
+                }));
             }
         });
 
@@ -81,11 +95,174 @@ public class CharacterFSM : MonoBehaviour
                 mQFSMLite.AddTranslation(state.StateName, triggers[j].NextStateName, triggers[j].NextStateName, new XFSMLite.ToNextStateFunc((target) =>
                 {
                     time = 0f;
+                    mHSpeed = 0f;
+                    mVSpeed = 0f;
                     mAnimator.Play(triggers[j].NextStateName);
+                    mRigbody.velocity = Vector2.zero;
+                    for (int k = 0; k < mStates.Count; k++)
+                    {
+                        if (mStates[k].StateName == triggers[j].NextStateName)
+                        {
+                            if (mStates[k].GetStateMoves() != null)
+                                _SetMoveSpeed(mStates[k].GetStateMoves())();
+                            break;
+                        }
+                    }
+
                     Debug.LogFormat("{0} ————> {1}", state.StateName, triggers[j].NextStateName);
                 }));
             }
         });
+    }
+
+    //XFSMLite.InStateFunc _InWalk(List<StateTrigger> triggers)
+    //{
+    //    XFSMLite.InStateFunc tableTrigger = _GetTriggerFunc(triggers);
+    //    XFSMLite.InStateFunc trigger = new XFSMLite.InStateFunc((target) =>
+    //    {
+    //        tableTrigger();
+    //        if (InputController.Instance.right || InputController.Instance.left)
+    //        {
+    //            mRigbody.velocity = new Vector3
+    //                ((InputController.Instance.right ? mHSpeed : 0) + (InputController.Instance.left ? -mHSpeed : 0),
+    //                0, 0);
+    //            Debug.Log(mRigbody.velocity);
+    //        }
+    //        else mQFSMLite.HandleEvent("Idle");
+    //    });
+
+    //    return trigger;
+    //}
+
+    //XFSMLite.InStateFunc _InIdle(List<StateTrigger> triggers)
+    //{
+    //    XFSMLite.InStateFunc tableTrigger = _GetTriggerFunc(triggers);
+    //    XFSMLite.InStateFunc trigger = new XFSMLite.InStateFunc((target) =>
+    //    {
+    //        tableTrigger();
+    //        if (InputController.Instance.right || InputController.Instance.left)
+    //        {
+    //            if (mLookLeft != InputController.Instance.left)
+    //                transform.Rotate(Vector3.up, 180f);
+    //            mQFSMLite.HandleEvent("Run");
+    //        }
+    //    });
+    //    return trigger;
+    //}
+
+    XFSMLite.ToNextStateFunc _SetMoveSpeed(List<StateMove> moves)
+    {
+        XFSMLite.ToNextStateFunc setMoveInfoFunc;
+
+        List<MoveFunc> setMoveInfos = new List<MoveFunc>();
+
+        if (moves == null)
+            return null;
+
+        for (int i = 0; i < moves.Count; i++)
+        {
+            MoveFunc setMoveInfo = null;
+            int j = i;
+
+            if (moves[j].IsMoveHorizontal)
+            {
+                setMoveInfo = new MoveFunc(() =>
+                {
+                    mHSpeed = moves[j].MoveSpeed == -1 ?
+                                mRigbody.velocity.x == 0 ? NORMALSPEED : mRigbody.velocity.x
+                                : moves[j].MoveSpeed;
+                });
+            }
+
+            if (!moves[j].IsMoveHorizontal)
+            {
+                setMoveInfo = new MoveFunc(() =>
+                {
+                    mVSpeed = moves[j].MoveSpeed;
+                    mRigbody.velocity = new Vector2(mRigbody.velocity.x, mVSpeed);
+                });
+            }
+
+            setMoveInfos.Add(setMoveInfo);
+        }
+
+        setMoveInfoFunc = new XFSMLite.ToNextStateFunc((target) =>
+        {
+            for (int i = 0; i < setMoveInfos.Count; i++)
+            {
+                int j = i;
+                if (setMoveInfos[j] != null)
+                    setMoveInfos[j]();
+            }
+        });
+
+        return setMoveInfoFunc;
+    }
+
+    XFSMLite.InStateFunc _GetMoveFunc(List<StateMove> moveInfos)
+    {
+        XFSMLite.InStateFunc inStateMove;
+
+        List<MoveFunc> moveFuncs = new List<MoveFunc>();
+
+        if (moveInfos == null)
+            return null;
+
+        for (int i = 0; i < moveInfos.Count; i++)
+        {
+            MoveFunc moveFunc = null;
+            int j = i;
+
+            if (moveInfos[j].IsMoveHorizontal)
+            {
+                moveFunc = new MoveFunc(() =>
+                {
+                    if (moveInfos[j].MoveType == "0" || moveInfos[j].MoveType == "-1")
+                    {
+                        if (InputController.Instance.left)
+                        {
+                            if (!mLookLeft)
+                                transform.Rotate(Vector2.up, 180);
+                            mLookLeft = true;
+                            mRigbody.velocity = new Vector2(-mHSpeed, mRigbody.velocity.y);
+                        }
+                        else if (InputController.Instance.right)
+                        {
+                            if (mLookLeft)
+                                transform.Rotate(Vector2.up, 180);
+                            mLookLeft = false;
+                            mRigbody.velocity = new Vector2(mHSpeed, mRigbody.velocity.y);
+                        }
+                        else
+                        {
+                            mRigbody.velocity = new Vector2(0,mRigbody.velocity.y);
+                            if (_IsGrounded())
+                            {
+                                mQFSMLite.HandleEvent("Idle");
+                            }
+                        }
+
+                    }
+
+                    if (moveInfos[j].MoveType == "1" && time >= mAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length / 2 && time <= mAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length / 2 + Time.deltaTime)
+                    {
+                        transform.Translate(new Vector2(mHSpeed, 0));
+                    }
+                });
+                moveFuncs.Add(moveFunc);
+            }
+        }
+
+        inStateMove = new XFSMLite.InStateFunc((target) =>
+        {
+            for (int i = 0; i < moveFuncs.Count; i++)
+            {
+                int j = i;
+                moveFuncs[j]();
+            }
+        });
+
+        return inStateMove;
     }
 
     XFSMLite.InStateFunc _GetTriggerFunc(List<StateTrigger> triggers)
@@ -105,8 +282,10 @@ public class CharacterFSM : MonoBehaviour
                 {
                     if (triggers[j].TriggerKey == "null")
                     {
+
                         if (time >= mAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length)
                             mQFSMLite.HandleEvent(triggers[j].NextStateName);
+                        return;
                     }
 
                     if (!mTriggerKeys.ContainsKey(triggers[j].TriggerKey))
@@ -114,6 +293,7 @@ public class CharacterFSM : MonoBehaviour
 
                     if (mTriggerKeys[triggers[j].TriggerKey].BOOL)
                     {
+                        _IsGrounded();
                         mQFSMLite.HandleEvent(triggers[j].NextStateName);
                     }
                 });
@@ -162,6 +342,14 @@ public class CharacterFSM : MonoBehaviour
         });
 
         return toNextStateFunc;
+    }
+
+    bool _IsGrounded()
+    {
+        mDistToGround = mSpriteRenderer.sprite.bounds.size.y / 2;
+        mIsGrounded.BOOL = Physics2D.Raycast(transform.position, Vector2.down, mDistToGround, 1 << 8);
+        RaycastHit2D a = Physics2D.Raycast(transform.position, Vector2.down, mDistToGround);
+        return Physics2D.Raycast(transform.position, Vector2.down, mDistToGround, (1 << 8));
     }
 }
 

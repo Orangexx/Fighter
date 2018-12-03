@@ -116,6 +116,7 @@ public class InputController : MonoSingleton<InputController>
         BSkill2.BOOL = Input.GetKey(SKILL2);
         BSkill3.BOOL = Input.GetKey(SKILL3);
         isMoving.BOOL = (up || left || down || right);
+
     }
 
     public bool IsMoving()
