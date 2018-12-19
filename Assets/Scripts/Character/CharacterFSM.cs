@@ -96,9 +96,7 @@ public class CharacterFSM : MonoBehaviour
                 {
                     time = 0f;
                     mHSpeed = 0f;
-                    mVSpeed = 0f;
                     mAnimator.Play(triggers[j].NextStateName);
-                    mRigbody.velocity = Vector2.zero;
                     for (int k = 0; k < mStates.Count; k++)
                     {
                         if (mStates[k].StateName == triggers[j].NextStateName)
@@ -114,42 +112,7 @@ public class CharacterFSM : MonoBehaviour
             }
         });
     }
-
-    //XFSMLite.InStateFunc _InWalk(List<StateTrigger> triggers)
-    //{
-    //    XFSMLite.InStateFunc tableTrigger = _GetTriggerFunc(triggers);
-    //    XFSMLite.InStateFunc trigger = new XFSMLite.InStateFunc((target) =>
-    //    {
-    //        tableTrigger();
-    //        if (InputController.Instance.right || InputController.Instance.left)
-    //        {
-    //            mRigbody.velocity = new Vector3
-    //                ((InputController.Instance.right ? mHSpeed : 0) + (InputController.Instance.left ? -mHSpeed : 0),
-    //                0, 0);
-    //            Debug.Log(mRigbody.velocity);
-    //        }
-    //        else mQFSMLite.HandleEvent("Idle");
-    //    });
-
-    //    return trigger;
-    //}
-
-    //XFSMLite.InStateFunc _InIdle(List<StateTrigger> triggers)
-    //{
-    //    XFSMLite.InStateFunc tableTrigger = _GetTriggerFunc(triggers);
-    //    XFSMLite.InStateFunc trigger = new XFSMLite.InStateFunc((target) =>
-    //    {
-    //        tableTrigger();
-    //        if (InputController.Instance.right || InputController.Instance.left)
-    //        {
-    //            if (mLookLeft != InputController.Instance.left)
-    //                transform.Rotate(Vector3.up, 180f);
-    //            mQFSMLite.HandleEvent("Run");
-    //        }
-    //    });
-    //    return trigger;
-    //}
-
+   
     XFSMLite.ToNextStateFunc _SetMoveSpeed(List<StateMove> moves)
     {
         XFSMLite.ToNextStateFunc setMoveInfoFunc;
@@ -346,10 +309,10 @@ public class CharacterFSM : MonoBehaviour
 
     bool _IsGrounded()
     {
-        mDistToGround = mSpriteRenderer.sprite.bounds.size.y / 2;
+        mDistToGround = mSpriteRenderer.sprite.bounds.size.y / 2 -0.01f;
         mIsGrounded.BOOL = Physics2D.Raycast(transform.position, Vector2.down, mDistToGround, 1 << 8);
         RaycastHit2D a = Physics2D.Raycast(transform.position, Vector2.down, mDistToGround);
-        return Physics2D.Raycast(transform.position, Vector2.down, mDistToGround, (1 << 8));
+        return Physics2D.Raycast(transform.position, Vector2.down, mDistToGround, (1 << 8)) && mRigbody.velocity.y == 0;
     }
 }
 
