@@ -14,8 +14,8 @@ TagManager:
   - 
   - 
   - Map
-  - 
-  - 
+  - Background
+  - Character
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background Far
+    uniqueID: 3065899313
+    locked: 0
+  - name: Background Mid
+    uniqueID: 2273578527
+    locked: 0
+  - name: Map
+    uniqueID: 3894016515
+    locked: 0
+  - name: Character
+    uniqueID: 2617400127
     locked: 0
