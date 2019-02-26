@@ -1,5 +1,5 @@
 ﻿/****************************************************************************
- * Copyright (c) 2018.7 ~ 8 liangxie
+ * Copyright (c) 2018.7 ~ 11 liangxie
  * 
  * http://qframework.io
  * https://github.com/liangxiegame/QFramework
@@ -23,11 +23,8 @@
  * THE SOFTWARE.
  ****************************************************************************/
 
-using System;
 using System.Collections.Generic;
-using System.IO;
 using UnityEditor;
-using UnityEngine;
 
 namespace QFramework
 {
@@ -50,7 +47,7 @@ namespace QFramework
 
 		static PackageCheck()
 		{
-			if (!EditorApplication.isPlayingOrWillChangePlaymode)
+			if (!EditorApplication.isPlayingOrWillChangePlaymode && NetworkUtil.IsReachable)
 			{
 				PackageCheck packageCheck = new PackageCheck()
 				{
@@ -65,6 +62,9 @@ namespace QFramework
 
 		private void CustomUpdate()
 		{
+			// 添加网络判断
+			if (!NetworkUtil.IsReachable) return;
+			
 			switch (mCheckStatus)
 			{
 				case CheckStatus.WAIT:
@@ -100,18 +100,21 @@ namespace QFramework
 
 		private void ProcessCompare()
 		{
-			EditorActionKit.ExecuteNode(new GetAllRemotePackageInfo(packageDatas =>
-			{
-				if (packageDatas == null)
-				{
-					return;
-				}
+            if (NetworkUtil.IsReachable)
+            {
+                EditorActionKit.ExecuteNode(new GetAllRemotePackageInfo(packageDatas =>
+                {
+                    if (packageDatas == null)
+                    {
+                        return;
+                    }
 
-				if (CheckNewVersionDialog(packageDatas,PackageInfosRequestCache.Get().PackageDatas))
-				{
-					
-				}
-			}));
+                    if (FrameworkPMView.VersionCheck)
+                    {
+	                    CheckNewVersionDialog(packageDatas, PackageInfosRequestCache.Get().PackageDatas);
+                    }
+                }));
+            }
 			
 			ReCheckConfigDatas();
 			GoToWait();
@@ -149,7 +152,7 @@ namespace QFramework
 		private static void ShowDisplayDialog(string packageName)
 		{
 			var result = EditorUtility.DisplayDialog("PackageManager",
-				"{0} 有新版本更新,请前往查看".FillFormat(packageName),
+				"{0} 有新版本更新,请前往查看(如需不再提示请点击前往查看，并取消勾选 Version Check)".FillFormat(packageName),
 				"前往查看", "稍后查看");
 
 			if (result)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using QFramework;
 
+[QFramework.QMonoSingletonPath("[Manager]/InputController")]
 public class InputController : MonoSingleton<InputController>
 {
     KeyCode UP;

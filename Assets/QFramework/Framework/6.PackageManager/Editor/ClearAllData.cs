@@ -32,7 +32,7 @@ namespace QFramework
     public class ClearAllData
     {   
         [MenuItem("QFramework/ClearAllData")]
-        static void Clear()
+        private static void Clear()
         {
             PlayerPrefs.DeleteAll();
             Directory.Delete(Application.persistentDataPath, true);
@@ -41,6 +41,16 @@ namespace QFramework
             {
                 EditorApplication.isPlaying = false;
             }            
+        }
+    }
+
+    public class ReopenProject
+    {
+        [MenuItem("QFramework/ReopenProject")]
+        private static void Reopen()
+        {
+            EditorApplication.OpenProject(Path.Combine(Application.dataPath,"../"));
+
         }
     }
 }

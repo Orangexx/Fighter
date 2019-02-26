@@ -62,10 +62,12 @@ namespace QFramework
 						return "ScrollRect";
 					if (null != GetComponent<InputField>())
 						return "InputField";
-					if (null != GetComponent<Text>())
-						return "Text";
+                    if (null != GetComponent("TMP.TextMeshProUGUI"))
+                        return "TextMeshProUGUI";
 					if (null != GetComponent<Button>())
 						return "Button";
+					if (null != GetComponent<Text>())
+						return "Text";
 					if (null != GetComponent<RawImage>())
 						return "RawImage";
 					if (null != GetComponent<Toggle>())
@@ -82,6 +84,8 @@ namespace QFramework
 						return "Animator";
 					if (null != GetComponent<Canvas>())
 						return "Canvas";
+					if (null != GetComponent("Empty4Raycast"))
+						return "Empty4Raycast";
 					if (null != GetComponent<RectTransform>())
 						return "RectTransform";
 

@@ -61,6 +61,10 @@ namespace QFramework
 			strBuilder.Append("\t\t").AppendLine("private void Awake()");
 			strBuilder.Append("\t\t").AppendLine("{");
 			strBuilder.Append("\t\t").AppendLine("}");
+			strBuilder.AppendLine();
+			strBuilder.Append("\t\t").AppendLine("protected override void OnBeforeDestroy()");
+			strBuilder.Append("\t\t").AppendLine("{");
+			strBuilder.Append("\t\t").AppendLine("}");
 			strBuilder.AppendLine("\t}");
 			strBuilder.Append("}");
 
@@ -84,6 +88,7 @@ namespace QFramework
 			strBuilder.AppendLine();
 			strBuilder.AppendLine("using UnityEngine;");
 			strBuilder.AppendLine("using UnityEngine.UI;");
+			strBuilder.AppendLine("using QFramework;");
 			strBuilder.AppendLine();
 			strBuilder.AppendLine("namespace " + nameSpace);
 			strBuilder.AppendLine("{");

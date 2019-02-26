@@ -29,7 +29,7 @@ using System.IO;
 using System.Linq;
 
 namespace QFramework
-{
+{   
     [Serializable]
     public class PackageData
     {
@@ -49,6 +49,16 @@ namespace QFramework
 		{
 			get { return PackageVersions.First ().InstallPath; }
 		}
+
+        public PackageType Type
+        {
+            get { return PackageVersions.First().Type; }
+        }
+
+        public PackageAccessRight AccessRight
+        {
+            get { return PackageVersions.First().AccessRight; }
+        }
 
         public Readme readme;
         
@@ -82,6 +92,22 @@ namespace QFramework
             PackageVersions.First().Save();
         }
     }
+    
+    public enum PackageType
+    {
+        FrameworkModule, //fm
+        Shader, //s
+        UIKitComponent, //uc
+        Plugin, // p
+        AppOrGameDemoOrTemplate, //agt
+        DocumentsOrTutorial, //doc
+    }
+
+    public enum PackageAccessRight
+    {
+        Public,
+        Private
+    }
 
     [Serializable]
     public class PackageVersion
@@ -92,6 +118,10 @@ namespace QFramework
         }
         
         public string Version;
+
+        public PackageType Type;
+
+        public PackageAccessRight AccessRight;
         
         public int VersionNumber
         {

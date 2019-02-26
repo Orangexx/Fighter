@@ -24,10 +24,9 @@
  ****************************************************************************/
 
 using UnityEngine;
-using System.Net;
-using System;
 using UnityEditor;
 using System.IO;
+using UniRx;
 
 namespace QFramework
 {
@@ -44,39 +43,48 @@ namespace QFramework
 		{
 			base.OnBegin();
 
-			var tempFile = mRequestPackageData.Name + ".unitypackage";
+			var tempFile = "Assets/" + mRequestPackageData.Name + ".unitypackage";
 
 			Debug.Log(mRequestPackageData.DownloadUrl + ">>>>>>:");
 
-			EditorUtility.DisplayProgressBar("插件更新", "插件下载中 ...", 0.5f);
+			EditorUtility.DisplayProgressBar("插件更新", "插件下载中 ...", 0.1f);
 
-			var client = new WebClient();
+			var progressListener = new ScheduledNotifier<float>();
 
-			client.DownloadProgressChanged += OnProgressChanged;
+			ObservableWWW.GetAndGetBytes(mRequestPackageData.DownloadUrl, null, progressListener)
+				.Subscribe(bytes =>
+				{
+					File.WriteAllBytes(tempFile, bytes);
 
-			client.DownloadFile(new Uri(mRequestPackageData.DownloadUrl), tempFile);
+					EditorUtility.ClearProgressBar();
 
-			client.DownloadProgressChanged -= OnProgressChanged;
+					AssetDatabase.ImportPackage(tempFile, false);
 
-			EditorUtility.ClearProgressBar();
+					File.Delete(tempFile);
 
-			AssetDatabase.ImportPackage(tempFile, true);
+					mRequestPackageData.SaveVersionFile();
 
-			File.Delete(tempFile);
-			
-			mRequestPackageData.SaveVersionFile();
+					AssetDatabase.Refresh();
 
-			AssetDatabase.Refresh();
+					EditorUtility.DisplayDialog(mRequestPackageData.Name, "插件下载成功", "OK");
 
-			InstalledPackageVersions.Reload();
+					InstalledPackageVersions.Reload();
+
+//					EditorApplication.ExecuteMenuItem(FrameworkMenuItems.Preferences);
+				}, e =>
+				{
+					EditorUtility.ClearProgressBar();
+
+					EditorUtility.DisplayDialog(mRequestPackageData.Name, "插件安装失败,请联系 liangxiegame@163.com 或者加入 QQ 群:623597263" + e.ToString() + ";", "OK");
+				});
+
+			progressListener.Subscribe(OnProgressChanged);
 		}
 
-		void OnProgressChanged(object obj, DownloadProgressChangedEventArgs args)
+		private void OnProgressChanged(float progress)
 		{
 			EditorUtility.DisplayProgressBar("插件更新",
-				"插件下载中 {0} m/{1} m....".FillFormat(args.BytesReceived / 1024 / 1024,
-					args.TotalBytesToReceive / 1024 / 1024), args.BytesReceived / args.TotalBytesToReceive);
-
+				"插件下载中 {0:P2}".FillFormat(progress), progress);
 		}
 	}
 }

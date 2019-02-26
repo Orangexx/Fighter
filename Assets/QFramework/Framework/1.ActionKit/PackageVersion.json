@@ -1,7 +1,16 @@
 {
-  "Version": "v0.0.2",
-  "DownloadUrl": "http://liangxiegame.com/media/1.ActionKit_v0.0.2.unitypackage",
+  "Version": "v0.0.15",
+  "Type": 0,
+  "AccessRight": 0,
+  "DownloadUrl": "http://liangxiegame.com/media/1.ActionKit_v0.0.4.unitypackage",
   "InstallPath": "Assets/QFramework/Framework/1.ActionKit/",
+  "Readme": {
+    "version": "v0.0.15",
+    "content": "add action queue",
+    "author": "LIANGXIE",
+    "date": "2018-12-30"
+  },
   "Name": "1.ActionKit",
-  "VersionNumber": 2
+  "VersionNumber": 15,
+  "FileName": "1.ActionKit_v0.0.15.unitypackage"
 }

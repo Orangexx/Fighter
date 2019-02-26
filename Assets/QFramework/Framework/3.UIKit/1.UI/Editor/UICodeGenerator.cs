@@ -236,7 +236,7 @@ namespace QFramework
 			}
 			else
 			{
-				strFilePath = uiPrefabPath.Replace("/" + uiPrefabPath.GetLastDirName(), GetScriptsPath());
+				strFilePath = uiPrefabPath.Replace("/" + GetLastDirName(uiPrefabPath), GetScriptsPath());
 			}
 
 			strFilePath.Replace(uiPrefab.name + ".prefab", string.Empty).CreateDirIfNotExists();
@@ -252,6 +252,14 @@ namespace QFramework
 			Debug.Log(">>>>>>>Success Create UIPrefab Code: " + behaviourName);
 		}
 
+		public static string GetLastDirName(string absOrAssetsPath)
+		{
+			var name = absOrAssetsPath.Replace("\\", "/");
+			var dirs = name.Split('/');
+
+			return dirs[dirs.Length - 2];
+		}
+		
 		private void CreateUIPanelComponentsCode(string behaviourName, string uiUIPanelfilePath)
 		{
 			var dir = uiUIPanelfilePath.Replace(behaviourName + ".cs", "");
@@ -321,6 +329,7 @@ namespace QFramework
 			var paths = pathStr.Split(new[] {';'}, StringSplitOptions.RemoveEmptyEntries);
 			var displayProgress = paths.Length > 3;
 			if (displayProgress) EditorUtility.DisplayProgressBar("", "Serialize UIPrefab...", 0);
+			
 			for (var i = 0; i < paths.Length; i++)
 			{
 				var uiPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(paths[i]);
@@ -334,6 +343,21 @@ namespace QFramework
 
 			AssetDatabase.SaveAssets();
 			AssetDatabase.Refresh();
+			
+			for (var i = 0; i < paths.Length; i++)
+			{
+				var uiPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(paths[i]);
+				AttachSerializeObj(uiPrefab, uiPrefab.name, assembly);
+
+				// uibehaviour
+				if (displayProgress)
+					EditorUtility.DisplayProgressBar("", "Serialize UIPrefab..." + uiPrefab.name, (float) (i + 1) / paths.Length);
+				Debug.Log(">>>>>>>Success Serialize UIPrefab: " + uiPrefab.name);
+			}
+
+			AssetDatabase.SaveAssets();
+			AssetDatabase.Refresh();
+			
 			if (displayProgress) EditorUtility.ClearProgressBar();
 			
 		}
@@ -389,7 +413,7 @@ namespace QFramework
 
 				if (sObj.FindProperty(propertyName) == null)
 				{
-					Log.I("sObj is Null:{0} {1}", propertyName, uiType);
+					Log.I("sObj is Null:{0} {1} {2}", propertyName, uiType,sObj);
 					continue;
 				}
 

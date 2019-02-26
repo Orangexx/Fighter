@@ -23,9 +23,6 @@
  * THE SOFTWARE.
  ****************************************************************************/
 
-#if UNITY_STANDALONE_WIN
-using System.Net;
-#endif
 #if UNITY_IPHONE
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
@@ -47,7 +44,21 @@ namespace QFramework
         /// <returns>IP string</returns>
         public static string GetAddressIP()
         {
-            var AddressIP = string.Empty;
+            var AddressIP = "";
+
+#if UNITY_3 || UNITY_4 || UNITY_5 || UNITY_2017 || UNITY_2018_0 || UNITY_2018_1
+            AddressIP = Network.player.ipAddress;
+#else
+            //获取本地的IP地址  
+            foreach (IPAddress _IPAddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
+            {
+                if (_IPAddress.AddressFamily.ToString() == "InterNetwork")
+                {
+                    AddressIP = _IPAddress.ToString();
+                }
+            }
+#endif
+
 #if UNITY_IPHONE
             NetworkInterface[] adapters = NetworkInterface.GetAllNetworkInterfaces(); ;  
             foreach (NetworkInterface adapter in adapters)  
@@ -69,22 +80,7 @@ namespace QFramework
                 }  
             }  
 #endif
-
-#if UNITY_2018
-            //获取本地的IP地址  
-            foreach (IPAddress _IPAddress in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
-            {
-                if (_IPAddress.AddressFamily.ToString() == "InterNetwork")
-                {
-                    AddressIP = _IPAddress.ToString();
-                    return AddressIP;
-                }
-            }
-
             return AddressIP;
-#else
-            return Network.player.ipAddress;
-#endif
         }
 
         public static bool IsReachable

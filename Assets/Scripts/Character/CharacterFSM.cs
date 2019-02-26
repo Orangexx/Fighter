@@ -35,6 +35,8 @@ public class CharacterFSM : MonoBehaviour
     const float NORMALSPEED = 20f;
     private Dictionary<string, Bool> mTriggerKeys;
 
+    [SerializeField] private LayerMask mGrounded;
+
     private void Awake()
     {
         if (mAnimator == null)
@@ -310,7 +312,8 @@ public class CharacterFSM : MonoBehaviour
     bool _IsGrounded()
     {
         mDistToGround = mSpriteRenderer.sprite.bounds.size.y / 2 -0.01f;
-        mIsGrounded.BOOL = Physics2D.Raycast(transform.position, Vector2.down, mDistToGround, 1 << 8);
+        mIsGrounded.BOOL = Physics2D.Raycast(transform.position, Vector2.down, mDistToGround, mGrounded);
+        Debug.DrawLine(transform.position, new Vector2(transform.position.x,transform.position.y+mDistToGround), Color.green, 0.5f);
         RaycastHit2D a = Physics2D.Raycast(transform.position, Vector2.down, mDistToGround);
         return Physics2D.Raycast(transform.position, Vector2.down, mDistToGround, (1 << 8)) && mRigbody.velocity.y == 0;
     }
