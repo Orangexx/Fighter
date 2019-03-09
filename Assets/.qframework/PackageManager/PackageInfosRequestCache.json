@@ -229,6 +229,12 @@
       "readme": {
         "items": [
           {
+            "version": "v0.2.2",
+            "content": "fix rotation can't reset error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          {
             "version": "v0.2.1",
             "content": "restore Editor Tool Kit",
             "author": "liangxie",
@@ -249,6 +255,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.2.2",
+          "Type": 0,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/3.EditorToolKit_v0.2.2.unitypackage",
+          "InstallPath": "Assets/QFramework/Framework/3.EditorToolKit/",
+          "Readme": {
+            "version": "v0.2.2",
+            "content": "fix rotation can't reset error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "3.EditorToolKit",
+          "VersionNumber": 202,
+          "FileName": "3.EditorToolKit_v0.2.2.unitypackage"
+        },
         {
           "Version": "v0.2.1",
           "Type": 0,
@@ -298,12 +320,12 @@
           "FileName": "3.EditorToolKit_v0.1.0.unitypackage"
         }
       ],
-      "Version": "v0.2.1",
-      "DownloadUrl": "http://liangxiegame.com/media/3.EditorToolKit_v0.2.1.unitypackage",
+      "Version": "v0.2.2",
+      "DownloadUrl": "http://liangxiegame.com/media/3.EditorToolKit_v0.2.2.unitypackage",
       "InstallPath": "Assets/QFramework/Framework/3.EditorToolKit/",
       "Type": 0,
       "AccessRight": 0,
-      "VersionNumber": 201,
+      "VersionNumber": 202,
       "Installed": false
     },
     {
@@ -1049,6 +1071,12 @@
       "readme": {
         "items": [
           {
+            "version": "v0.0.4",
+            "content": "fix path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          {
             "version": "v0.0.3",
             "content": "更改类型",
             "author": "liangxie",
@@ -1069,6 +1097,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.4",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/GameHPUIShader_v0.0.4.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/GameHPUIShader/",
+          "Readme": {
+            "version": "v0.0.4",
+            "content": "fix path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "GameHPUIShader",
+          "VersionNumber": 4,
+          "FileName": "GameHPUIShader_v0.0.4.unitypackage"
+        },
         {
           "Version": "v0.0.3",
           "Type": 1,
@@ -1118,12 +1162,12 @@
           "FileName": "GameHPUIShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.3",
-      "DownloadUrl": "http://liangxiegame.com/media/GameHPUIShader_v0.0.3.unitypackage",
+      "Version": "v0.0.4",
+      "DownloadUrl": "http://liangxiegame.com/media/GameHPUIShader_v0.0.4.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/GameHPUIShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 3,
+      "VersionNumber": 4,
       "Installed": false
     },
     {
@@ -1207,6 +1251,12 @@
       "readme": {
         "items": [
           {
+            "version": "v0.0.4",
+            "content": "fix lib path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          {
             "version": "v0.0.3",
             "content": "更改类型",
             "author": "liangxie",
@@ -1221,6 +1271,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.4",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/MathShader_v0.0.4.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/MathShader/",
+          "Readme": {
+            "version": "v0.0.4",
+            "content": "fix lib path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "MathShader",
+          "VersionNumber": 4,
+          "FileName": "MathShader_v0.0.4.unitypackage"
+        },
         {
           "Version": "v0.0.3",
           "Type": 1,
@@ -1254,12 +1320,12 @@
           "FileName": "MathShader_v0.0.2.unitypackage"
         }
       ],
-      "Version": "v0.0.3",
-      "DownloadUrl": "http://liangxiegame.com/media/MathShader_v0.0.3.unitypackage",
+      "Version": "v0.0.4",
+      "DownloadUrl": "http://liangxiegame.com/media/MathShader_v0.0.4.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/MathShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 3,
+      "VersionNumber": 4,
       "Installed": false
     },
     {
@@ -1671,6 +1737,12 @@
       "readme": {
         "items": [
           {
+            "version": "v0.0.4",
+            "content": "fix lib path's error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          {
             "version": "v0.0.3",
             "content": "更改类型",
             "author": "liangxie",
@@ -1691,6 +1763,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.4",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/PostFXBlurShader_v0.0.4.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/PostFXBlurShader/",
+          "Readme": {
+            "version": "v0.0.4",
+            "content": "fix lib path's error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "PostFXBlurShader",
+          "VersionNumber": 4,
+          "FileName": "PostFXBlurShader_v0.0.4.unitypackage"
+        },
         {
           "Version": "v0.0.3",
           "Type": 1,
@@ -1740,18 +1828,24 @@
           "FileName": "PostFXBlurShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.3",
-      "DownloadUrl": "http://liangxiegame.com/media/PostFXBlurShader_v0.0.3.unitypackage",
+      "Version": "v0.0.4",
+      "DownloadUrl": "http://liangxiegame.com/media/PostFXBlurShader_v0.0.4.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/PostFXBlurShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 3,
+      "VersionNumber": 4,
       "Installed": false
     },
     {
       "Name": "PostFXFireParticleShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.4",
+            "content": "fix lib path's error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.3",
             "content": "add material",
@@ -1773,6 +1867,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.4",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/PostFXFireParticleShader_v0.0.4.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/PostFXFireParticleShader/",
+          "Readme": {
+            "version": "v0.0.4",
+            "content": "fix lib path's error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "PostFXFireParticleShader",
+          "VersionNumber": 4,
+          "FileName": "PostFXFireParticleShader_v0.0.4.unitypackage"
+        },
         {
           "Version": "v0.0.3",
           "Type": 1,
@@ -1822,18 +1932,24 @@
           "FileName": "PostFXFireParticleShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.3",
-      "DownloadUrl": "http://liangxiegame.com/media/PostFXFireParticleShader_v0.0.3.unitypackage",
+      "Version": "v0.0.4",
+      "DownloadUrl": "http://liangxiegame.com/media/PostFXFireParticleShader_v0.0.4.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/PostFXFireParticleShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 3,
+      "VersionNumber": 4,
       "Installed": false
     },
     {
       "Name": "PostFXGrayShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.4",
+            "content": "fix lib path's error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.3",
             "content": "更改类型",
@@ -1855,6 +1971,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.4",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/PostFXGrayShader_v0.0.4.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/PostFXGrayShader/",
+          "Readme": {
+            "version": "v0.0.4",
+            "content": "fix lib path's error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "PostFXGrayShader",
+          "VersionNumber": 4,
+          "FileName": "PostFXGrayShader_v0.0.4.unitypackage"
+        },
         {
           "Version": "v0.0.3",
           "Type": 1,
@@ -1904,18 +2036,24 @@
           "FileName": "PostFXGrayShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.3",
-      "DownloadUrl": "http://liangxiegame.com/media/PostFXGrayShader_v0.0.3.unitypackage",
+      "Version": "v0.0.4",
+      "DownloadUrl": "http://liangxiegame.com/media/PostFXGrayShader_v0.0.4.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/PostFXGrayShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 3,
+      "VersionNumber": 4,
       "Installed": false
     },
     {
       "Name": "PostFXLavaShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.3",
+            "content": "fix lib path's compile error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.2",
             "content": "更改类型",
@@ -1931,6 +2069,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.3",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/PostFXLavaShader_v0.0.3.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/PostFXLavaShader/",
+          "Readme": {
+            "version": "v0.0.3",
+            "content": "fix lib path's compile error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "PostFXLavaShader",
+          "VersionNumber": 3,
+          "FileName": "PostFXLavaShader_v0.0.3.unitypackage"
+        },
         {
           "Version": "v0.0.2",
           "Type": 1,
@@ -1964,18 +2118,24 @@
           "FileName": "PostFXLavaShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.2",
-      "DownloadUrl": "http://liangxiegame.com/media/PostFXLavaShader_v0.0.2.unitypackage",
+      "Version": "v0.0.3",
+      "DownloadUrl": "http://liangxiegame.com/media/PostFXLavaShader_v0.0.3.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/PostFXLavaShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 2,
+      "VersionNumber": 3,
       "Installed": false
     },
     {
       "Name": "PostFXRainShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.3",
+            "content": "fix lib path's error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.2",
             "content": "更改类型",
@@ -1991,6 +2151,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.3",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/PostFXRainShader_v0.0.3.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/PostFXRainShader/",
+          "Readme": {
+            "version": "v0.0.3",
+            "content": "fix lib path's error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "PostFXRainShader",
+          "VersionNumber": 3,
+          "FileName": "PostFXRainShader_v0.0.3.unitypackage"
+        },
         {
           "Version": "v0.0.2",
           "Type": 1,
@@ -2024,18 +2200,24 @@
           "FileName": "PostFXRainShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.2",
-      "DownloadUrl": "http://liangxiegame.com/media/PostFXRainShader_v0.0.2.unitypackage",
+      "Version": "v0.0.3",
+      "DownloadUrl": "http://liangxiegame.com/media/PostFXRainShader_v0.0.3.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/PostFXRainShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 2,
+      "VersionNumber": 3,
       "Installed": false
     },
     {
       "Name": "PostFXScreenRaindropShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.5",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.4",
             "content": "add material",
@@ -2063,6 +2245,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.5",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/PostFXScreenRaindropShader_v0.0.5.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/PostFXScreenRaindropShader/",
+          "Readme": {
+            "version": "v0.0.5",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "PostFXScreenRaindropShader",
+          "VersionNumber": 5,
+          "FileName": "PostFXScreenRaindropShader_v0.0.5.unitypackage"
+        },
         {
           "Version": "v0.0.4",
           "Type": 1,
@@ -2128,18 +2326,24 @@
           "FileName": "PostFXScreenRaindropShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.4",
-      "DownloadUrl": "http://liangxiegame.com/media/PostFXScreenRaindropShader_v0.0.4.unitypackage",
+      "Version": "v0.0.5",
+      "DownloadUrl": "http://liangxiegame.com/media/PostFXScreenRaindropShader_v0.0.5.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/PostFXScreenRaindropShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 4,
+      "VersionNumber": 5,
       "Installed": false
     },
     {
       "Name": "PostFXSnowShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.4",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.3",
             "content": "add material",
@@ -2161,6 +2365,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.4",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/PostFXSnowShader_v0.0.4.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/PostFXSnowShader/",
+          "Readme": {
+            "version": "v0.0.4",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "PostFXSnowShader",
+          "VersionNumber": 4,
+          "FileName": "PostFXSnowShader_v0.0.4.unitypackage"
+        },
         {
           "Version": "v0.0.3",
           "Type": 1,
@@ -2210,12 +2430,12 @@
           "FileName": "PostFXSnowShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.3",
-      "DownloadUrl": "http://liangxiegame.com/media/PostFXSnowShader_v0.0.3.unitypackage",
+      "Version": "v0.0.4",
+      "DownloadUrl": "http://liangxiegame.com/media/PostFXSnowShader_v0.0.4.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/PostFXSnowShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 3,
+      "VersionNumber": 4,
       "Installed": false
     },
     {
@@ -2735,6 +2955,12 @@
       "readme": {
         "items": [
           {
+            "version": "v0.0.7",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          {
             "version": "v0.0.6",
             "content": "更改类型",
             "author": "liangxie",
@@ -2767,6 +2993,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.7",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageBloomShader_v0.0.7.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/UIImageBloomShader/",
+          "Readme": {
+            "version": "v0.0.7",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIImageBloomShader",
+          "VersionNumber": 7,
+          "FileName": "UIImageBloomShader_v0.0.7.unitypackage"
+        },
         {
           "Version": "v0.0.6",
           "Type": 1,
@@ -2848,18 +3090,24 @@
           "FileName": "UIImageBloomShader_v0.0.2.unitypackage"
         }
       ],
-      "Version": "v0.0.6",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageBloomShader_v0.0.6.unitypackage",
+      "Version": "v0.0.7",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageBloomShader_v0.0.7.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageBloomShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 6,
+      "VersionNumber": 7,
       "Installed": false
     },
     {
       "Name": "UIImageBlurAdvancedShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.4",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.3",
             "content": "更改类型",
@@ -2881,6 +3129,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.4",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageBlurAdvancedShader_v0.0.4.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/UIImageBlurAdvancedShader/",
+          "Readme": {
+            "version": "v0.0.4",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIImageBlurAdvancedShader",
+          "VersionNumber": 4,
+          "FileName": "UIImageBlurAdvancedShader_v0.0.4.unitypackage"
+        },
         {
           "Version": "v0.0.3",
           "Type": 1,
@@ -2930,18 +3194,24 @@
           "FileName": "UIImageBlurAdvancedShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.3",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageBlurAdvancedShader_v0.0.3.unitypackage",
+      "Version": "v0.0.4",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageBlurAdvancedShader_v0.0.4.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageBlurAdvancedShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 3,
+      "VersionNumber": 4,
       "Installed": false
     },
     {
       "Name": "UIImageBlurFocusShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.4",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.3",
             "content": "更改类型",
@@ -2963,6 +3233,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.4",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageBlurFocusShader_v0.0.4.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/UIImageBlurFocusShader/",
+          "Readme": {
+            "version": "v0.0.4",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIImageBlurFocusShader",
+          "VersionNumber": 4,
+          "FileName": "UIImageBlurFocusShader_v0.0.4.unitypackage"
+        },
         {
           "Version": "v0.0.3",
           "Type": 1,
@@ -3012,18 +3298,24 @@
           "FileName": "UIImageBlurFocusShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.3",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageBlurFocusShader_v0.0.3.unitypackage",
+      "Version": "v0.0.4",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageBlurFocusShader_v0.0.4.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageBlurFocusShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 3,
+      "VersionNumber": 4,
       "Installed": false
     },
     {
       "Name": "UIImageBlurShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.4",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.3",
             "content": "插件上传成功",
@@ -3051,6 +3343,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.4",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageBlurShader_v0.0.4.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/UIImageBlurShader/",
+          "Readme": {
+            "version": "v0.0.4",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIImageBlurShader",
+          "VersionNumber": 4,
+          "FileName": "UIImageBlurShader_v0.0.4.unitypackage"
+        },
         {
           "Version": "v0.0.3",
           "Type": 1,
@@ -3116,12 +3424,12 @@
           "FileName": "UIImageBlurShader_v0.0.0.unitypackage"
         }
       ],
-      "Version": "v0.0.3",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageBlurShader_v0.0.3.unitypackage",
+      "Version": "v0.0.4",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageBlurShader_v0.0.4.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageBlurShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 3,
+      "VersionNumber": 4,
       "Installed": false
     },
     {
@@ -3189,6 +3497,12 @@
       "readme": {
         "items": [
           {
+            "version": "v0.0.4",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          {
             "version": "v0.0.3",
             "content": "插件更改",
             "author": "liangxie",
@@ -3209,6 +3523,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.4",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageBumpsShader_v0.0.4.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/UIImageBumpsShader/",
+          "Readme": {
+            "version": "v0.0.4",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIImageBumpsShader",
+          "VersionNumber": 4,
+          "FileName": "UIImageBumpsShader_v0.0.4.unitypackage"
+        },
         {
           "Version": "v0.0.3",
           "Type": 1,
@@ -3258,12 +3588,12 @@
           "FileName": "UIImageBumpsShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.3",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageBumpsShader_v0.0.3.unitypackage",
+      "Version": "v0.0.4",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageBumpsShader_v0.0.4.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageBumpsShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 3,
+      "VersionNumber": 4,
       "Installed": false
     },
     {
@@ -3331,6 +3661,12 @@
       "readme": {
         "items": [
           {
+            "version": "v0.0.4",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          {
             "version": "v0.0.3",
             "content": "类型更改",
             "author": "liangxie",
@@ -3351,6 +3687,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.4",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageFlashLightShader_v0.0.4.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/UIImageFlashLightShader/",
+          "Readme": {
+            "version": "v0.0.4",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIImageFlashLightShader",
+          "VersionNumber": 4,
+          "FileName": "UIImageFlashLightShader_v0.0.4.unitypackage"
+        },
         {
           "Version": "v0.0.3",
           "Type": 1,
@@ -3400,18 +3752,24 @@
           "FileName": "UIImageFlashLightShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.3",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageFlashLightShader_v0.0.3.unitypackage",
+      "Version": "v0.0.4",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageFlashLightShader_v0.0.4.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageFlashLightShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 3,
+      "VersionNumber": 4,
       "Installed": false
     },
     {
       "Name": "UIImageGradientShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.3",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.2",
             "content": "更改类型",
@@ -3433,6 +3791,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.3",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageGradientShader_v0.0.3.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/UIImageGradientShader/",
+          "Readme": {
+            "version": "v0.0.3",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIImageGradientShader",
+          "VersionNumber": 3,
+          "FileName": "UIImageGradientShader_v0.0.3.unitypackage"
+        },
         {
           "Version": "v0.0.2",
           "Type": 1,
@@ -3482,18 +3856,24 @@
           "FileName": "UIImageGradientShader_v0.0.0.unitypackage"
         }
       ],
-      "Version": "v0.0.2",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageGradientShader_v0.0.2.unitypackage",
+      "Version": "v0.0.3",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageGradientShader_v0.0.3.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageGradientShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 2,
+      "VersionNumber": 3,
       "Installed": false
     },
     {
       "Name": "UIImageGrayShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.7",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.6",
             "content": "更改类型",
@@ -3533,6 +3913,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.7",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageGrayShader_v0.0.7.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/UIImageGrayShader/",
+          "Readme": {
+            "version": "v0.0.7",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIImageGrayShader",
+          "VersionNumber": 7,
+          "FileName": "UIImageGrayShader_v0.0.7.unitypackage"
+        },
         {
           "Version": "v0.0.6",
           "Type": 1,
@@ -3630,18 +4026,24 @@
           "FileName": "UIImageGrayShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.6",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageGrayShader_v0.0.6.unitypackage",
+      "Version": "v0.0.7",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageGrayShader_v0.0.7.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageGrayShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 6,
+      "VersionNumber": 7,
       "Installed": false
     },
     {
       "Name": "UIImageOutlineAlphaShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.3",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.2",
             "content": "更改类型",
@@ -3657,6 +4059,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.3",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageOutlineAlphaShader_v0.0.3.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/UIImageOutlineAlphaShader/",
+          "Readme": {
+            "version": "v0.0.3",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIImageOutlineAlphaShader",
+          "VersionNumber": 3,
+          "FileName": "UIImageOutlineAlphaShader_v0.0.3.unitypackage"
+        },
         {
           "Version": "v0.0.2",
           "Type": 1,
@@ -3690,18 +4108,24 @@
           "FileName": "UIImageOutlineAlphaShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.2",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageOutlineAlphaShader_v0.0.2.unitypackage",
+      "Version": "v0.0.3",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageOutlineAlphaShader_v0.0.3.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageOutlineAlphaShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 2,
+      "VersionNumber": 3,
       "Installed": false
     },
     {
       "Name": "UIImageOutlineShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.3",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.2",
             "content": "更改类型",
@@ -3717,6 +4141,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.3",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageOutlineShader_v0.0.3.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/UIImageOutlineShader/",
+          "Readme": {
+            "version": "v0.0.3",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIImageOutlineShader",
+          "VersionNumber": 3,
+          "FileName": "UIImageOutlineShader_v0.0.3.unitypackage"
+        },
         {
           "Version": "v0.0.2",
           "Type": 1,
@@ -3750,18 +4190,24 @@
           "FileName": "UIImageOutlineShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.2",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageOutlineShader_v0.0.2.unitypackage",
+      "Version": "v0.0.3",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageOutlineShader_v0.0.3.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageOutlineShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 2,
+      "VersionNumber": 3,
       "Installed": false
     },
     {
       "Name": "UIImageReflectionShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.4",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.3",
             "content": "更改类型",
@@ -3783,6 +4229,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.4",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageReflectionShader_v0.0.4.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/UIImageReflectionShader/",
+          "Readme": {
+            "version": "v0.0.4",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIImageReflectionShader",
+          "VersionNumber": 4,
+          "FileName": "UIImageReflectionShader_v0.0.4.unitypackage"
+        },
         {
           "Version": "v0.0.3",
           "Type": 1,
@@ -3832,18 +4294,24 @@
           "FileName": "UIImageReflectionShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.3",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageReflectionShader_v0.0.3.unitypackage",
+      "Version": "v0.0.4",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageReflectionShader_v0.0.4.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageReflectionShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 3,
+      "VersionNumber": 4,
       "Installed": false
     },
     {
       "Name": "UIImageReliefShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.2",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.1",
             "content": "更改类型",
@@ -3859,6 +4327,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.2",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageReliefShader_v0.0.2.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/UIImageReliefShader/",
+          "Readme": {
+            "version": "v0.0.2",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIImageReliefShader",
+          "VersionNumber": 2,
+          "FileName": "UIImageReliefShader_v0.0.2.unitypackage"
+        },
         {
           "Version": "v0.0.1",
           "Type": 1,
@@ -3892,12 +4376,12 @@
           "FileName": "UIImageReliefShader_v0.0.0.unitypackage"
         }
       ],
-      "Version": "v0.0.1",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageReliefShader_v0.0.1.unitypackage",
+      "Version": "v0.0.2",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageReliefShader_v0.0.2.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageReliefShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 1,
+      "VersionNumber": 2,
       "Installed": false
     },
     {
@@ -4019,6 +4503,12 @@
       "readme": {
         "items": [
           {
+            "version": "v0.0.2",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          {
             "version": "v0.0.1",
             "content": "更改类型",
             "author": "liangxie",
@@ -4033,6 +4523,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.2",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageSharpShader_v0.0.2.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/UIImageSharpShader/",
+          "Readme": {
+            "version": "v0.0.2",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIImageSharpShader",
+          "VersionNumber": 2,
+          "FileName": "UIImageSharpShader_v0.0.2.unitypackage"
+        },
         {
           "Version": "v0.0.1",
           "Type": 1,
@@ -4066,18 +4572,24 @@
           "FileName": "UIImageSharpShader_v0.0.0.unitypackage"
         }
       ],
-      "Version": "v0.0.1",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageSharpShader_v0.0.1.unitypackage",
+      "Version": "v0.0.2",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageSharpShader_v0.0.2.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageSharpShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 1,
+      "VersionNumber": 2,
       "Installed": false
     },
     {
       "Name": "UIImageSpotLightShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.2",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.1",
             "content": "更改类型",
@@ -4093,6 +4605,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.2",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageSpotLightShader_v0.0.2.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/UIImageSpotLightShader/",
+          "Readme": {
+            "version": "v0.0.2",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIImageSpotLightShader",
+          "VersionNumber": 2,
+          "FileName": "UIImageSpotLightShader_v0.0.2.unitypackage"
+        },
         {
           "Version": "v0.0.1",
           "Type": 1,
@@ -4126,18 +4654,24 @@
           "FileName": "UIImageSpotLightShader_v0.0.0.unitypackage"
         }
       ],
-      "Version": "v0.0.1",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageSpotLightShader_v0.0.1.unitypackage",
+      "Version": "v0.0.2",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageSpotLightShader_v0.0.2.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageSpotLightShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 1,
+      "VersionNumber": 2,
       "Installed": false
     },
     {
       "Name": "UIImageWaveCircleShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.4",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.3",
             "content": "更改类型",
@@ -4159,6 +4693,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.4",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageWaveCircleShader_v0.0.4.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/UIImageWaveCircleShader/",
+          "Readme": {
+            "version": "v0.0.4",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIImageWaveCircleShader",
+          "VersionNumber": 4,
+          "FileName": "UIImageWaveCircleShader_v0.0.4.unitypackage"
+        },
         {
           "Version": "v0.0.3",
           "Type": 1,
@@ -4208,18 +4758,24 @@
           "FileName": "UIImageWaveCircleShader_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.3",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageWaveCircleShader_v0.0.3.unitypackage",
+      "Version": "v0.0.4",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageWaveCircleShader_v0.0.4.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageWaveCircleShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 3,
+      "VersionNumber": 4,
       "Installed": false
     },
     {
       "Name": "UIImageWaveDirectionShader",
       "readme": {
         "items": [
+          {
+            "version": "v0.0.5",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
           {
             "version": "v0.0.4",
             "content": "更改类型",
@@ -4235,6 +4791,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.5",
+          "Type": 1,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageWaveDirectionShader_v0.0.5.unitypackage",
+          "InstallPath": "Assets/QFramework/Effect/UIImageWaveDirectionShader/",
+          "Readme": {
+            "version": "v0.0.5",
+            "content": "fix lib's path error",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIImageWaveDirectionShader",
+          "VersionNumber": 5,
+          "FileName": "UIImageWaveDirectionShader_v0.0.5.unitypackage"
+        },
         {
           "Version": "v0.0.4",
           "Type": 1,
@@ -4268,12 +4840,12 @@
           "FileName": "UIImageWaveDirectionShader_v0.0.3.unitypackage"
         }
       ],
-      "Version": "v0.0.4",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageWaveDirectionShader_v0.0.4.unitypackage",
+      "Version": "v0.0.5",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageWaveDirectionShader_v0.0.5.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageWaveDirectionShader/",
       "Type": 1,
       "AccessRight": 0,
-      "VersionNumber": 4,
+      "VersionNumber": 5,
       "Installed": false
     },
     {

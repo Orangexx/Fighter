@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5504c32c3b4e90444bc32530135b908b, type: 3}
+  m_Name: MustachioGroup
+  m_EditorClassIdentifier: 
+  Palettes:
+  - {fileID: 11400000, guid: 8ca87202d102006479f9b319268d2237, type: 2}
+  - {fileID: 11400000, guid: 9345001a64e279b4681a70d0018da1e4, type: 2}
+  - {fileID: 11400000, guid: d28e6f9a814764c47ad32a346f96ced5, type: 2}
+  - {fileID: 11400000, guid: 28d85e85d0b394c4db33a681a9f3cfe6, type: 2}
+  - {fileID: 11400000, guid: cb48bf423c70dd24ea946bee241a13a8, type: 2}
+  - {fileID: 11400000, guid: 4e088671a593d8c46b5fd9fba8614aee, type: 2}

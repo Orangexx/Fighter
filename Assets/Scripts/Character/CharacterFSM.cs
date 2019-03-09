@@ -3,42 +3,33 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using QFramework;
 using UniRx;
 
+//角色表现跳转
 public class CharacterFSM : MonoBehaviour
 {
-
-    enum eInStateTrigger
-    {
-        inIdle = 1,
-        inWalk = 2,
-        inRun = 3
-    }
-
     private delegate void InState();
     private delegate void MoveFunc();
 
+    [Space(5)]
+    [Header("GameObject")]
     [SerializeField] private Animator mAnimator;
     [SerializeField] private Rigidbody2D mRigbody;
-    [SerializeField] private SpriteRenderer mSpriteRenderer; 
+    [SerializeField] private SpriteRenderer mSpriteRenderer;
+    [SerializeField] private LayerMask mMapLayer;
 
     private float time = 0.0f;
     private Sqlite mSqlite;
     private List<StateMap> mStates;
     private XFSMLite mQFSMLite;
-    private bool mLookLeft;
-    private Bool mIsGrounded = new Bool(false);
     private float mHSpeed = 0;
-    private float mVSpeed = 0;
-    private float mDistToGround = 0.35f;
-    const float NORMALSPEED = 20f;
     private Dictionary<string, Bool> mTriggerKeys;
-
-    [SerializeField] private LayerMask mGrounded;
+    private CharacterTriggers mTriggers;
 
     private void Awake()
     {
+        Debug.Log("[CharacterFSM] Awake()");
+        mTriggers = this.GetComponent<CharacterTriggers>();
         if (mAnimator == null)
         {
             Debug.LogError("[CharacterFSM]:动画状态及未挂载");
@@ -54,7 +45,7 @@ public class CharacterFSM : MonoBehaviour
     {
         mTriggerKeys = new Dictionary<string, Bool>()
         {
-            { "isGrounded",mIsGrounded},
+            { "isGrounded",mTriggers.IsGrounded},
             {"攻击",InputController.Instance.Battack},
             {"方向",InputController.Instance.isMoving},
             { "跳跃",InputController.Instance.Bjump },
@@ -71,20 +62,28 @@ public class CharacterFSM : MonoBehaviour
         mQFSMLite.Start(mStates[0].StateName);
     }
 
+    private void Update()
+    {
+        if(!InputController.Instance.IsMoving() && mQFSMLite.State == "Run")
+        {
+            mQFSMLite.HandleEvent("Idle");
+        }
+    }
+
     void _InitFSM()
     {
         mStates.ForEach(state =>
         {
             List<StateTrigger> triggers = state.GetStateTriggers();
-            Debug.LogFormat("[character]: {0}", state.StateName);
+            Debug.LogFormat("[CharacterFSM]: {0}", state.StateName);
             if (!mQFSMLite.HasState(state.StateName))
             {
-                mQFSMLite.AddState(state.StateName, new XFSMLite.InStateFunc((target) =>
-                {
-                    if (_GetMoveFunc(state.GetStateMoves()) != null)
-                        _GetMoveFunc(state.GetStateMoves())();
-                    _GetTriggerFunc(triggers)();
-                }));
+                mQFSMLite.AddState(
+                    state.StateName,
+                    new XFSMLite.InStateFunc((target) =>
+                    {
+                        _GetTriggerFunc(triggers)();
+                    }));
             }
         });
 
@@ -97,137 +96,19 @@ public class CharacterFSM : MonoBehaviour
                 mQFSMLite.AddTranslation(state.StateName, triggers[j].NextStateName, triggers[j].NextStateName, new XFSMLite.ToNextStateFunc((target) =>
                 {
                     time = 0f;
-                    mHSpeed = 0f;
+                    mRigbody.velocity = new Vector2(0, mRigbody.velocity.y);
                     mAnimator.Play(triggers[j].NextStateName);
-                    for (int k = 0; k < mStates.Count; k++)
-                    {
-                        if (mStates[k].StateName == triggers[j].NextStateName)
-                        {
-                            if (mStates[k].GetStateMoves() != null)
-                                _SetMoveSpeed(mStates[k].GetStateMoves())();
-                            break;
-                        }
-                    }
-
                     Debug.LogFormat("{0} ————> {1}", state.StateName, triggers[j].NextStateName);
                 }));
             }
         });
-    }
-   
-    XFSMLite.ToNextStateFunc _SetMoveSpeed(List<StateMove> moves)
-    {
-        XFSMLite.ToNextStateFunc setMoveInfoFunc;
 
-        List<MoveFunc> setMoveInfos = new List<MoveFunc>();
-
-        if (moves == null)
-            return null;
-
-        for (int i = 0; i < moves.Count; i++)
-        {
-            MoveFunc setMoveInfo = null;
-            int j = i;
-
-            if (moves[j].IsMoveHorizontal)
-            {
-                setMoveInfo = new MoveFunc(() =>
-                {
-                    mHSpeed = moves[j].MoveSpeed == -1 ?
-                                mRigbody.velocity.x == 0 ? NORMALSPEED : mRigbody.velocity.x
-                                : moves[j].MoveSpeed;
-                });
-            }
-
-            if (!moves[j].IsMoveHorizontal)
-            {
-                setMoveInfo = new MoveFunc(() =>
-                {
-                    mVSpeed = moves[j].MoveSpeed;
-                    mRigbody.velocity = new Vector2(mRigbody.velocity.x, mVSpeed);
-                });
-            }
-
-            setMoveInfos.Add(setMoveInfo);
-        }
-
-        setMoveInfoFunc = new XFSMLite.ToNextStateFunc((target) =>
-        {
-            for (int i = 0; i < setMoveInfos.Count; i++)
-            {
-                int j = i;
-                if (setMoveInfos[j] != null)
-                    setMoveInfos[j]();
-            }
-        });
-
-        return setMoveInfoFunc;
-    }
-
-    XFSMLite.InStateFunc _GetMoveFunc(List<StateMove> moveInfos)
-    {
-        XFSMLite.InStateFunc inStateMove;
-
-        List<MoveFunc> moveFuncs = new List<MoveFunc>();
-
-        if (moveInfos == null)
-            return null;
-
-        for (int i = 0; i < moveInfos.Count; i++)
-        {
-            MoveFunc moveFunc = null;
-            int j = i;
-
-            if (moveInfos[j].IsMoveHorizontal)
-            {
-                moveFunc = new MoveFunc(() =>
-                {
-                    if (moveInfos[j].MoveType == "0" || moveInfos[j].MoveType == "-1")
-                    {
-                        if (InputController.Instance.left)
-                        {
-                            if (!mLookLeft)
-                                transform.Rotate(Vector2.up, 180);
-                            mLookLeft = true;
-                            mRigbody.velocity = new Vector2(-mHSpeed, mRigbody.velocity.y);
-                        }
-                        else if (InputController.Instance.right)
-                        {
-                            if (mLookLeft)
-                                transform.Rotate(Vector2.up, 180);
-                            mLookLeft = false;
-                            mRigbody.velocity = new Vector2(mHSpeed, mRigbody.velocity.y);
-                        }
-                        else
-                        {
-                            mRigbody.velocity = new Vector2(0,mRigbody.velocity.y);
-                            if (_IsGrounded())
-                            {
-                                mQFSMLite.HandleEvent("Idle");
-                            }
-                        }
-
-                    }
-
-                    if (moveInfos[j].MoveType == "1" && time >= mAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length / 2 && time <= mAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length / 2 + Time.deltaTime)
-                    {
-                        transform.Translate(new Vector2(mHSpeed, 0));
-                    }
-                });
-                moveFuncs.Add(moveFunc);
-            }
-        }
-
-        inStateMove = new XFSMLite.InStateFunc((target) =>
-        {
-            for (int i = 0; i < moveFuncs.Count; i++)
-            {
-                int j = i;
-                moveFuncs[j]();
-            }
-        });
-
-        return inStateMove;
+        mQFSMLite.AddTranslation("Run", "Idle", "Idle", new XFSMLite.ToNextStateFunc((target) =>
+           {
+               time = 0f;
+               mRigbody.velocity = Vector2.zero;
+               mAnimator.Play("Idle");
+           }));
     }
 
     XFSMLite.InStateFunc _GetTriggerFunc(List<StateTrigger> triggers)
@@ -258,7 +139,6 @@ public class CharacterFSM : MonoBehaviour
 
                     if (mTriggerKeys[triggers[j].TriggerKey].BOOL)
                     {
-                        _IsGrounded();
                         mQFSMLite.HandleEvent(triggers[j].NextStateName);
                     }
                 });
@@ -309,13 +189,22 @@ public class CharacterFSM : MonoBehaviour
         return toNextStateFunc;
     }
 
-    bool _IsGrounded()
+    public eState GetState()
     {
-        mDistToGround = mSpriteRenderer.sprite.bounds.size.y / 2 -0.01f;
-        mIsGrounded.BOOL = Physics2D.Raycast(transform.position, Vector2.down, mDistToGround, mGrounded);
-        Debug.DrawLine(transform.position, new Vector2(transform.position.x,transform.position.y+mDistToGround), Color.green, 0.5f);
-        RaycastHit2D a = Physics2D.Raycast(transform.position, Vector2.down, mDistToGround);
-        return Physics2D.Raycast(transform.position, Vector2.down, mDistToGround, (1 << 8)) && mRigbody.velocity.y == 0;
+        if (mQFSMLite.State == "Run")
+            return eState.Run;
+        else if (mQFSMLite.State == "JumpInSky")
+            return eState.InSky;
+        else
+            return eState.Normal;
+
     }
+}
+
+public enum eState
+{
+    Normal,
+    Run,
+    InSky
 }
 

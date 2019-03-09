@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using QFramework;
 
+
+// ‰»Îπ‹¿Ì∆˜
 [QFramework.QMonoSingletonPath("[Manager]/InputController")]
 public class InputController : MonoSingleton<InputController>
 {
-    KeyCode UP;
-    KeyCode DOWN;
-    KeyCode LEFT;
-    KeyCode RIGHT;
-    KeyCode JUMP;
-    KeyCode ATTACK;
-    KeyCode SKILL2;
-    KeyCode SKILL3;
-    KeyCode SKILL1;
+    [Header("Keyboard keys")]
+    public KeyCode UP;
+    public KeyCode DOWN;
+    public KeyCode LEFT;
+    public KeyCode RIGHT;
+    public KeyCode JUMP;
+    public KeyCode ATTACK;
+    public KeyCode SKILL2;
+    public KeyCode SKILL3;
+    public KeyCode SKILL1;
 
     private Sqlite setSqlite;
-
     public Bool Bup { private set; get; }
     public Bool Bdown { private set; get; }
     public Bool Bleft { private set; get; }

@@ -10,9 +10,6 @@ public partial class StateMap : IConfig
 	[ConfigField("StateName")]
 	public string StateName { get; set; }
 
-	[ConfigField("MoveSpeedTriggers")]
-	public string MoveSpeedTriggers { get; set; }
-
 	[ConfigField("StateTriggers")]
 	public string StateTriggers { get; set; }
 

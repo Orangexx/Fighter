@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a3f0de41238e746bd92d930b0be70c, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  ID: 0
+  Name: 
+  AttackBoxs:
+  - PosX: 0
+    PosY: 0
+    High: 0
+    Width: 0
+  HurtBoxs:
+  - PosX: 0
+    PosY: 0
+    High: 0
+    Width: 0
+  - PosX: 0
+    PosY: 0
+    High: 0
+    Width: 0

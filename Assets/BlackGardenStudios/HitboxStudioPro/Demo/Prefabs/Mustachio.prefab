@@ -1,0 +1,2757 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1406272824122042}
+  m_IsPrefabParent: 1
+--- !u!1 &1406272824122042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4194846781440338}
+  - component: {fileID: 114958005685078488}
+  - component: {fileID: 114559397535167226}
+  - component: {fileID: 212714867564396648}
+  - component: {fileID: 95309399016310220}
+  - component: {fileID: 60299603826249286}
+  - component: {fileID: 50218322642203942}
+  - component: {fileID: 82704673982226996}
+  - component: {fileID: 82344756179342160}
+  - component: {fileID: 82377482177931946}
+  - component: {fileID: 82443559571404108}
+  - component: {fileID: 82067075500893502}
+  m_Layer: 0
+  m_Name: Mustachio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4194846781440338
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406272824122042}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50218322642203942
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406272824122042}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!60 &60299603826249286
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406272824122042}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.375, y: 3.75}
+    newSize: {x: 4.375, y: 3.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: -1.5}
+      - {x: 0.55, y: -0.5}
+      - {x: 0, y: 0.9}
+      - {x: -0.55, y: -0.5}
+--- !u!82 &82067075500893502
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406272824122042}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2607e6637e794534c9a50db45101d9c3, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82344756179342160
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406272824122042}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1a987de784212b048a71a770f3afa1fe, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82377482177931946
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406272824122042}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d25cd5066b9460f4899be665e072b83f, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82443559571404108
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406272824122042}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: ad6b50f5efce40c44bdc05aa3ac028f4, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82704673982226996
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406272824122042}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 21399a763cfe5b94fb5e4e2d255d7825, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.5
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!95 &95309399016310220
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406272824122042}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a53ead8464f0c0e40a987bf579190bd9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114559397535167226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406272824122042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b519ef76898b7734d9c6104490d6af9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animations:
+  - clip: {fileID: 7400000, guid: 6f63edad23aa63640aef25aae48fb4bf, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -17
+          y: -23
+          width: 42
+          height: 28
+        type: 3
+      events:
+      - id: 7
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      - id: 14
+        intParam: 0
+        floatParam: 1
+        stringParam: 
+      - id: 13
+        intParam: 0
+        floatParam: 1
+        stringParam: 
+      time: 0
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 0
+    damage: 0
+    force: {x: 0, y: 0}
+    direction:
+      x: {x: 0, y: 0}
+      y: {x: 0, y: 0}
+    numtargets: 0
+    hitfxlabel: 0
+    hitfxuid: 0
+  - clip: {fileID: 7400000, guid: 7a5548b4f6fe45d4fb28a169ea645b8d, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 21
+          height: 13
+        type: 0
+      - rect:
+          x: -11
+          y: -14
+          width: 23
+          height: 25
+        type: 2
+      events: []
+      time: 0
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 0
+    damage: 0
+    force: {x: 0, y: 0}
+    direction:
+      x: {x: 0, y: 0}
+      y: {x: 0, y: 0}
+    numtargets: 0
+    hitfxlabel: 0
+    hitfxuid: 0
+  - clip: {fileID: 7400000, guid: c08686ab898c12a4abce4449b820b17a, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 22
+          height: 34
+        type: 0
+      events: []
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 22
+          height: 31
+        type: 0
+      events: []
+      time: 0.0625
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 0
+    damage: 0
+    force: {x: 0, y: 0}
+    direction:
+      x: {x: 0, y: 0}
+      y: {x: 0, y: 0}
+    numtargets: 0
+    hitfxlabel: 0
+    hitfxuid: 0
+  - clip: {fileID: 7400000, guid: 3b10c9b140f8f934cbdf9748f53992db, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -11
+          y: -28
+          width: 23
+          height: 28
+        type: 2
+      - rect:
+          x: -11
+          y: 0
+          width: 19
+          height: 5
+        type: 0
+      - rect:
+          x: 8
+          y: 0
+          width: 4
+          height: 3
+        type: 2
+      events: []
+      time: 0
+      smoothedOffset: 0
+    movementstate: 0
+    movementspeed: 0
+    poise: 0
+    strength: 0
+    damage: 0
+    force: {x: 0, y: 0}
+    direction:
+      x: {x: 0, y: 0}
+      y: {x: 0, y: 0}
+    numtargets: 0
+    hitfxlabel: 0
+    hitfxuid: 0
+  - clip: {fileID: 7400000, guid: 741e7adf570610649b75cce8458888b5, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 22
+          height: 31
+        type: 0
+      events: []
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 22
+          height: 31
+        type: 0
+      events: []
+      time: 0.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 22
+          height: 31
+        type: 0
+      - rect:
+          x: 7
+          y: -7
+          width: 19
+          height: 6
+        type: 1
+      - rect:
+          x: 10
+          y: -6
+          width: 9
+          height: 5
+        type: 0
+      events:
+      - id: 15
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      time: 0.125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 22
+          height: 31
+        type: 0
+      - rect:
+          x: 8
+          y: -7
+          width: 17
+          height: 6
+        type: 1
+      - rect:
+          x: 10
+          y: -6
+          width: 9
+          height: 5
+        type: 0
+      events: []
+      time: 0.1875
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 22
+          height: 31
+        type: 0
+      - rect:
+          x: 10
+          y: -12
+          width: 6
+          height: 10
+        type: 0
+      events: []
+      time: 0.25
+      smoothedOffset: 0
+    movementstate: 0
+    movementspeed: 0
+    poise: 0
+    strength: 1
+    damage: 5
+    force: {x: 200, y: 200}
+    direction:
+      x: {x: 1, y: 0}
+      y: {x: 1, y: 0}
+    numtargets: 0
+    hitfxlabel: 2
+    hitfxuid: 1
+  - clip: {fileID: 7400000, guid: fc1ccd8d7d93e464d8b35a77ceeef81b, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 16
+          height: 30
+        type: 0
+      events: []
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 16
+          height: 29
+        type: 0
+      events: []
+      time: 0.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 16
+          height: 29
+        type: 0
+      events: []
+      time: 0.125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 16
+          height: 29
+        type: 0
+      - rect:
+          x: 14
+          y: -25
+          width: 10
+          height: 8
+        type: 1
+      - rect:
+          x: 4
+          y: -22
+          width: 12
+          height: 7
+        type: 0
+      events:
+      - id: 15
+        intParam: 1
+        floatParam: 0
+        stringParam: 
+      time: 0.1875
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 16
+          height: 29
+        type: 0
+      - rect:
+          x: 12
+          y: -26
+          width: 8
+          height: 7
+        type: 1
+      - rect:
+          x: 4
+          y: -22
+          width: 10
+          height: 7
+        type: 0
+      events: []
+      time: 0.25
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 16
+          height: 29
+        type: 0
+      events: []
+      time: 0.3125
+      smoothedOffset: 0
+    movementstate: 0
+    movementspeed: 0
+    poise: 0
+    strength: 5
+    damage: 15
+    force: {x: 500, y: 500}
+    direction:
+      x: {x: 1, y: 0}
+      y: {x: 1, y: 0}
+    numtargets: 0
+    hitfxlabel: 2
+    hitfxuid: 1
+  - clip: {fileID: 7400000, guid: 8b8feb05429553549a4bed6ec0971e63, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events:
+      - id: 7
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      - id: 13
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      - id: 14
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events:
+      - id: 9
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      time: 0.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.1875
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.25
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.3125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.375
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.4375
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.5
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.5625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.6875
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.75
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.8125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.875
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.9375
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 1
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 1.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 1.125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 1.1875
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 1.25
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 1.3125
+      smoothedOffset: 0
+    movementstate: 5
+    movementspeed: 1
+    poise: 0
+    strength: 0
+    damage: 0
+    force: {x: 0, y: 0}
+    direction:
+      x: {x: 0, y: 0}
+      y: {x: 0, y: 0}
+    numtargets: 0
+    hitfxlabel: 0
+    hitfxuid: 0
+  - clip: {fileID: 7400000, guid: 326b28e1b4ebe9446b02ad321092eb9a, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      - rect:
+          x: 6
+          y: 0
+          width: 19
+          height: 6
+        type: 1
+      - rect:
+          x: 9
+          y: 1
+          width: 9
+          height: 5
+        type: 0
+      events:
+      - id: 15
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      time: 0.125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      - rect:
+          x: 9
+          y: 1
+          width: 9
+          height: 5
+        type: 0
+      events: []
+      time: 0.1875
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      - rect:
+          x: 9
+          y: -4
+          width: 4
+          height: 5
+        type: 0
+      events: []
+      time: 0.25
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 1
+    damage: 5
+    force: {x: 200, y: 200}
+    direction:
+      x: {x: 1, y: 0}
+      y: {x: 1, y: 0}
+    numtargets: 0
+    hitfxlabel: 2
+    hitfxuid: 1
+  - clip: {fileID: 7400000, guid: 5fc5b106da2cb9948908119a035cf047, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -10
+          y: -27
+          width: 20
+          height: 34
+        type: 0
+      events: []
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -10
+          y: -27
+          width: 20
+          height: 31
+        type: 0
+      events: []
+      time: 0.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -10
+          y: -21
+          width: 20
+          height: 37
+        type: 0
+      events:
+      - id: 4
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      time: 0.125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -10
+          y: -18
+          width: 18
+          height: 34
+        type: 0
+      events: []
+      time: 0.1875
+      smoothedOffset: 0
+    movementstate: 3
+    movementspeed: 0.5
+    poise: -5
+    strength: 0
+    damage: 0
+    force: {x: 0, y: 0}
+    direction:
+      x: {x: 0, y: 0}
+      y: {x: 0, y: 0}
+    numtargets: 0
+    hitfxlabel: 0
+    hitfxuid: 0
+  - clip: {fileID: 7400000, guid: 9166d279ce7340245ae7f17399e8d99d, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -10
+          y: -18
+          width: 18
+          height: 34
+        type: 0
+      events: []
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -10
+          y: -18
+          width: 18
+          height: 34
+        type: 0
+      events: []
+      time: 0.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -10
+          y: -18
+          width: 18
+          height: 34
+        type: 0
+      - rect:
+          x: 19
+          y: 5
+          width: 7
+          height: 6
+        type: 1
+      - rect:
+          x: 8
+          y: 6
+          width: 11
+          height: 5
+        type: 0
+      events:
+      - id: 15
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      time: 0.125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -10
+          y: -18
+          width: 18
+          height: 34
+        type: 0
+      - rect:
+          x: 17
+          y: 5
+          width: 7
+          height: 6
+        type: 1
+      - rect:
+          x: 8
+          y: 6
+          width: 9
+          height: 5
+        type: 0
+      events: []
+      time: 0.1875
+      smoothedOffset: 0
+    movementstate: 0
+    movementspeed: 0
+    poise: 0
+    strength: 1
+    damage: 5
+    force: {x: 100, y: 100}
+    direction:
+      x: {x: 1, y: 0}
+      y: {x: 1, y: 0}
+    numtargets: 0
+    hitfxlabel: 2
+    hitfxuid: 1
+  - clip: {fileID: 7400000, guid: 366086834d710cc4a8a416c40e53f0aa, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -10
+          y: -18
+          width: 18
+          height: 34
+        type: 0
+      events: []
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -10
+          y: -18
+          width: 18
+          height: 34
+        type: 0
+      events: []
+      time: 0.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -10
+          y: -18
+          width: 18
+          height: 34
+        type: 0
+      events: []
+      time: 0.125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -10
+          y: -18
+          width: 18
+          height: 34
+        type: 0
+      events: []
+      time: 0.1875
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -10
+          y: -18
+          width: 13
+          height: 34
+        type: 0
+      - rect:
+          x: 3
+          y: -9
+          width: 20
+          height: 11
+        type: 1
+      - rect:
+          x: 3
+          y: 1
+          width: 5
+          height: 10
+        type: 0
+      events:
+      - id: 15
+        intParam: 1
+        floatParam: 0
+        stringParam: 
+      time: 0.25
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -10
+          y: -18
+          width: 13
+          height: 34
+        type: 0
+      - rect:
+          x: 3
+          y: 1
+          width: 5
+          height: 10
+        type: 0
+      - rect:
+          x: 3
+          y: -9
+          width: 20
+          height: 11
+        type: 1
+      events: []
+      time: 0.3125
+      smoothedOffset: 0
+    movementstate: 0
+    movementspeed: 0
+    poise: 0
+    strength: 1
+    damage: 20
+    force: {x: 200, y: 200}
+    direction:
+      x: {x: 1, y: 0}
+      y: {x: 1, y: 0}
+    numtargets: 0
+    hitfxlabel: 2
+    hitfxuid: 1
+  - clip: {fileID: 7400000, guid: 23642917515c63344a1e4244b76fdf7d, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -13
+          y: -27
+          width: 16
+          height: 40
+        type: 0
+      - rect:
+          x: 3
+          y: -5
+          width: 4
+          height: 9
+        type: 0
+      events: []
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -14
+          y: -27
+          width: 16
+          height: 40
+        type: 0
+      - rect:
+          x: 2
+          y: -5
+          width: 4
+          height: 9
+        type: 0
+      events: []
+      time: 0.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -19
+          y: -27
+          width: 16
+          height: 40
+        type: 0
+      - rect:
+          x: -3
+          y: -4
+          width: 4
+          height: 9
+        type: 0
+      events: []
+      time: 0.125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -19
+          y: -27
+          width: 16
+          height: 40
+        type: 0
+      - rect:
+          x: -3
+          y: -4
+          width: 4
+          height: 9
+        type: 0
+      events: []
+      time: 0.1875
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -19
+          y: -27
+          width: 16
+          height: 40
+        type: 0
+      - rect:
+          x: -3
+          y: -4
+          width: 5
+          height: 8
+        type: 0
+      - rect:
+          x: 3
+          y: -9
+          width: 16
+          height: 6
+        type: 1
+      - rect:
+          x: -3
+          y: -9
+          width: 14
+          height: 5
+        type: 0
+      events:
+      - id: 15
+        intParam: 1
+        floatParam: 0
+        stringParam: 
+      time: 0.25
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -19
+          y: -27
+          width: 16
+          height: 40
+        type: 0
+      - rect:
+          x: -3
+          y: -4
+          width: 5
+          height: 8
+        type: 0
+      - rect:
+          x: 3
+          y: -9
+          width: 14
+          height: 6
+        type: 1
+      - rect:
+          x: -3
+          y: -9
+          width: 14
+          height: 5
+        type: 0
+      events: []
+      time: 0.3125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -19
+          y: -27
+          width: 16
+          height: 40
+        type: 0
+      - rect:
+          x: -3
+          y: -4
+          width: 7
+          height: 8
+        type: 0
+      - rect:
+          x: -3
+          y: -18
+          width: 9
+          height: 14
+        type: 0
+      events: []
+      time: 0.375
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 1
+    damage: 20
+    force: {x: 500, y: 500}
+    direction:
+      x: {x: 1, y: 0}
+      y: {x: 1, y: 0}
+    numtargets: 0
+    hitfxlabel: 2
+    hitfxuid: 1
+  - clip: {fileID: 7400000, guid: 70a9adc3738e464459c13857adcc57ca, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -10
+          y: -27
+          width: 20
+          height: 39
+        type: 0
+      events:
+      - id: 13
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      - id: 14
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -10
+          y: -27
+          width: 20
+          height: 39
+        type: 0
+      events: []
+      time: 0.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -10
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -10
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.1875
+      smoothedOffset: 0
+    movementstate: 5
+    movementspeed: 1
+    poise: 0
+    strength: 0
+    damage: 0
+    force: {x: 0, y: 0}
+    direction:
+      x: {x: 0, y: 0}
+      y: {x: 0, y: 0}
+    numtargets: 0
+    hitfxlabel: 0
+    hitfxuid: 0
+  - clip: {fileID: 7400000, guid: b08d3a0bd07ff1b4e9faf7f2988993c6, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -14
+          y: -27
+          width: 20
+          height: 38
+        type: 0
+      events:
+      - id: 7
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -14
+          y: -27
+          width: 21
+          height: 38
+        type: 0
+      events: []
+      time: 0.06666667
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -14
+          y: -27
+          width: 21
+          height: 38
+        type: 0
+      events: []
+      time: 0.13333334
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -14
+          y: -27
+          width: 21
+          height: 38
+        type: 0
+      events: []
+      time: 0.2
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -14
+          y: -27
+          width: 21
+          height: 38
+        type: 0
+      events:
+      - id: 7
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      time: 0.26666668
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -14
+          y: -27
+          width: 21
+          height: 38
+        type: 0
+      events: []
+      time: 0.33333334
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 0
+    damage: 0
+    force: {x: 0, y: 0}
+    direction:
+      x: {x: 0, y: 0}
+      y: {x: 0, y: 0}
+    numtargets: 0
+    hitfxlabel: 0
+    hitfxuid: 0
+  - clip: {fileID: 7400000, guid: 073a06c72536e09419da5f787c2afe4c, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -14
+          y: -27
+          width: 20
+          height: 34
+        type: 0
+      events:
+      - id: 7
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -14
+          y: -27
+          width: 20
+          height: 34
+        type: 0
+      events:
+      - id: 7
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      time: 0.16666667
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 0
+    damage: 0
+    force: {x: 0, y: 0}
+    direction:
+      x: {x: 0, y: 0}
+      y: {x: 0, y: 0}
+    numtargets: 0
+    hitfxlabel: 0
+    hitfxuid: 0
+  - clip: {fileID: 7400000, guid: c08686ab898c12a4abce4449b820b17a, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -14
+          y: -27
+          width: 20
+          height: 34
+        type: 0
+      events:
+      - id: 7
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -14
+          y: -27
+          width: 20
+          height: 34
+        type: 0
+      events:
+      - id: 7
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      time: 0
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 0
+    damage: 0
+    force: {x: 0, y: 0}
+    direction:
+      x: {x: 0, y: 0}
+      y: {x: 0, y: 0}
+    numtargets: 0
+    hitfxlabel: 0
+    hitfxuid: 0
+  - clip: {fileID: 7400000, guid: 9662b287855e0564d99f85befe033edb, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      - rect:
+          x: 9
+          y: -6
+          width: 4
+          height: 11
+        type: 0
+      - rect:
+          x: -9
+          y: -21
+          width: 38
+          height: 34
+        type: 5
+      events: []
+      time: 0.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      - rect:
+          x: 9
+          y: -5
+          width: 7
+          height: 10
+        type: 0
+      - rect:
+          x: -9
+          y: -21
+          width: 38
+          height: 34
+        type: 5
+      events: []
+      time: 0.125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      - rect:
+          x: -2
+          y: -18
+          width: 30
+          height: 25
+        type: 4
+      - rect:
+          x: 9
+          y: -2
+          width: 3
+          height: 6
+        type: 0
+      events: []
+      time: 0.1875
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 0
+    damage: 0
+    force: {x: 0, y: 0}
+    direction:
+      x: {x: 0, y: 0}
+      y: {x: 0, y: 0}
+    numtargets: 0
+    hitfxlabel: 0
+    hitfxuid: 0
+  - clip: {fileID: 7400000, guid: 6449f3a2f4f11a24ab0dd07b2bc81c6c, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      - rect:
+          x: 9
+          y: -2
+          width: 13
+          height: 9
+        type: 0
+      events: []
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      - rect:
+          x: 9
+          y: -5
+          width: 8
+          height: 10
+        type: 0
+      events: []
+      time: 0.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      - rect:
+          x: 9
+          y: -6
+          width: 5
+          height: 11
+        type: 0
+      events: []
+      time: 0.125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.1875
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 0
+    damage: 0
+    force: {x: 0, y: 0}
+    direction:
+      x: {x: 0, y: 0}
+      y: {x: 0, y: 0}
+    numtargets: 0
+    hitfxlabel: 0
+    hitfxuid: 0
+  - clip: {fileID: 7400000, guid: b26810f0899aed048a046f5710670127, type: 2}
+    framedata:
+    - collider: []
+      events:
+      - id: 1
+        intParam: -524278
+        floatParam: -524267
+        stringParam: 
+      - id: 2
+        intParam: 0
+        floatParam: 65524
+        stringParam: 
+      - id: 15
+        intParam: 2
+        floatParam: 0
+        stringParam: 
+      time: 0
+      smoothedOffset: 0
+    - collider: []
+      events:
+      - id: 1
+        intParam: -1048571
+        floatParam: -1048566
+        stringParam: 
+      time: 0.0625
+      smoothedOffset: 0
+    - collider: []
+      events:
+      - id: 1
+        intParam: -1048573
+        floatParam: -1048568
+        stringParam: 
+      time: 0.125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: 1
+          y: -5
+          width: 37
+          height: 33
+        type: 5
+      events:
+      - id: 0
+        intParam: -720872
+        floatParam: -1048548
+        stringParam: 
+      time: 0.1875
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      events: []
+      time: 0.25
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 0
+    damage: 30
+    force: {x: 0, y: 0}
+    direction:
+      x: {x: 0, y: 0}
+      y: {x: 0, y: 0}
+    numtargets: 0
+    hitfxlabel: 0
+    hitfxuid: 0
+  - clip: {fileID: 7400000, guid: e73badd78f9d27e499f662dfd451bd21, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: 6
+          y: 0
+          width: 19
+          height: 6
+        type: 1
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      - rect:
+          x: 9
+          y: 1
+          width: 9
+          height: 5
+        type: 0
+      events:
+      - id: 15
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      - rect:
+          x: 9
+          y: 1
+          width: 9
+          height: 5
+        type: 0
+      events: []
+      time: 0.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -11
+          y: -27
+          width: 20
+          height: 40
+        type: 0
+      - rect:
+          x: 9
+          y: -4
+          width: 4
+          height: 5
+        type: 0
+      events: []
+      time: 0.125
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 1
+    damage: 5
+    force: {x: 200, y: 200}
+    direction:
+      x: {x: 1, y: 0}
+      y: {x: 1, y: 0}
+    numtargets: 0
+    hitfxlabel: 2
+    hitfxuid: 1
+  - clip: {fileID: 7400000, guid: 2d4a289b4b95eec42a93203f4740f499, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -19
+          y: -27
+          width: 16
+          height: 40
+        type: 0
+      - rect:
+          x: -3
+          y: -4
+          width: 4
+          height: 9
+        type: 0
+      events: []
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -19
+          y: -27
+          width: 16
+          height: 40
+        type: 0
+      - rect:
+          x: -3
+          y: -4
+          width: 4
+          height: 9
+        type: 0
+      - rect:
+          x: -3
+          y: -9
+          width: 14
+          height: 5
+        type: 0
+      - rect:
+          x: 3
+          y: -9
+          width: 16
+          height: 6
+        type: 1
+      events:
+      - id: 15
+        intParam: 1
+        floatParam: 0
+        stringParam: 
+      time: 0.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -19
+          y: -27
+          width: 16
+          height: 40
+        type: 0
+      - rect:
+          x: -3
+          y: -4
+          width: 4
+          height: 9
+        type: 0
+      - rect:
+          x: -3
+          y: -9
+          width: 14
+          height: 5
+        type: 0
+      - rect:
+          x: 3
+          y: -9
+          width: 14
+          height: 6
+        type: 1
+      events: []
+      time: 0.125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -19
+          y: -27
+          width: 16
+          height: 40
+        type: 0
+      - rect:
+          x: -3
+          y: -18
+          width: 9
+          height: 14
+        type: 0
+      - rect:
+          x: -3
+          y: -4
+          width: 7
+          height: 8
+        type: 0
+      events: []
+      time: 0.1875
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 1
+    damage: 20
+    force: {x: 500, y: 500}
+    direction:
+      x: {x: 1, y: 0}
+      y: {x: 1, y: 0}
+    numtargets: 0
+    hitfxlabel: 2
+    hitfxuid: 1
+  - clip: {fileID: 7400000, guid: 271a91d724f7b994292b0b8de03275c6, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 22
+          height: 31
+        type: 0
+      - rect:
+          x: 7
+          y: -7
+          width: 19
+          height: 6
+        type: 1
+      - rect:
+          x: 10
+          y: -6
+          width: 9
+          height: 5
+        type: 0
+      events:
+      - id: 15
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 22
+          height: 31
+        type: 0
+      - rect:
+          x: 8
+          y: -7
+          width: 17
+          height: 6
+        type: 1
+      - rect:
+          x: 10
+          y: -6
+          width: 9
+          height: 5
+        type: 0
+      events: []
+      time: 0.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 22
+          height: 31
+        type: 0
+      - rect:
+          x: 10
+          y: -12
+          width: 6
+          height: 10
+        type: 0
+      events: []
+      time: 0.125
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 1
+    damage: 5
+    force: {x: 200, y: 200}
+    direction:
+      x: {x: 1, y: 0}
+      y: {x: 1, y: 0}
+    numtargets: 0
+    hitfxlabel: 2
+    hitfxuid: 1
+  - clip: {fileID: 7400000, guid: a398999313e0bc549866a22461cb61a2, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 16
+          height: 29
+        type: 0
+      events: []
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 16
+          height: 29
+        type: 0
+      - rect:
+          x: 14
+          y: -25
+          width: 10
+          height: 8
+        type: 1
+      - rect:
+          x: 4
+          y: -22
+          width: 12
+          height: 7
+        type: 0
+      events:
+      - id: 15
+        intParam: 1
+        floatParam: 0
+        stringParam: 
+      time: 0.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 16
+          height: 29
+        type: 0
+      - rect:
+          x: 12
+          y: -26
+          width: 8
+          height: 7
+        type: 1
+      - rect:
+          x: 4
+          y: -22
+          width: 10
+          height: 7
+        type: 0
+      events: []
+      time: 0.125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -12
+          y: -27
+          width: 16
+          height: 29
+        type: 0
+      events: []
+      time: 0.1875
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 5
+    damage: 15
+    force: {x: 500, y: 500}
+    direction:
+      x: {x: 1, y: 0}
+      y: {x: 1, y: 0}
+    numtargets: 0
+    hitfxlabel: 2
+    hitfxuid: 1
+  - clip: {fileID: 7400000, guid: ae48c4313d5c2e74d9f2324789eb6869, type: 2}
+    framedata:
+    - collider: []
+      events:
+      - id: 14
+        intParam: 0
+        floatParam: 1
+        stringParam: 
+      time: 0
+      smoothedOffset: 0
+    - collider: []
+      events:
+      - id: 14
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      time: 0.0625
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 5
+    damage: 0
+    force: {x: 500, y: 500}
+    direction:
+      x: {x: 1, y: 0}
+      y: {x: 1, y: 0}
+    numtargets: 0
+    hitfxlabel: 2
+    hitfxuid: 1
+  - clip: {fileID: 7400000, guid: 1f9fd5384475cb74480ec6d11def743f, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -8
+          y: -22
+          width: 26
+          height: 28
+        type: 0
+      events:
+      - id: 3
+        intParam: 458756
+        floatParam: 458769
+        stringParam: 
+      time: 0
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -8
+          y: -22
+          width: 20
+          height: 25
+        type: 0
+      - rect:
+          x: 12
+          y: -12
+          width: 8
+          height: 11
+        type: 1
+      events: []
+      time: 0.0625
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -7
+          y: -23
+          width: 26
+          height: 51
+        type: 1
+      events:
+      - id: 15
+        intParam: 1
+        floatParam: 0
+        stringParam: 
+      - id: 3
+        intParam: 1441792
+        floatParam: -1376238
+        stringParam: 
+      - id: 8
+        intParam: 0
+        floatParam: 0
+        stringParam: 
+      - id: 16
+        intParam: 0
+        floatParam: 5
+        stringParam: 
+      - id: 17
+        intParam: 0
+        floatParam: 15
+        stringParam: 
+      time: 0.125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: 4
+          y: -23
+          width: 13
+          height: 51
+        type: 1
+      - rect:
+          x: -7
+          y: -23
+          width: 11
+          height: 51
+        type: 0
+      events: []
+      time: 0.1875
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: 4
+          y: 1
+          width: 13
+          height: 27
+        type: 1
+      - rect:
+          x: -7
+          y: -23
+          width: 11
+          height: 51
+        type: 0
+      - rect:
+          x: 4
+          y: -23
+          width: 13
+          height: 24
+        type: 0
+      events: []
+      time: 0.25
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: 4
+          y: 1
+          width: 13
+          height: 27
+        type: 1
+      - rect:
+          x: -7
+          y: -23
+          width: 11
+          height: 51
+        type: 0
+      - rect:
+          x: 4
+          y: -23
+          width: 13
+          height: 24
+        type: 0
+      events: []
+      time: 0.3125
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: 4
+          y: 13
+          width: 13
+          height: 15
+        type: 1
+      - rect:
+          x: -7
+          y: -23
+          width: 11
+          height: 51
+        type: 0
+      - rect:
+          x: 4
+          y: -23
+          width: 13
+          height: 36
+        type: 0
+      events: []
+      time: 0.375
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: 4
+          y: 13
+          width: 13
+          height: 15
+        type: 1
+      - rect:
+          x: -7
+          y: -23
+          width: 11
+          height: 51
+        type: 0
+      - rect:
+          x: 4
+          y: -23
+          width: 13
+          height: 36
+        type: 0
+      events: []
+      time: 0.4375
+      smoothedOffset: 0
+    - collider:
+      - rect:
+          x: -7
+          y: -24
+          width: 25
+          height: 41
+        type: 0
+      events: []
+      time: 0.5
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 1
+    damage: 10
+    force: {x: 600, y: 600}
+    direction:
+      x: {x: 0.5, y: 1}
+      y: {x: 0.5, y: 1}
+    numtargets: 0
+    hitfxlabel: 2
+    hitfxuid: 1
+  - clip: {fileID: 7400000, guid: 1d951b072164a504ca50577f956b854f, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -7
+          y: -24
+          width: 25
+          height: 41
+        type: 0
+      events: []
+      time: 0
+      smoothedOffset: 0
+    movementstate: 1
+    movementspeed: 0
+    poise: 0
+    strength: 1
+    damage: 0
+    force: {x: 0, y: 0}
+    direction:
+      x: {x: 0, y: 0}
+      y: {x: 0, y: 0}
+    numtargets: 0
+    hitfxlabel: 0
+    hitfxuid: 0
+  - clip: {fileID: 7400000, guid: dfadd01f8eb289a40be34582cc50199d, type: 2}
+    framedata:
+    - collider:
+      - rect:
+          x: -10
+          y: -18
+          width: 18
+          height: 34
+        type: 0
+      events: []
+      time: 0
+      smoothedOffset: 0
+    movementstate: 3
+    movementspeed: 0.5
+    poise: -5
+    strength: 1
+    damage: 0
+    force: {x: 0, y: 0}
+    direction:
+      x: {x: 0, y: 0}
+      y: {x: 0, y: 0}
+    numtargets: 0
+    hitfxlabel: 0
+    hitfxuid: 0
+  m_CurrentAnimation: 6
+  m_CurrentFrame: 0
+  m_CurrentCollider: 0
+--- !u!114 &114958005685078488
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406272824122042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc862618f5137ba4db54847ec4fec78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Health: 200
+  m_BodyOffset: {x: 0, y: 0}
+  m_NormalGravity: 5
+  m_FallingGravity: 5
+  m_GroundDrag: 15
+  m_AirDrag: 0
+  m_GroundSpeed: 100
+  m_AirSpeed: 0
+  m_JumpForce: 900
+  m_ActivePalette: {fileID: 11400000, guid: 8ca87202d102006479f9b319268d2237, type: 2}
+  m_PaletteGroup: {fileID: 11400000, guid: 17496fb5e721c71458ba80fdafb34177, type: 2}
+  m_BasePoise: 1
+  m_GroundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  m_HitSound: {fileID: 82704673982226996}
+  m_FallSound: {fileID: 82344756179342160}
+  m_Sound:
+  - {fileID: 82377482177931946}
+  - {fileID: 82443559571404108}
+  - {fileID: 82067075500893502}
+  m_InputManager: {fileID: 0}
+  m_InputModifier: 0
+--- !u!212 &212714867564396648
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406272824122042}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c7e78ea490f05f346920e9e293dd4ee7, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 21300000, guid: 35fdede74c19f124aa00efaaa8717861, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 4.375, y: 3.75}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
