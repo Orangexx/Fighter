@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BlackGardenStudios.HitboxStudioPro;
 
-public class CharacterMovement : MonoBehaviour, ICharacter
+public class CharacterMovement : MonoBehaviour
 {
 
     [SerializeField] private Rigidbody2D mRigbody;
@@ -18,12 +17,6 @@ public class CharacterMovement : MonoBehaviour, ICharacter
 
     private CharacterTriggers mTriggers;
     private CharacterFSM mFSM;
-
-    public SpritePalette ActivePalette { get; private set; }
-
-    public SpritePaletteGroup PaletteGroup { get; private set; }
-
-    public float Poise { get; set; }
 
     public bool FlipX { get; private set; }
 
@@ -114,10 +107,5 @@ public class CharacterMovement : MonoBehaviour, ICharacter
                 return;
             mRigbody.velocity = new Vector2(mOtherSpeed, mRigbody.velocity.y);
         }
-    }
-
-    public void HitboxContact(ContactData data)
-    {
-        Debug.LogFormat("{0},{1}", data.MyHitbox.Type, data.TheirHitbox.Type);
     }
 }

@@ -390,6 +390,23 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4591455117540158, guid: 221c1a11bb123bb469cba7078aaac771, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4591455117540158, guid: 221c1a11bb123bb469cba7078aaac771, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4591455117540158, guid: 221c1a11bb123bb469cba7078aaac771, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114572262729130058, guid: 221c1a11bb123bb469cba7078aaac771,
+        type: 2}
+      propertyPath: mJumpSpeed
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 221c1a11bb123bb469cba7078aaac771, type: 2}
   m_IsPrefabAsset: 0
