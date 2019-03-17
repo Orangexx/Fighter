@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
 
-namespace QFramework.Example
+namespace QFramework.Fighter
 {
     public class InputSetListData : UIPanelData
     {
@@ -42,6 +42,11 @@ namespace QFramework.Example
             {
                 mInputSettings = mSetSqlite.SelectTable<InputSetting>();
                 _InitItems();
+            }));
+
+            mReturnBtn.AddCallback(new UnityEngine.Events.UnityAction(() =>
+            {
+                UIMgr.ClosePanel<InputSetList>();
             }));
         }
 

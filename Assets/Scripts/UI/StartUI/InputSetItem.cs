@@ -9,7 +9,7 @@ using UnityEngine.UI;
 using QFramework;
 using UnityEngine.Events;
 
-namespace QFramework.Example
+namespace QFramework.Fighter
 {
 	public class InputSetItemData : UIPanelData
 	{

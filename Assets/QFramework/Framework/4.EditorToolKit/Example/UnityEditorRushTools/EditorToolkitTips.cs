@@ -29,7 +29,7 @@
 
 using UnityEngine;
 
-namespace QFramework.Example
+namespace QFramework.Fighter
 {
     public class EditorToolkitTips : MonoBehaviour
     {

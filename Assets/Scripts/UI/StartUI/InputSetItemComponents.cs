@@ -2,7 +2,7 @@
  * 2018.11 DESKTOP-CFTQOJO
  ****************************************************************************/
 
-namespace QFramework.Example
+namespace QFramework.Fighter
 {
 	using UnityEngine;
 	using UnityEngine.UI;

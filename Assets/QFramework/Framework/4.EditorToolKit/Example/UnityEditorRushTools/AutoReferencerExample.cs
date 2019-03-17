@@ -30,7 +30,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace QFramework.Example
+namespace QFramework.Fighter
 {
     public class AutoReferencerExample : MonoBehaviour
     {

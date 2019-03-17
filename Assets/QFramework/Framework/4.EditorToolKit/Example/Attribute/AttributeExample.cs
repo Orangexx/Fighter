@@ -28,7 +28,7 @@ using UnityEditor;
 #endif
 using UnityEngine;
 
-namespace QFramework.Example
+namespace QFramework.Fighter
 {
     public class AttributeExample : MonoBehaviour
     {

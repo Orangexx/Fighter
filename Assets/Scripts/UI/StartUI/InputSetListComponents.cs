@@ -2,7 +2,7 @@
  * 2018.11 DESKTOP-CFTQOJO
  ****************************************************************************/
 
-namespace QFramework.Example
+namespace QFramework.Fighter
 {
 	using UnityEngine;
 	using UnityEngine.UI;
@@ -15,6 +15,7 @@ namespace QFramework.Example
         [SerializeField] private InputSetItem mSetItemTem;
         [SerializeField] private Button mSaveBtn;
         [SerializeField] private Button mCancelBtn;
+        [SerializeField] private Button mReturnBtn;
 
 		protected override void ClearUIComponents()
 		{
@@ -22,6 +23,7 @@ namespace QFramework.Example
             mSetItemTem = null;
             mSaveBtn = null;
             mCancelBtn = null;
+            mReturnBtn = null;
 		}
 
 		private InputSetListData mPrivateData = null;

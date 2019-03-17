@@ -78,7 +78,7 @@ Material:
     - _Parallax: 0.02
     - _Rotation: 0
     - _Scroll2X: 0.05
-    - _ScrollX: 2.0463986
+    - _ScrollX: 0.035191894
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
