@@ -6,17 +6,23 @@ using UnityEditor;
 
 public class GlobalManager : Singleton<GlobalManager>
 {
+
+    //公共资源，或者通过脚本内部的限制提供接口
     public int MapLevel = 3;
     public GameDevSetting GameDevSetting { get; private set; }
+    public MainCamera MainCamera { get; private set; }
+
+
+    //私有资源，只给外界提供方法去用
     private GameObject mCharactor;
 
     private GlobalManager() { }
 
-    public void Init(GameObject charactor,GameDevSetting devSetting)
+    public void Init(GameObject charactor,MainCamera mainCamera, GameDevSetting devSetting)
     {
         GameDevSetting = devSetting;
         mCharactor = charactor;
-
+        MainCamera = mainCamera;
         //Init Other Managers.
         BgManager.Instance.Init();
     }

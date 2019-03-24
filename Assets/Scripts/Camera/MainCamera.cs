@@ -7,8 +7,8 @@ using System;
 
 public class MainCamera : MonoBehaviour {
 
-    public float width= 100;
-    public float height = 100; 
+    private float mWidth= 100;
+    private float mHeight = 100; 
     private Vector2 mOffset;
 
 	// Use this for initialization
@@ -21,8 +21,30 @@ public class MainCamera : MonoBehaviour {
 	// Update is called once per frame
 	void LateUpdate () {
         transform.position = new Vector3
-            (Mathf.Clamp(GlobalManager.Instance.GetCharactorPos().x + mOffset.x,-width,width),
+            (Mathf.Clamp(GlobalManager.Instance.GetCharactorPos().x + mOffset.x,-mWidth, mWidth),
             transform.position.y,
             transform.position.z);
+    }
+
+    public void StopMove()
+    {
+
+    }
+
+    // 待修改 LateUpdate 逻辑和方法逻辑，实现限制范围
+    public void SetRange(float width,float height)
+    {
+        mWidth = width;
+        mHeight = height;
+    }
+
+    public void ZoomCamera()
+    {
+
+    }
+
+    public void ShakeCamera()
+    {
+
     }
 }
