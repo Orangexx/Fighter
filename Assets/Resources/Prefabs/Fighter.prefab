@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212532432569874072}
   - component: {fileID: 95297996841080300}
   - component: {fileID: 114514669355047138}
-  - component: {fileID: 114551883728611368}
   - component: {fileID: 114572262729130058}
   - component: {fileID: 50533133942757688}
   - component: {fileID: 61239983231467176}
@@ -60,7 +59,7 @@ Rigidbody2D:
   m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 0.8
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -135,22 +134,7 @@ MonoBehaviour:
   mMapLayer:
     serializedVersion: 2
     m_Bits: 256
-  mJumpSpeed: 7
---- !u!114 &114551883728611368
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1887683006425480}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 811ad6e8cc7d86541b2d7a380d14a8e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mGroundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  mSpriteRenderer: {fileID: 212532432569874072}
+  mJumpSpeed: 6.5
 --- !u!114 &114572262729130058
 MonoBehaviour:
   m_ObjectHideFlags: 1
