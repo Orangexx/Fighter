@@ -9,7 +9,23 @@ using UniRx;
 public class CharacterFSM : MonoBehaviour
 {
     private delegate void InState();
-    private delegate void MoveFunc();
+    private delegate bool FSMTrigger();
+
+    //设置按键
+    private Sqlite mSetSqlite;
+    private List<InputSetting> mInpuSetting;
+
+
+    [Header("Keyboard keys")]
+    public KeyCode UP;
+    public KeyCode DOWN;
+    public KeyCode LEFT;
+    public KeyCode RIGHT;
+    public KeyCode JUMP;
+    public KeyCode ATTACK;
+    public KeyCode SKILL2;
+    public KeyCode SKILL3;
+    public KeyCode SKILL1;
 
     [Space(5)]
     [Header("GameObject")]
@@ -18,12 +34,16 @@ public class CharacterFSM : MonoBehaviour
     [SerializeField] private SpriteRenderer mSpriteRenderer;
     [SerializeField] private LayerMask mMapLayer;
 
+
+    [Space(5)]
+    [Header("跳跃速度")]
+    [SerializeField] private float mJumpSpeed;
+
     private float time = 0.0f;
     private Sqlite mSqlite;
     private List<StateMap> mStates;
     private XFSMLite mQFSMLite;
-    private float mHSpeed = 0;
-    private Dictionary<string, Bool> mTriggerKeys;
+    private Dictionary<string, FSMTrigger> mTriggerFuns;
     private CharacterTriggers mTriggers;
 
     private void Awake()
@@ -38,20 +58,26 @@ public class CharacterFSM : MonoBehaviour
         mSqlite = new Sqlite(Application.dataPath + "/SQLites/Fighter.db");
         mStates = mSqlite.SelectTable<StateMap>();
         mSqlite.Close();
+
+
+        _SetInputKey();
+
         mQFSMLite = new XFSMLite();
     }
 
     private void Start()
     {
-        mTriggerKeys = new Dictionary<string, Bool>()
+        mTriggerFuns = new Dictionary<string, FSMTrigger>()
         {
-            { "isGrounded",mTriggers.IsGrounded},
-            {"攻击",InputController.Instance.Battack},
-            {"方向",InputController.Instance.isMoving},
-            { "跳跃",InputController.Instance.Bjump },
-            { "Skill1",InputController.Instance.BSkill1},
-            { "Skill2",InputController.Instance.BSkill2},
-            { "Skill3",InputController.Instance.BSkill3}
+            { "!isGrounded",new FSMTrigger(() =>{ return !_IsGround(); })},
+            { "!方向",new FSMTrigger(()=>{ return !Input.GetKey(LEFT) && !Input.GetKey(RIGHT); })},
+            { "isGrounded",_IsGround},
+            {"攻击",new FSMTrigger(() => { return Input.GetKey(ATTACK); })},
+            {"方向",new FSMTrigger(() => {return Input.GetKey(LEFT) || Input.GetKey(RIGHT); }) },
+            { "跳跃",new FSMTrigger(() => { return Input.GetKey(JUMP); }) },
+            { "Skill1",new FSMTrigger(() => { return Input.GetKey(SKILL1); } ) },
+            { "Skill2",new FSMTrigger(() => { return Input.GetKey(SKILL2); })},
+            { "Skill3",new FSMTrigger(() => { return Input.GetKey(SKILL3); })}
         };
 
         _InitFSM();
@@ -62,16 +88,9 @@ public class CharacterFSM : MonoBehaviour
         mQFSMLite.Start(mStates[0].StateName);
     }
 
-    private void Update()
+    private void _InitFSM()
     {
-        if(!InputController.Instance.IsMoving() && mQFSMLite.State == "Run")
-        {
-            mQFSMLite.HandleEvent("Idle");
-        }
-    }
-
-    void _InitFSM()
-    {
+        //添加 Instate 方法
         mStates.ForEach(state =>
         {
             List<StateTrigger> triggers = state.GetStateTriggers();
@@ -87,28 +106,35 @@ public class CharacterFSM : MonoBehaviour
             }
         });
 
+
+        //重置运动状态  单独处理跳跃
         mStates.ForEach(state =>
         {
             List<StateTrigger> triggers = state.GetStateTriggers();
             for (int i = 0; i < triggers.Count; i++)
             {
                 int j = i;
+
+                if (triggers[j].NextStateName == "JumpStart")
+                {
+                    mQFSMLite.AddTranslation(state.StateName, triggers[j].NextStateName, triggers[j].NextStateName, new XFSMLite.ToNextStateFunc((target) =>
+                    {
+                        time = 0f;
+                        mRigbody.velocity = new Vector2(0, mJumpSpeed);
+                        mAnimator.Play(triggers[j].NextStateName);
+                        Debug.LogFormat("{0} ——> {1}", state.StateName, triggers[j].NextStateName);
+                    }));
+                    continue;
+                }
                 mQFSMLite.AddTranslation(state.StateName, triggers[j].NextStateName, triggers[j].NextStateName, new XFSMLite.ToNextStateFunc((target) =>
                 {
                     time = 0f;
                     mRigbody.velocity = new Vector2(0, mRigbody.velocity.y);
                     mAnimator.Play(triggers[j].NextStateName);
-                    Debug.LogFormat("{0} ————> {1}", state.StateName, triggers[j].NextStateName);
+                    Debug.LogFormat("{0} ——> {1}", state.StateName, triggers[j].NextStateName);
                 }));
             }
         });
-
-        mQFSMLite.AddTranslation("Run", "Idle", "Idle", new XFSMLite.ToNextStateFunc((target) =>
-           {
-               time = 0f;
-               mRigbody.velocity = Vector2.zero;
-               mAnimator.Play("Idle");
-           }));
     }
 
     XFSMLite.InStateFunc _GetTriggerFunc(List<StateTrigger> triggers)
@@ -134,10 +160,10 @@ public class CharacterFSM : MonoBehaviour
                         return;
                     }
 
-                    if (!mTriggerKeys.ContainsKey(triggers[j].TriggerKey))
+                    if (!mTriggerFuns.ContainsKey(triggers[j].TriggerKey))
                         return;
 
-                    if (mTriggerKeys[triggers[j].TriggerKey].BOOL)
+                    if (mTriggerFuns[triggers[j].TriggerKey]())
                     {
                         mQFSMLite.HandleEvent(triggers[j].NextStateName);
                     }
@@ -150,9 +176,9 @@ public class CharacterFSM : MonoBehaviour
                 {
                     if (time >= 0.3f || time <= 0.1f)
                         return;
-                    if (!mTriggerKeys.ContainsKey(triggers[j].TriggerKey))
+                    if (!mTriggerFuns.ContainsKey(triggers[j].TriggerKey))
                         return;
-                    if (mTriggerKeys[triggers[j].TriggerKey].BOOL)
+                    if (mTriggerFuns[triggers[j].TriggerKey]())
                     {
                         mQFSMLite.HandleEvent(triggers[j].NextStateName);
                     }
@@ -165,9 +191,9 @@ public class CharacterFSM : MonoBehaviour
                 {
                     if (time < (mAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length - 0.3f) || time >= mAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length)
                         return;
-                    if (!mTriggerKeys.ContainsKey(triggers[j].TriggerKey))
+                    if (!mTriggerFuns.ContainsKey(triggers[j].TriggerKey))
                         return;
-                    if (mTriggerKeys[triggers[j].TriggerKey].BOOL)
+                    if (mTriggerFuns[triggers[j].TriggerKey]())
                     {
                         mQFSMLite.HandleEvent(triggers[j].NextStateName);
                     }
@@ -189,21 +215,51 @@ public class CharacterFSM : MonoBehaviour
         return toNextStateFunc;
     }
 
-    public eState GetState()
+    public eCharacterState GetState()
     {
-        if (mQFSMLite.State == "Run")
-            return eState.Run;
-        else if (mQFSMLite.State == "JumpInSky")
-            return eState.InSky;
-        else
-            return eState.Normal;
+        switch (mQFSMLite.State)
+        {
+            case "Run":
+                return eCharacterState.Run;
+            case "Idle":
+                return eCharacterState.Idle;
+            case "JumpInSky":
+                return eCharacterState.InSky;
+            default:
+                return eCharacterState.Normal;
+        }
 
+    }
+
+    private void _SetInputKey()
+    {
+        mSetSqlite = new Sqlite(Application.dataPath + "/SQLites/InputSetting.db");
+        mInpuSetting = mSetSqlite.SelectTable<InputSetting>();
+        UP = (KeyCode)System.Enum.Parse(typeof(KeyCode), mInpuSetting[0].Key);
+        DOWN = (KeyCode)System.Enum.Parse(typeof(KeyCode), mInpuSetting[1].Key);
+        LEFT = (KeyCode)System.Enum.Parse(typeof(KeyCode), mInpuSetting[2].Key);
+        RIGHT = (KeyCode)System.Enum.Parse(typeof(KeyCode), mInpuSetting[3].Key);
+        JUMP = (KeyCode)System.Enum.Parse(typeof(KeyCode), mInpuSetting[4].Key);
+        ATTACK = (KeyCode)System.Enum.Parse(typeof(KeyCode), mInpuSetting[5].Key);
+        SKILL1 = (KeyCode)System.Enum.Parse(typeof(KeyCode), mInpuSetting[6].Key);
+        SKILL2 = (KeyCode)System.Enum.Parse(typeof(KeyCode), mInpuSetting[7].Key);
+        SKILL3 = (KeyCode)System.Enum.Parse(typeof(KeyCode), mInpuSetting[8].Key);
+        Debug.Log(mInpuSetting[7].Key);
+        mSetSqlite.Close();
+    }
+
+    private bool _IsGround()
+    {
+        float mDistToGround = mSpriteRenderer.sprite.bounds.size.y / 2 - 0.1f;
+        //待增加左右两边的检测，不光中心检测
+        return Physics2D.Raycast(transform.position, Vector2.down, mDistToGround, mMapLayer);
     }
 }
 
-public enum eState
+public enum eCharacterState
 {
     Normal,
+    Idle,
     Run,
     InSky
 }

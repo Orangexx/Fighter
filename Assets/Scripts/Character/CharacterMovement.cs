@@ -11,11 +11,8 @@ public class CharacterMovement : MonoBehaviour
     [Header("DataSetting")]
     [SerializeField] private float mRunSpeed;
     [SerializeField] private float mInSkySpeed;
-    [SerializeField] private float mJumpSpeed;
     [SerializeField] private float mOtherSpeed;
 
-
-    private CharacterTriggers mTriggers;
     private CharacterFSM mFSM;
 
     public bool FlipX { get; private set; }
@@ -24,43 +21,40 @@ public class CharacterMovement : MonoBehaviour
     void Start()
     {
         FlipX = false;
-        mTriggers = this.GetComponent<CharacterTriggers>();
         mFSM = this.GetComponent<CharacterFSM>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        eCharacterState state = mFSM.GetState();
 
-        switch (mFSM.GetState())
+        switch (state)
         {
-            case eState.Normal:
+            case eCharacterState.Normal:
                 _InOther();
                 break;
-            case eState.Run:
+            case eCharacterState.Run:
                 _InRun();
                 break;
-            case eState.InSky:
+            case eCharacterState.InSky:
                 _InSky();
                 break;
             default:
                 break;
         }
-
-        if (InputController.Instance.jump && mTriggers.IsGrounded.BOOL)
-            _StartJump();
     }
 
     void _InRun()
     {
-        if (InputController.Instance.left)
+        if (Input.GetKey(mFSM.LEFT))
         {
             if (!FlipX)
                 transform.Rotate(Vector2.up, 180);
             FlipX = true;
             mRigbody.velocity = new Vector2(-mRunSpeed, mRigbody.velocity.y);
         }
-        else if (InputController.Instance.right)
+        else if (Input.GetKey(mFSM.RIGHT))
         {
             if (FlipX)
                 transform.Rotate(Vector2.up, 180);
@@ -69,39 +63,33 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-
-    void _StartJump()
-    {
-        mRigbody.velocity = new Vector2(0, mJumpSpeed);
-
-    }
     void _InSky()
     {
-        if (InputController.Instance.left)
+        if (Input.GetKey(mFSM.LEFT))
         {
             if (!FlipX)
                 transform.Rotate(Vector2.up, 180);
             FlipX = true;
-            mRigbody.velocity = new Vector2(-mRunSpeed, mRigbody.velocity.y);
+            mRigbody.velocity = new Vector2(-mRunSpeed/2, mRigbody.velocity.y);
         }
-        else if (InputController.Instance.right)
+        else if (Input.GetKey(mFSM.RIGHT))
         {
             if (FlipX)
                 transform.Rotate(Vector2.up, 180);
             FlipX = false;
-            mRigbody.velocity = new Vector2(mRunSpeed, mRigbody.velocity.y);
+            mRigbody.velocity = new Vector2(mRunSpeed/2, mRigbody.velocity.y);
         }
     }
 
     void _InOther()
     {
-        if (InputController.Instance.left)
+        if (Input.GetKey(mFSM.LEFT))
         {
             if (!FlipX)
                 return;
             else mRigbody.velocity = new Vector2(-mOtherSpeed, mRigbody.velocity.y);
         }
-        else if (InputController.Instance.right)
+        else if (Input.GetKey(mFSM.RIGHT))
         {
             if (FlipX)
                 return;

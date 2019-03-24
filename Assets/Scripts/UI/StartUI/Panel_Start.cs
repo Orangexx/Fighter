@@ -38,7 +38,7 @@ namespace QFramework.Fighter
 
             BtnStart.AddCallback(new UnityEngine.Events.UnityAction(() =>
             {
-                GlobalManager.Instance.MapLevel = 1;
+                GlobalManager.Instance.MapLevel = 2;
                 SceneManager.LoadScene(1);
                 UIMgr.CloseAllPanel();
             }));

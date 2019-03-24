@@ -120,12 +120,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16c862bafad2e074a9d90cdd90000e0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UP: 0
+  DOWN: 0
+  LEFT: 0
+  RIGHT: 0
+  JUMP: 0
+  ATTACK: 0
+  SKILL2: 0
+  SKILL3: 0
+  SKILL1: 0
   mAnimator: {fileID: 95297996841080300}
   mRigbody: {fileID: 50533133942757688}
   mSpriteRenderer: {fileID: 212532432569874072}
   mMapLayer:
     serializedVersion: 2
     m_Bits: 256
+  mJumpSpeed: 7
 --- !u!114 &114551883728611368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,7 +165,6 @@ MonoBehaviour:
   mRigbody: {fileID: 50533133942757688}
   mRunSpeed: 5
   mInSkySpeed: 1
-  mJumpSpeed: 8
   mOtherSpeed: 1
 --- !u!212 &212532432569874072
 SpriteRenderer:
