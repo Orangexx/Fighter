@@ -2685,8 +2685,8 @@
           "Version": "v0.0.3",
           "Type": 3,
           "AccessRight": 0,
-          "DownloadUrl": "http://liangxiegame.com/media/StateMachine_v0.0.3_5lfjhW1.unitypackage",
-          "InstallPath": "Assets/QFramework/Framework/StateMachine",
+          "DownloadUrl": "http://liangxiegame.com/media/StateMachine_v0.0.3.unitypackage",
+          "InstallPath": "Assets/QFramework/Framework/BX/StateMachine",
           "Readme": {
             "version": "v0.0.3",
             "content": "更改类型",
@@ -2701,8 +2701,8 @@
           "Version": "v0.0.3",
           "Type": 3,
           "AccessRight": 0,
-          "DownloadUrl": "http://liangxiegame.com/media/StateMachine_v0.0.3.unitypackage",
-          "InstallPath": "Assets/QFramework/Framework/BX/StateMachine",
+          "DownloadUrl": "http://liangxiegame.com/media/StateMachine_v0.0.3_5lfjhW1.unitypackage",
+          "InstallPath": "Assets/QFramework/Framework/StateMachine",
           "Readme": {
             "version": "v0.0.3",
             "content": "更改类型",
@@ -4401,7 +4401,7 @@
           "Version": "v0.0.1",
           "Type": 1,
           "AccessRight": 0,
-          "DownloadUrl": "http://liangxiegame.com/media/UIImageRoundCorner_v0.0.1_0jh0E76.unitypackage",
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageRoundCorner_v0.0.1.unitypackage",
           "InstallPath": "Assets/QFramework/Effect/UIImageRoundCorner/",
           "Readme": {
             "version": "v0.0.1",
@@ -4417,7 +4417,7 @@
           "Version": "v0.0.1",
           "Type": 1,
           "AccessRight": 0,
-          "DownloadUrl": "http://liangxiegame.com/media/UIImageRoundCorner_v0.0.1.unitypackage",
+          "DownloadUrl": "http://liangxiegame.com/media/UIImageRoundCorner_v0.0.1_0jh0E76.unitypackage",
           "InstallPath": "Assets/QFramework/Effect/UIImageRoundCorner/",
           "Readme": {
             "version": "v0.0.1",
@@ -4431,7 +4431,7 @@
         }
       ],
       "Version": "v0.0.1",
-      "DownloadUrl": "http://liangxiegame.com/media/UIImageRoundCorner_v0.0.1_0jh0E76.unitypackage",
+      "DownloadUrl": "http://liangxiegame.com/media/UIImageRoundCorner_v0.0.1.unitypackage",
       "InstallPath": "Assets/QFramework/Effect/UIImageRoundCorner/",
       "Type": 1,
       "AccessRight": 0,

@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13468a78d3cce94489f0ee83e699635, type: 3}
+  m_Name: Fighter_Attack1
+  m_EditorClassIdentifier: 
+  clip: {fileID: 7400000, guid: 7c4acf6f6012d824386e2305fc301ab8, type: 2}
+  framedata:
+  - collider:
+    - rect:
+        x: -21
+        y: 62
+        width: 36
+        height: 48
+      type: 0
+    - rect:
+        x: -27
+        y: 1
+        width: 56
+        height: 62
+      type: 0
+    time: 0
+  - collider:
+    - rect:
+        x: -21
+        y: 64
+        width: 36
+        height: 46
+      type: 0
+    - rect:
+        x: -27
+        y: 1
+        width: 56
+        height: 62
+      type: 0
+    time: 0.2
+  - collider:
+    - rect:
+        x: -28
+        y: 63
+        width: 36
+        height: 46
+      type: 0
+    - rect:
+        x: -39
+        y: 1
+        width: 56
+        height: 62
+      type: 0
+    - rect:
+        x: 8
+        y: 60
+        width: 33
+        height: 22
+      type: 1
+    time: 0.4
+  strength: 1
+  damage: 5
+  force: {x: 1, y: 0}
+  hitFx: {fileID: 0}

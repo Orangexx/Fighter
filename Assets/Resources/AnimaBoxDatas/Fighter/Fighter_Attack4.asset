@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13468a78d3cce94489f0ee83e699635, type: 3}
+  m_Name: Fighter_Attack4
+  m_EditorClassIdentifier: 
+  clip: {fileID: 7400000, guid: 9133feb0881b86f46aca3c1b86c7494e, type: 2}
+  framedata:
+  - collider: []
+    time: 0
+  - collider: []
+    time: 0.1
+  - collider: []
+    time: 0.2
+  - collider: []
+    time: 0.3
+  - collider: []
+    time: 0.4
+  - collider: []
+    time: 0.5
+  strength: 0
+  damage: 0
+  force: {x: 0, y: 0}
+  hitFx: {fileID: 0}

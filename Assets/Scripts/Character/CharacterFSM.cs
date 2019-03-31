@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
+using UnityEditor;
 
 //角色表现跳转
 public class CharacterFSM : MonoBehaviour
@@ -14,6 +15,9 @@ public class CharacterFSM : MonoBehaviour
     //设置按键
     private Sqlite mSetSqlite;
     private List<InputSetting> mInpuSetting;
+
+    [Header("Colliders")]
+    public BoxCollider2D[] Hitboxs;
 
 
     [Header("Keyboard keys")]
@@ -39,12 +43,14 @@ public class CharacterFSM : MonoBehaviour
     [Header("跳跃速度")]
     [SerializeField] private float mJumpSpeed;
 
-    private float time = 0.0f;
+    private float mTriggerTime = 0.0f;
+    private float mHitboxTime = 0f;
     private Sqlite mSqlite;
     private List<StateMap> mStates;
     private XFSMLite mQFSMLite;
     private Dictionary<string, FSMTrigger> mTriggerFuns;
     private CharacterTriggers mTriggers;
+    private Dictionary<string, XHitboxAnimation> mHitboxData;
 
     private void Awake()
     {
@@ -57,6 +63,7 @@ public class CharacterFSM : MonoBehaviour
         }
         mSqlite = new Sqlite(Application.dataPath + "/SQLites/Fighter.db");
         mStates = mSqlite.SelectTable<StateMap>();
+        mHitboxData = new Dictionary<string, XHitboxAnimation>();
         mSqlite.Close();
 
 
@@ -79,6 +86,7 @@ public class CharacterFSM : MonoBehaviour
             { "Skill2",new FSMTrigger(() => { return Input.GetKey(SKILL2); })},
             { "Skill3",new FSMTrigger(() => { return Input.GetKey(SKILL3); })}
         };
+        _InitHitboxData();
 
         _InitFSM();
 
@@ -88,12 +96,24 @@ public class CharacterFSM : MonoBehaviour
         mQFSMLite.Start(mStates[0].StateName);
     }
 
+    private void _InitHitboxData()
+    {
+        mStates.ForEach(state =>
+        {
+            mHitboxData.Add(state.StateName,
+                AssetDatabase.LoadAssetAtPath<XHitboxAnimation>(
+                    String.Format("Assets/Resources/AnimaBoxDatas/Fighter/Fighter_{0}.asset", state.StateName)));
+        });
+    }
+
     private void _InitFSM()
     {
         //添加 Instate 方法
         mStates.ForEach(state =>
         {
             List<StateTrigger> triggers = state.GetStateTriggers();
+            XHitboxAnimation hitboxData;
+            mHitboxData.TryGetValue(state.StateName, out hitboxData);
             Debug.LogFormat("[CharacterFSM]: {0}", state.StateName);
             if (!mQFSMLite.HasState(state.StateName))
             {
@@ -102,6 +122,7 @@ public class CharacterFSM : MonoBehaviour
                     new XFSMLite.InStateFunc((target) =>
                     {
                         _GetTriggerFunc(triggers)();
+                        if (hitboxData != null) _GetHitboxFunc(hitboxData)();
                     }));
             }
         });
@@ -115,29 +136,47 @@ public class CharacterFSM : MonoBehaviour
             {
                 int j = i;
 
+                for (int m = 0; m < Hitboxs.Length; m++)
+                {
+                    int n = m;
+                    Hitboxs[n].size = Vector2.zero;
+                }
+
                 if (triggers[j].NextStateName == "JumpStart")
                 {
                     mQFSMLite.AddTranslation(state.StateName, triggers[j].NextStateName, triggers[j].NextStateName, new XFSMLite.ToNextStateFunc((target) =>
                     {
-                        time = 0f;
+                        mTriggerTime = 0f;
+                        mHitboxTime = 0f;
                         mRigbody.velocity = new Vector2(0, mJumpSpeed);
                         mAnimator.Play(triggers[j].NextStateName);
+                        for (int m = 0; m < Hitboxs.Length; m++)
+                        {
+                            int n = m;
+                            Hitboxs[n].size = Vector2.zero;
+                        }
                         Debug.LogFormat("{0} ——> {1}", state.StateName, triggers[j].NextStateName);
                     }));
                     continue;
                 }
                 mQFSMLite.AddTranslation(state.StateName, triggers[j].NextStateName, triggers[j].NextStateName, new XFSMLite.ToNextStateFunc((target) =>
                 {
-                    time = 0f;
+                    mTriggerTime = 0f;
+                    mHitboxTime = 0f;
                     mRigbody.velocity = new Vector2(0, mRigbody.velocity.y);
                     mAnimator.Play(triggers[j].NextStateName);
+                    for (int m = 0; m < Hitboxs.Length; m++)
+                    {
+                        int n = m;
+                        Hitboxs[n].size = Vector2.zero;
+                    }
                     Debug.LogFormat("{0} ——> {1}", state.StateName, triggers[j].NextStateName);
                 }));
             }
         });
     }
 
-    XFSMLite.InStateFunc _GetTriggerFunc(List<StateTrigger> triggers)
+    private XFSMLite.InStateFunc _GetTriggerFunc(List<StateTrigger> triggers)
     {
         XFSMLite.InStateFunc toNextStateFunc;
 
@@ -155,7 +194,7 @@ public class CharacterFSM : MonoBehaviour
                     if (triggers[j].TriggerKey == "null")
                     {
 
-                        if (time >= mAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length)
+                        if (mTriggerTime >= mAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length)
                             mQFSMLite.HandleEvent(triggers[j].NextStateName);
                         return;
                     }
@@ -174,7 +213,7 @@ public class CharacterFSM : MonoBehaviour
             {
                 inState = new InState(() =>
                 {
-                    if (time >= 0.3f || time <= 0.1f)
+                    if (mTriggerTime >= 0.3f || mTriggerTime <= 0.1f)
                         return;
                     if (!mTriggerFuns.ContainsKey(triggers[j].TriggerKey))
                         return;
@@ -189,7 +228,7 @@ public class CharacterFSM : MonoBehaviour
             {
                 inState = new InState(() =>
                 {
-                    if (time < (mAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length - 0.3f) || time >= mAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length)
+                    if (mTriggerTime < (mAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length - 0.3f) || mTriggerTime >= mAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.length)
                         return;
                     if (!mTriggerFuns.ContainsKey(triggers[j].TriggerKey))
                         return;
@@ -205,7 +244,7 @@ public class CharacterFSM : MonoBehaviour
         }
         toNextStateFunc = new XFSMLite.InStateFunc((target) =>
         {
-            time += Time.deltaTime;
+            mTriggerTime += Time.deltaTime;
             for (int i = 0; i < inStates.Count; i++)
             {
                 inStates[i]();
@@ -213,6 +252,66 @@ public class CharacterFSM : MonoBehaviour
         });
 
         return toNextStateFunc;
+    }
+
+
+    //暂时先直接获取数据测试,之后再改
+    private XFSMLite.InStateFunc _GetHitboxFunc(XHitboxAnimation xHitboxData)
+    {
+        List<InState> setHitDatas = new List<InState>();
+        XFSMLite.InStateFunc setFrameFunc = null;
+        float[] times = new float[xHitboxData.framedata.Length];
+
+        for (int i = 0; i < times.Length; i++)
+            times[i] = xHitboxData.framedata[i].time;
+
+        for (int i = 0; i < xHitboxData.framedata.Length; i++)
+        {
+            int m = i;
+            var currentFrame = xHitboxData.framedata[m];
+            InState inFrame = null;
+
+            inFrame = new InState(() =>
+            {
+                _SetColliders(currentFrame.collider);
+            });
+            setHitDatas.Add(inFrame);
+        }
+
+        setFrameFunc = new XFSMLite.InStateFunc((target) =>
+        {
+            mHitboxTime = (mHitboxTime + Time.deltaTime) % times[xHitboxData.framedata.Length - 1];
+            setHitDatas[_GetNowFrame(mHitboxTime, times)]();
+        });
+
+        return setFrameFunc;
+    }
+
+
+    private int _GetNowFrame(float time, float[] times)
+    {
+        for (int i = 0; i < times.Length - 1; i++)
+        {
+            int j = i;
+            if (time >= times[j] && time < times[j + 1])
+                return j;
+        }
+        Debug.LogErrorFormat("[CFSM/HitboxData]: {0}", time);
+        return -1;
+    }
+    private void _SetColliders(HitboxColliderData[] colliders)
+    {
+        for (int i = 0; i < Hitboxs.Length; i++)
+        {
+            Hitboxs[i].size = Vector2.zero;
+        }
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            int j = i;
+            Hitboxs[i].size = colliders[i].rect.size;
+            Hitboxs[i].Position(new Vector2(colliders[i].rect.position.x,colliders[i].rect.position.y));
+            Debug.LogFormat("[HitboxText]:{2} :  {0},{1}", colliders[j].rect, colliders[j].type, mTriggerTime);
+        }
     }
 
     public eCharacterState GetState()

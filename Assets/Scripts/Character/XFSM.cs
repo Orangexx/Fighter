@@ -130,14 +130,13 @@ public class XFSMLite
         if (mCurState != null && mStateDict[mCurState].TranslationDict.ContainsKey(name))
         {
             ToNextStateDisposables.Clear();
+            InStateDisposables.Clear();
 
             var tempTranslation = mStateDict[mCurState].TranslationDict[name];
             tempTranslation.OnTranslationCallback(param);
 
             if (mStateDict[tempTranslation.ToState].InState != null)
             {
-                InStateDisposables.Clear();
-
                 Observable.EveryUpdate()
                     .Subscribe(_ =>
                     { mStateDict[tempTranslation.ToState].InState(); })
