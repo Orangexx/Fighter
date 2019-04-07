@@ -43,6 +43,12 @@ public class CharacterFSM : MonoBehaviour
     [Header("跳跃速度")]
     [SerializeField] private float mJumpSpeed;
 
+    [Space(5)]
+    [Header("pixelsPerUnit Set")]
+    [SerializeField] private float mPixelPerUnit;
+
+
+    private int mLastFrame = -1;
     private float mTriggerTime = 0.0f;
     private float mHitboxTime = 0f;
     private Sqlite mSqlite;
@@ -121,8 +127,8 @@ public class CharacterFSM : MonoBehaviour
                     state.StateName,
                     new XFSMLite.InStateFunc((target) =>
                     {
-                        _GetTriggerFunc(triggers)();
                         if (hitboxData != null) _GetHitboxFunc(hitboxData)();
+                        _GetTriggerFunc(triggers)();
                     }));
             }
         });
@@ -146,6 +152,7 @@ public class CharacterFSM : MonoBehaviour
                 {
                     mQFSMLite.AddTranslation(state.StateName, triggers[j].NextStateName, triggers[j].NextStateName, new XFSMLite.ToNextStateFunc((target) =>
                     {
+                        mLastFrame = -1;
                         mTriggerTime = 0f;
                         mHitboxTime = 0f;
                         mRigbody.velocity = new Vector2(0, mJumpSpeed);
@@ -161,6 +168,7 @@ public class CharacterFSM : MonoBehaviour
                 }
                 mQFSMLite.AddTranslation(state.StateName, triggers[j].NextStateName, triggers[j].NextStateName, new XFSMLite.ToNextStateFunc((target) =>
                 {
+                    mLastFrame = -1;
                     mTriggerTime = 0f;
                     mHitboxTime = 0f;
                     mRigbody.velocity = new Vector2(0, mRigbody.velocity.y);
@@ -280,8 +288,14 @@ public class CharacterFSM : MonoBehaviour
 
         setFrameFunc = new XFSMLite.InStateFunc((target) =>
         {
-            mHitboxTime = (mHitboxTime + Time.deltaTime) % times[xHitboxData.framedata.Length - 1];
-            setHitDatas[_GetNowFrame(mHitboxTime, times)]();
+            mHitboxTime = (mHitboxTime + Time.deltaTime) % xHitboxData.clip.length;
+            int frame = _GetNowFrame(mHitboxTime, times);
+            if (frame == mLastFrame)
+                return;
+            else
+                setHitDatas[frame]();
+
+            mLastFrame = frame;
         });
 
         return setFrameFunc;
@@ -296,7 +310,8 @@ public class CharacterFSM : MonoBehaviour
             if (time >= times[j] && time < times[j + 1])
                 return j;
         }
-        Debug.LogErrorFormat("[CFSM/HitboxData]: {0}", time);
+        if (time >= times[times.Length - 1])
+            return times.Length - 1;
         return -1;
     }
     private void _SetColliders(HitboxColliderData[] colliders)
@@ -308,9 +323,10 @@ public class CharacterFSM : MonoBehaviour
         for (int i = 0; i < colliders.Length; i++)
         {
             int j = i;
-            Hitboxs[i].size = colliders[i].rect.size;
-            Hitboxs[i].Position(new Vector2(colliders[i].rect.position.x,colliders[i].rect.position.y));
-            Debug.LogFormat("[HitboxText]:{2} :  {0},{1}", colliders[j].rect, colliders[j].type, mTriggerTime);
+            var rect = colliders[j].rect;
+            Hitboxs[j].size = new Vector2(rect.size.x / mPixelPerUnit, rect.size.y / mPixelPerUnit);
+            Hitboxs[j].offset = new Vector2((rect.position.x + rect.size.x/2) / mPixelPerUnit, (rect.position.y + rect.size.y/2) / mPixelPerUnit);
+            //Debug.LogFormat("[HitboxText]:{0} :  {1},{2}",mQFSMLite.State, mLastFrame ,j);
         }
     }
 

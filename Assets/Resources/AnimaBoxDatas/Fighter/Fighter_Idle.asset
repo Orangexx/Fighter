@@ -15,16 +15,10 @@ MonoBehaviour:
   framedata:
   - collider:
     - rect:
-        x: -28
+        x: -29
         y: 2
-        width: 57
-        height: 65
-      type: 0
-    - rect:
-        x: -24
-        y: 66
-        width: 47
-        height: 46
+        width: 62
+        height: 110
       type: 0
     time: 0
   - collider:
@@ -35,8 +29,8 @@ MonoBehaviour:
         height: 65
       type: 0
     - rect:
-        x: -24
-        y: 66
+        x: -25
+        y: 67
         width: 47
         height: 46
       type: 0
