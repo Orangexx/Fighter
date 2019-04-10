@@ -667,6 +667,66 @@
       "Installed": false
     },
     {
+      "Name": "EditorKit",
+      "readme": {
+        "items": [
+          {
+            "version": "v0.0.2",
+            "content": "upgrade editor kit",
+            "author": "liangxie",
+            "date": "now"
+          },
+          {
+            "version": "v0.0.1",
+            "content": "first commit",
+            "author": "liangxie",
+            "date": "now"
+          }
+        ]
+      },
+      "PackageVersions": [
+        {
+          "Version": "v0.0.2",
+          "Type": 0,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/EditorKit_v0.0.2.unitypackage",
+          "InstallPath": "Assets/QFramework/EditorKit/",
+          "Readme": {
+            "version": "v0.0.2",
+            "content": "upgrade editor kit",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "EditorKit",
+          "VersionNumber": 2,
+          "FileName": "EditorKit_v0.0.2.unitypackage"
+        },
+        {
+          "Version": "v0.0.1",
+          "Type": 0,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/EditorKit_v0.0.1.unitypackage",
+          "InstallPath": "Assets/QFramework/EditorKit/",
+          "Readme": {
+            "version": "v0.0.1",
+            "content": "first commit",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "EditorKit",
+          "VersionNumber": 1,
+          "FileName": "EditorKit_v0.0.1.unitypackage"
+        }
+      ],
+      "Version": "v0.0.2",
+      "DownloadUrl": "http://liangxiegame.com/media/EditorKit_v0.0.2.unitypackage",
+      "InstallPath": "Assets/QFramework/EditorKit/",
+      "Type": 0,
+      "AccessRight": 0,
+      "VersionNumber": 2,
+      "Installed": false
+    },
+    {
       "Name": "Example",
       "readme": {
         "items": [

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+public class CharacterMovement : MonoBehaviour,ICharacter
 {
 
     [SerializeField] private Rigidbody2D mRigbody;
@@ -95,5 +95,10 @@ public class CharacterMovement : MonoBehaviour
                 return;
             mRigbody.velocity = new Vector2(mOtherSpeed, mRigbody.velocity.y);
         }
+    }
+
+    public void HitboxContact(ContactData contactData)
+    {
+        
     }
 }
