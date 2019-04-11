@@ -11,11 +11,11 @@ public class HitBoxFeeder : MonoBehaviour
 
     private float m_Damage = 1f;
     private float m_Strength = 1f;
-    private int m_FXUID = 0;
+    //private int m_FXUID = 0;
     private Vector2 m_Force;
     private bool m_DidHit = false;
 
-    public int Id { get; private set; }
+    //public int Id { get; private set; }
     public HitboxType Type { get; private set; }
 
     void Awake()
@@ -34,18 +34,16 @@ public class HitBoxFeeder : MonoBehaviour
         Owner = GetComponentInParent<CharacterMovement>();
     }
 #endif
-    public void Feed(Vector2 boxSize, Vector2 boxOffset, int ID, HitboxType type,
-        float damage, float strength, Vector2 forceRange, int fxUID, bool isTrigger)
+    public void Feed(Vector2 boxSize, Vector2 boxOffset, HitboxType type,
+        float damage, float strength, Vector2 forceRange, bool isTrigger)
     {
         Type = type;
         m_Damage = damage;
         m_Strength = strength;
         m_Force = forceRange;
-        m_FXUID = fxUID;
         Collider.size = boxSize;
         Collider.offset = boxOffset;
         Collider.isTrigger = isTrigger;
-        Id = ID;
         m_DidHit = false;
 
         Collider.enabled = true;
@@ -90,6 +88,7 @@ public class HitBoxFeeder : MonoBehaviour
     {
         var feeder = GetFeederFromCollision(collision);
 
+        Debug.Log("[HitBoxFeeder]: TriggerStay2D");
         if (feeder != null)
             HitBoxManager.Instance.AddContact(this, feeder);
     }
@@ -111,9 +110,9 @@ public class HitBoxFeeder : MonoBehaviour
         //                            Random.Range(0f, 1f)) * Mathf.Lerp(feeder.m_Force.x, feeder.m_Force.y,
         //                            Random.Range(0f, 1f));
         //Flip force direction if the attack is also flipped.
-       
-//Todo当方向改变的时候力量改变        // if (feeder.Owner.FlipX)
-            //force.x *= -1f;
+
+        if (feeder.Owner.FlipX)
+            m_Force.x *= -1f;
 
         //Estimate approximately where the intersection took place.
         var contactPoint = Collider.bounds.ClosestPoint(collision.bounds.center);
@@ -130,9 +129,9 @@ public class HitBoxFeeder : MonoBehaviour
                 TheirHitbox = feeder,
                 Damage = feeder.m_Damage,
                 PoiseDamage = feeder.m_Strength,
-                Force = m_Force,
-                Point = contactPoint,
-                fxID = feeder.m_FXUID
+                Force = new Vector2(0.01f,0),
+                Point = contactPoint
+                //fxID = feeder.m_FXUID
             });
     }
 }

@@ -2503,6 +2503,12 @@
       "readme": {
         "items": [
           {
+            "version": "v0.1.0",
+            "content": "Update Tolua\nBase available version\nAdd  LuaCodeGenerator",
+            "author": "liangxie",
+            "date": "now"
+          },
+          {
             "version": "v0.0.9",
             "content": "add UIHelper\nperfect LuaBehaviour\nprovide Demo (need move prefabs)",
             "author": "liangxie",
@@ -2535,6 +2541,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.1.0",
+          "Type": 0,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/ScriptKit_v0.1.0.unitypackage",
+          "InstallPath": "Assets/QFramework/ScriptKit/",
+          "Readme": {
+            "version": "v0.1.0",
+            "content": "Update Tolua\nBase available version\nAdd  LuaCodeGenerator",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "ScriptKit",
+          "VersionNumber": 100,
+          "FileName": "ScriptKit_v0.1.0.unitypackage"
+        },
         {
           "Version": "v0.0.9",
           "Type": 0,
@@ -2632,12 +2654,12 @@
           "FileName": "ScriptKit_v0.0.4.unitypackage"
         }
       ],
-      "Version": "v0.0.9",
-      "DownloadUrl": "http://liangxiegame.com/media/ScriptKit_v0.0.9.unitypackage",
+      "Version": "v0.1.0",
+      "DownloadUrl": "http://liangxiegame.com/media/ScriptKit_v0.1.0.unitypackage",
       "InstallPath": "Assets/QFramework/ScriptKit/",
       "Type": 0,
       "AccessRight": 0,
-      "VersionNumber": 9,
+      "VersionNumber": 100,
       "Installed": false
     },
     {

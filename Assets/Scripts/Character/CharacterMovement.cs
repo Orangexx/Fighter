@@ -99,6 +99,26 @@ public class CharacterMovement : MonoBehaviour,ICharacter
 
     public void HitboxContact(ContactData contactData)
     {
-        
+        if (contactData.TheirHitbox.transform.parent == contactData.MyHitbox.transform.parent)
+            return;
+        switch (contactData.TheirHitbox.Type)
+        {
+            case HitboxType.TRIGGER:
+                break;
+            case HitboxType.HURT:
+                Debug.LogFormat("[HitBox]: HURT IN  Force{0}",contactData.Force);
+                mRigbody.AddForce(contactData.Force);
+                break;
+            case HitboxType.GUARD:
+                break;
+            case HitboxType.ARMOR:
+                break;
+            case HitboxType.GRAB:
+                break;
+            case HitboxType.TECH:
+                break;
+            default:
+                break;
+        }
     }
 }

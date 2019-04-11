@@ -22,8 +22,12 @@ public class HitBoxManager : MonoSingleton<HitBoxManager>
 
     private void LateUpdate()
     {
+        mContackPairs.Sort(ContactComparison);
+
         for (int i = 0; i < mContackPairs.Count; i++)
             mContackPairs[i].a.HandleContact(mContackPairs[i].b);
+
+        mContackPairs.Clear();
     }
 
     private int ContactComparison(ContactPair x, ContactPair y)
@@ -54,7 +58,7 @@ public struct ContactData
     /// <summary>
     /// Identifier of the hit effect this attack uses.
     /// </summary>
-    public int fxID;
+    //public int fxID;
     /// <summary>
     /// Amount of force to receive from this attack
     /// </summary>

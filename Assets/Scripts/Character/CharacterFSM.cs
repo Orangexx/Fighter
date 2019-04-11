@@ -16,10 +16,6 @@ public class CharacterFSM : MonoBehaviour
     private Sqlite mSetSqlite;
     private List<InputSetting> mInpuSetting;
 
-    [Header("Colliders")]
-    public BoxCollider2D[] Hitboxs;
-
-
     [Header("Keyboard keys")]
     public KeyCode UP;
     public KeyCode DOWN;
@@ -58,6 +54,15 @@ public class CharacterFSM : MonoBehaviour
     private CharacterTriggers mTriggers;
     private Dictionary<string, XHitboxAnimation> mHitboxData;
 
+
+    private float mScale;
+    private BoxCollider2D[] mColliders;
+    private HitBoxFeeder[] mFeeders;
+    private const int MAX_HITBOXES = 10;
+
+
+
+
     private void Awake()
     {
         Debug.Log("[CharacterFSM] Awake()");
@@ -74,6 +79,7 @@ public class CharacterFSM : MonoBehaviour
 
 
         _SetInputKey();
+        _InitHitBox();
 
         mQFSMLite = new XFSMLite();
     }
@@ -142,11 +148,6 @@ public class CharacterFSM : MonoBehaviour
             {
                 int j = i;
 
-                for (int m = 0; m < Hitboxs.Length; m++)
-                {
-                    int n = m;
-                    Hitboxs[n].size = Vector2.zero;
-                }
 
                 if (triggers[j].NextStateName == "JumpStart")
                 {
@@ -157,11 +158,7 @@ public class CharacterFSM : MonoBehaviour
                         mHitboxTime = 0f;
                         mRigbody.velocity = new Vector2(0, mJumpSpeed);
                         mAnimator.Play(triggers[j].NextStateName);
-                        for (int m = 0; m < Hitboxs.Length; m++)
-                        {
-                            int n = m;
-                            Hitboxs[n].size = Vector2.zero;
-                        }
+
                         Debug.LogFormat("{0} ——> {1}", state.StateName, triggers[j].NextStateName);
                     }));
                     continue;
@@ -173,11 +170,6 @@ public class CharacterFSM : MonoBehaviour
                     mHitboxTime = 0f;
                     mRigbody.velocity = new Vector2(0, mRigbody.velocity.y);
                     mAnimator.Play(triggers[j].NextStateName);
-                    for (int m = 0; m < Hitboxs.Length; m++)
-                    {
-                        int n = m;
-                        Hitboxs[n].size = Vector2.zero;
-                    }
                     Debug.LogFormat("{0} ——> {1}", state.StateName, triggers[j].NextStateName);
                 }));
             }
@@ -276,12 +268,11 @@ public class CharacterFSM : MonoBehaviour
         for (int i = 0; i < xHitboxData.framedata.Length; i++)
         {
             int m = i;
-            var currentFrame = xHitboxData.framedata[m];
             InState inFrame = null;
 
             inFrame = new InState(() =>
             {
-                _SetColliders(currentFrame.collider);
+                _SetColliders(xHitboxData, m);
             });
             setHitDatas.Add(inFrame);
         }
@@ -314,19 +305,24 @@ public class CharacterFSM : MonoBehaviour
             return times.Length - 1;
         return -1;
     }
-    private void _SetColliders(HitboxColliderData[] colliders)
+    private void _SetColliders(XHitboxAnimation data, int index)
     {
-        for (int i = 0; i < Hitboxs.Length; i++)
+        for (int i = 0; i < mFeeders.Length; i++)
         {
-            Hitboxs[i].size = Vector2.zero;
+            mFeeders[i].Disable();
         }
+
+        var colliders = data.framedata[index].collider;
+
         for (int i = 0; i < colliders.Length; i++)
         {
-            int j = i;
-            var rect = colliders[j].rect;
-            Hitboxs[j].size = new Vector2(rect.size.x / mPixelPerUnit, rect.size.y / mPixelPerUnit);
-            Hitboxs[j].offset = new Vector2((rect.position.x + rect.size.x/2) / mPixelPerUnit, (rect.position.y + rect.size.y/2) / mPixelPerUnit);
-            //Debug.LogFormat("[HitboxText]:{0} :  {1},{2}",mQFSMLite.State, mLastFrame ,j);
+            var collider = colliders[i];
+            var rect = collider.rect;
+            Vector2 size = new Vector2(rect.size.x / mPixelPerUnit, rect.size.y / mPixelPerUnit);
+            Vector2 offset = new Vector2((rect.position.x + rect.size.x / 2) / mPixelPerUnit, (rect.position.y + rect.size.y / 2) / mPixelPerUnit);
+
+            mFeeders[i].Feed(size, offset,collider.type,data.damage,data.strength,data.force,true);
+            Debug.LogFormat("[HitBox]: {0} {1}",data.name,data.force);
         }
     }
 
@@ -361,6 +357,32 @@ public class CharacterFSM : MonoBehaviour
         SKILL3 = (KeyCode)System.Enum.Parse(typeof(KeyCode), mInpuSetting[8].Key);
         Debug.Log(mInpuSetting[7].Key);
         mSetSqlite.Close();
+    }
+
+    private void _InitHitBox()
+    {
+        var scale = transform.localScale;
+
+        mScale = scale.x;
+        mColliders = GetComponentsInChildren<BoxCollider2D>();
+        mFeeders = GetComponentsInChildren<HitBoxFeeder>();
+        if (mColliders == null || mColliders.Length < MAX_HITBOXES)
+        {
+            mColliders = new BoxCollider2D[MAX_HITBOXES];
+            mFeeders = new HitBoxFeeder[MAX_HITBOXES];
+            for (int i = 0; i < mColliders.Length; i++)
+            {
+                var newGameObject = new GameObject("collider (" + i + ")");
+                newGameObject.transform.SetParent(transform, false);
+                var collider = newGameObject.AddComponent<BoxCollider2D>();
+                var feeder = newGameObject.AddComponent<HitBoxFeeder>();
+                collider.gameObject.layer = gameObject.layer;
+                //collider.isTrigger = true;
+                collider.enabled = false;
+                mColliders[i] = collider;
+                mFeeders[i] = feeder;
+            }
+        }
     }
 
     private bool _IsGround()

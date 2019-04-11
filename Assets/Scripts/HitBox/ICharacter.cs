@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface ICharacter
 {
-     void HitboxContact(ContactData contactData);
+    bool FlipX { get; }
+
+    void HitboxContact(ContactData contactData);
 }
