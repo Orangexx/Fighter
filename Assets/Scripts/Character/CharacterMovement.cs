@@ -108,6 +108,7 @@ public class CharacterMovement : MonoBehaviour,ICharacter
             case HitboxType.HURT:
                 Debug.LogFormat("[HitBox]: HURT IN  Force{0}",contactData.Force);
                 mRigbody.AddForce(contactData.Force);
+                mFSM.OnHurted();
                 break;
             case HitboxType.GUARD:
                 break;

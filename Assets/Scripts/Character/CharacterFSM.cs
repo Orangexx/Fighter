@@ -40,8 +40,9 @@ public class CharacterFSM : MonoBehaviour
     [SerializeField] private float mJumpSpeed;
 
     [Space(5)]
-    [Header("pixelsPerUnit Set")]
+    [Header("Other Settings")]
     [SerializeField] private float mPixelPerUnit;
+    [SerializeField] private int mPhyBoxCount;
 
 
     private int mLastFrame = -1;
@@ -96,7 +97,8 @@ public class CharacterFSM : MonoBehaviour
             { "跳跃",new FSMTrigger(() => { return Input.GetKey(JUMP); }) },
             { "Skill1",new FSMTrigger(() => { return Input.GetKey(SKILL1); } ) },
             { "Skill2",new FSMTrigger(() => { return Input.GetKey(SKILL2); })},
-            { "Skill3",new FSMTrigger(() => { return Input.GetKey(SKILL3); })}
+            { "Skill3",new FSMTrigger(() => { return Input.GetKey(SKILL3); })},
+            { "HTL",new FSMTrigger(() =>{ return _IsGround(); })}
         };
         _InitHitboxData();
 
@@ -321,8 +323,23 @@ public class CharacterFSM : MonoBehaviour
             Vector2 size = new Vector2(rect.size.x / mPixelPerUnit, rect.size.y / mPixelPerUnit);
             Vector2 offset = new Vector2((rect.position.x + rect.size.x / 2) / mPixelPerUnit, (rect.position.y + rect.size.y / 2) / mPixelPerUnit);
 
-            mFeeders[i].Feed(size, offset,collider.type,data.damage,data.strength,data.force,true);
-            Debug.LogFormat("[HitBox]: {0} {1}",data.name,data.force);
+
+
+            if (collider.type == HitboxType.TRIGGER)
+            {
+                if (i > mPhyBoxCount)
+                    return;
+
+                mFeeders[i].Feed(size, offset, collider.type, data.damage, data.strength, data.force, false);
+                mFeeders[i + mPhyBoxCount].Feed(size, offset, collider.type, data.damage, data.strength, data.force, true);
+            }
+            else if (collider.type != HitboxType.TRIGGER)
+            {
+                int j = i > mPhyBoxCount*2-1 ? i : i += mPhyBoxCount+1;
+                mFeeders[j].Feed(size,offset,collider.type,data.damage,data.strength,data.force,true);
+            }
+
+            Debug.LogFormat("[HitBox]: {0} {1}", data.name, data.force);
         }
     }
 
@@ -376,7 +393,7 @@ public class CharacterFSM : MonoBehaviour
                 newGameObject.transform.SetParent(transform, false);
                 var collider = newGameObject.AddComponent<BoxCollider2D>();
                 var feeder = newGameObject.AddComponent<HitBoxFeeder>();
-                collider.gameObject.layer = gameObject.layer;
+                collider.gameObject.layer = i <mPhyBoxCount ? gameObject.layer : gameObject.layer + 5;
                 //collider.isTrigger = true;
                 collider.enabled = false;
                 mColliders[i] = collider;
@@ -390,6 +407,11 @@ public class CharacterFSM : MonoBehaviour
         float mDistToGround = mSpriteRenderer.sprite.bounds.size.y / 2 - 0.1f;
         //待增加左右两边的检测，不光中心检测
         return Physics2D.Raycast(transform.position, Vector2.down, mDistToGround, mMapLayer);
+    }
+
+    public void OnHurted()
+    {
+        //this.mQFSMLite.HandleEvent("Hurt");
     }
 }
 

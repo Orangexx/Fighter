@@ -169,6 +169,12 @@
       "readme": {
         "items": [
           {
+            "version": "v0.2.7",
+            "content": "close",
+            "author": "liangxie",
+            "date": "now"
+          },
+          {
             "version": "v0.2.6",
             "content": "UI Kit Setting Improvements",
             "author": "liangxie",
@@ -183,6 +189,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.2.7",
+          "Type": 0,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/2.UIKit_v0.2.7.unitypackage",
+          "InstallPath": "Assets/QFramework/Framework/2.UIKit/",
+          "Readme": {
+            "version": "v0.2.7",
+            "content": "close",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "2.UIKit",
+          "VersionNumber": 207,
+          "FileName": "2.UIKit_v0.2.7.unitypackage"
+        },
         {
           "Version": "v0.2.6",
           "Type": 0,
@@ -216,12 +238,12 @@
           "FileName": "2.UIKit_v0.2.5.unitypackage"
         }
       ],
-      "Version": "v0.2.6",
-      "DownloadUrl": "http://liangxiegame.com/media/2.UIKit_v0.2.6.unitypackage",
+      "Version": "v0.2.7",
+      "DownloadUrl": "http://liangxiegame.com/media/2.UIKit_v0.2.7.unitypackage",
       "InstallPath": "Assets/QFramework/Framework/2.UIKit/",
       "Type": 0,
       "AccessRight": 0,
-      "VersionNumber": 206,
+      "VersionNumber": 207,
       "Installed": false
     },
     {
@@ -857,6 +879,12 @@
       "readme": {
         "items": [
           {
+            "version": "v0.0.20",
+            "content": "* support 2018.3\n* API Doc Support",
+            "author": "liangxie",
+            "date": "now"
+          },
+          {
             "version": "v0.0.19",
             "content": "fix export android's bug",
             "author": "liangxie",
@@ -925,6 +953,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.0.20",
+          "Type": 0,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/Framework_v0.0.20.unitypackage",
+          "InstallPath": "Assets/QFramework/Framework",
+          "Readme": {
+            "version": "v0.0.20",
+            "content": "* support 2018.3\n* API Doc Support",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "Framework",
+          "VersionNumber": 20,
+          "FileName": "Framework_v0.0.20.unitypackage"
+        },
         {
           "Version": "v0.0.19",
           "Type": 0,
@@ -1118,12 +1162,12 @@
           "FileName": "Framework_v0.0.1.unitypackage"
         }
       ],
-      "Version": "v0.0.19",
-      "DownloadUrl": "http://liangxiegame.com/media/Framework_v0.0.19.unitypackage",
+      "Version": "v0.0.20",
+      "DownloadUrl": "http://liangxiegame.com/media/Framework_v0.0.20.unitypackage",
       "InstallPath": "Assets/QFramework/Framework",
       "Type": 0,
       "AccessRight": 0,
-      "VersionNumber": 19,
+      "VersionNumber": 20,
       "Installed": true
     },
     {

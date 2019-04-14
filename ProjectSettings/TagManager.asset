@@ -17,12 +17,12 @@ TagManager:
   - BackMid
   - BackFar
   - Character
+  - Enemy
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - CharacterTrigger
+  - EnemyTrigger
   - 
   - 
   - 

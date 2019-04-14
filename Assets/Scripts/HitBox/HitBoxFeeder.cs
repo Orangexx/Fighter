@@ -73,13 +73,7 @@ public class HitBoxFeeder : MonoBehaviour
         var feeder = collision.GetComponent<HitBoxFeeder>();
 
         if (feeder == null) return null;
-        //if this hitbox already hit someone this frame they need to wait a frame.
         if (feeder.m_DidHit == true) return null;
-
-        ////Check if pair passes matrix
-        //var test = HitboxCollisionMatrix.TestPair(Type, feeder.Type);
-        ////Since both objects will perform a collision test, only invoke an event if we are receiving.
-        //if (test != HitboxCollisionMatrix.EVENT.RECV && test != HitboxCollisionMatrix.EVENT.BOTH) return null;
 
         return feeder;
     }
@@ -87,10 +81,13 @@ public class HitBoxFeeder : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         var feeder = GetFeederFromCollision(collision);
-
-        Debug.Log("[HitBoxFeeder]: TriggerStay2D");
-        if (feeder != null)
-            HitBoxManager.Instance.AddContact(this, feeder);
+        if (feeder == null) return;
+        if (feeder.Type == HitboxType.HURT && feeder.transform.parent != this.transform.parent)
+        {
+            Debug.Log("[HitBoxFeeder]: TriggerStay2D");
+            if (feeder != null)
+                HitBoxManager.Instance.AddContact(this, feeder);
+        }
     }
 
     /// <summary>
@@ -98,13 +95,7 @@ public class HitBoxFeeder : MonoBehaviour
     /// </summary>
     public void HandleContact(HitBoxFeeder feeder)
     {
-        ////Lets ask the manager if we should report this.
-        //if (feeder.ReportHit(HitBoxManager.Instance.UID) == false)
-        //    //Hit wasn't reported, this animation must have already hit us in a previous frame.
-        //    return;
-        //Consume the other hurtboxes hit for this frame.
         feeder.m_DidHit = true;
-        //Proceed to generate contact data and pass event to the owner.
         var collision = feeder.Collider;
         //var force = Vector2.Lerp(feeder.m_ForceDirection.x, feeder.m_ForceDirection.y,
         //                            Random.Range(0f, 1f)) * Mathf.Lerp(feeder.m_Force.x, feeder.m_Force.y,
@@ -112,7 +103,7 @@ public class HitBoxFeeder : MonoBehaviour
         //Flip force direction if the attack is also flipped.
 
         if (feeder.Owner.FlipX)
-            m_Force.x *= -1f;
+            feeder.m_Force.x *= -1f;
 
         //Estimate approximately where the intersection took place.
         var contactPoint = Collider.bounds.ClosestPoint(collision.bounds.center);
@@ -129,7 +120,7 @@ public class HitBoxFeeder : MonoBehaviour
                 TheirHitbox = feeder,
                 Damage = feeder.m_Damage,
                 PoiseDamage = feeder.m_Strength,
-                Force = new Vector2(0.01f,0),
+                Force = feeder.m_Force/1000f ,
                 Point = contactPoint
                 //fxID = feeder.m_FXUID
             });
