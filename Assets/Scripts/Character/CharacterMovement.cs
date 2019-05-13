@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class CharacterMovement : MonoBehaviour,ICharacter
     [SerializeField] private float mOtherSpeed;
 
     private CharacterFSM mFSM;
+    private List<XFSMLite.QFSMState> mHurtedStates = new List<XFSMLite.QFSMState>();
 
     public bool FlipX { get; private set; }
 
@@ -22,6 +24,7 @@ public class CharacterMovement : MonoBehaviour,ICharacter
     {
         FlipX = false;
         mFSM = this.GetComponent<CharacterFSM>();
+        mHurtedStates.Clear();
     }
 
     // Update is called once per frame
@@ -43,6 +46,8 @@ public class CharacterMovement : MonoBehaviour,ICharacter
             default:
                 break;
         }
+
+        mFSM.FlipX = FlipX;
     }
 
     void _InRun()
@@ -106,9 +111,14 @@ public class CharacterMovement : MonoBehaviour,ICharacter
             case HitboxType.TRIGGER:
                 break;
             case HitboxType.HURT:
-                Debug.LogFormat("[HitBox]: HURT IN  Force{0}",contactData.Force);
+                if (mHurtedStates.Contains(contactData.State))
+                    return;
+                Debug.LogFormat("[HitBox]: {0}", contactData.State.Name);
+                mHurtedStates.Add(contactData.State);
+                StartCoroutine(Wait(contactData.RemainTime, () => mHurtedStates.Remove(contactData.State)));
+                //todo
                 mRigbody.AddForce(contactData.Force);
-                mFSM.OnHurted();
+                mFSM.OnHurted(contactData.PoiseDamage);
                 break;
             case HitboxType.GUARD:
                 break;
@@ -121,5 +131,12 @@ public class CharacterMovement : MonoBehaviour,ICharacter
             default:
                 break;
         }
+    }
+
+    IEnumerator Wait(float t,Action action)
+    {
+        yield return new WaitForSeconds(t);//运行到这，暂停t秒
+
+        action.Invoke();
     }
 }

@@ -14,7 +14,8 @@ public class HitBoxFeeder : MonoBehaviour
     //private int m_FXUID = 0;
     private Vector2 m_Force;
     private bool m_DidHit = false;
-
+    private float mRemainTime;
+    private XFSMLite.QFSMState mState;
     //public int Id { get; private set; }
     public HitboxType Type { get; private set; }
 
@@ -31,11 +32,11 @@ public class HitBoxFeeder : MonoBehaviour
     private void OnEnable()
     {
         Collider = GetComponent<BoxCollider2D>();
-        Owner = GetComponentInParent<CharacterMovement>();
+        Owner = GetComponentInParent<ICharacter>();
     }
 #endif
     public void Feed(Vector2 boxSize, Vector2 boxOffset, HitboxType type,
-        float damage, float strength, Vector2 forceRange, bool isTrigger)
+        float damage, float strength, Vector2 forceRange, bool isTrigger,float remainTiem,XFSMLite.QFSMState state)
     {
         Type = type;
         m_Damage = damage;
@@ -45,7 +46,8 @@ public class HitBoxFeeder : MonoBehaviour
         Collider.offset = boxOffset;
         Collider.isTrigger = isTrigger;
         m_DidHit = false;
-
+        mRemainTime = remainTiem;
+        mState = state;
         Collider.enabled = true;
     }
 
@@ -78,7 +80,7 @@ public class HitBoxFeeder : MonoBehaviour
         return feeder;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         var feeder = GetFeederFromCollision(collision);
         if (feeder == null) return;
@@ -120,8 +122,10 @@ public class HitBoxFeeder : MonoBehaviour
                 TheirHitbox = feeder,
                 Damage = feeder.m_Damage,
                 PoiseDamage = feeder.m_Strength,
-                Force = feeder.m_Force/1000f ,
-                Point = contactPoint
+                Force = feeder.m_Force / 1000f,
+                Point = contactPoint,
+                RemainTime = mRemainTime,
+                State = mState
                 //fxID = feeder.m_FXUID
             });
     }

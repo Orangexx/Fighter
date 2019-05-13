@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1887683006425480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -93,15 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16c862bafad2e074a9d90cdd90000e0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UP: 0
-  DOWN: 0
-  LEFT: 0
-  RIGHT: 0
-  JUMP: 0
-  ATTACK: 0
-  SKILL2: 0
-  SKILL3: 0
-  SKILL1: 0
+  mHitboxDataPath: 
+  mStateMapPath: 
+  mStateMapTableName: 
   mAnimator: {fileID: 95297996841080300}
   mRigbody: {fileID: 50533133942757688}
   mSpriteRenderer: {fileID: 212532432569874072}
@@ -111,6 +105,16 @@ MonoBehaviour:
   mJumpSpeed: 6.5
   mPixelPerUnit: 100
   mPhyBoxCount: 3
+  UP: 0
+  DOWN: 0
+  LEFT: 0
+  RIGHT: 0
+  JUMP: 0
+  ATTACK: 0
+  SKILL2: 0
+  SKILL3: 0
+  SKILL1: 0
+  DUNFU: 0
 --- !u!114 &114572262729130058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -159,7 +163,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1677567169
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 13ac06ee6a84e344ea27a5dc5b88f783, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

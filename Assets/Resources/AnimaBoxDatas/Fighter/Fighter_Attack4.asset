@@ -13,17 +13,89 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip: {fileID: 7400000, guid: 9133feb0881b86f46aca3c1b86c7494e, type: 2}
   framedata:
-  - collider: []
+  - collider:
+    - rect:
+        x: -7
+        y: 1
+        width: 38
+        height: 84
+      type: 0
+    - rect:
+        x: -29
+        y: 1
+        width: 23
+        height: 22
+      type: 0
     time: 0
-  - collider: []
+  - collider:
+    - rect:
+        x: -7
+        y: 1
+        width: 38
+        height: 84
+      type: 0
+    - rect:
+        x: -29
+        y: 1
+        width: 23
+        height: 22
+      type: 0
     time: 0.1
-  - collider: []
+  - collider:
+    - rect:
+        x: -38
+        y: 1
+        width: 38
+        height: 102
+      type: 0
+    - rect:
+        x: 0
+        y: 55
+        width: 40
+        height: 54
+      type: 1
     time: 0.2
-  - collider: []
+  - collider:
+    - rect:
+        x: -38
+        y: 1
+        width: 38
+        height: 104
+      type: 0
+    - rect:
+        x: 0
+        y: 55
+        width: 40
+        height: 52
+      type: 1
     time: 0.3
-  - collider: []
+  - collider:
+    - rect:
+        x: -38
+        y: 1
+        width: 38
+        height: 104
+      type: 0
+    - rect:
+        x: 0
+        y: 55
+        width: 40
+        height: 47
+      type: 1
     time: 0.4
-  - collider: []
+  - collider:
+    - rect:
+        x: -38
+        y: 1
+        width: 38
+        height: 104
+      type: 0
+    - rect:
+        x: 0
+        y: 41
+        width: 38
+        height: 34
+      type: 0
     time: 0.5
   strength: 0
   damage: 0

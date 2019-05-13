@@ -2,26 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public enum eMonsterState
+public class MonsterAI : MonoBehaviour,ICharacter
 {
-    walk,
-    attack,
-    hurt,
-    idle
-}
 
-public class MonsterAI : MonoBehaviour {
+    [SerializeField] protected Transform mTarget;
+    [SerializeField] protected ACTFSM mFSM;
 
-    private Transform mTarget;
+    public bool FlipX { get; private set; }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    public void HitboxContact(ContactData contactData)
+    {
+
+    }
+
+    void Awake()
+    {
+        FlipX = false;
+        //mFSM = this.GetComponent<ACTFSM>();
+    }
+
+    // Use this for initialization
+    void Start ()
+    {
 		
 	}
 }

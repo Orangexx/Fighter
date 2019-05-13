@@ -14,6 +14,7 @@ public class GameDevSetting : ScriptableObject
     public string BgFarSpritePath = "resources://Sprites/BgFar/BgFar";
 
     public string CharactorPath = "resources://Prefabs/Fighter";
+    public string ThiefPath = "resources://Prefabs/Thief";
     public string MainCamePrefabPath = "Resources/Prefabs/Camera/MainCamera";
 
     public float BgMidLength = 10.74f;

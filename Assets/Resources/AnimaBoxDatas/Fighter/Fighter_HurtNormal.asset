@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13468a78d3cce94489f0ee83e699635, type: 3}
+  m_Name: Fighter_HurtNormal
+  m_EditorClassIdentifier: 
+  clip: {fileID: 7400000, guid: e2347b56d266f4541b64a75f25dee080, type: 2}
+  framedata:
+  - collider:
+    - rect:
+        x: -24
+        y: 0
+        width: 52
+        height: 98
+      type: 0
+    time: 0
+  - collider: []
+    time: 0.083333336
+  strength: 0
+  damage: 0
+  force: {x: 0, y: 0}
+  hitFx: {fileID: 0}

@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13468a78d3cce94489f0ee83e699635, type: 3}
+  m_Name: Thief_Thief_Attack1
+  m_EditorClassIdentifier: 
+  clip: {fileID: 7400000, guid: d4e28858fb7e2334789e001400715cc1, type: 2}
+  framedata:
+  - collider:
+    - rect:
+        x: -28
+        y: 1
+        width: 57
+        height: 93
+      type: 0
+    time: 0
+  - collider:
+    - rect:
+        x: -28
+        y: 1
+        width: 57
+        height: 93
+      type: 0
+    time: 0.1
+  - collider:
+    - rect:
+        x: -61
+        y: 1
+        width: 70
+        height: 87
+      type: 0
+    - rect:
+        x: 28
+        y: 46
+        width: 35
+        height: 20
+      type: 1
+    - rect:
+        x: 7
+        y: 46
+        width: 57
+        height: 26
+      type: 0
+    time: 0.2
+  - collider:
+    - rect:
+        x: -61
+        y: 1
+        width: 70
+        height: 87
+      type: 0
+    - rect:
+        x: -8
+        y: 42
+        width: 72
+        height: 22
+      type: 1
+    time: 0.3
+  - collider:
+    - rect:
+        x: -30
+        y: 1
+        width: 62
+        height: 95
+      type: 0
+    time: 0.4
+  - collider:
+    - rect:
+        x: -30
+        y: 1
+        width: 62
+        height: 95
+      type: 0
+    time: 0.5
+  strength: 4
+  damage: 0
+  force: {x: 2, y: 0}
+  hitFx: {fileID: 0}

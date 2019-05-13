@@ -20,7 +20,7 @@ public class XFSMLite
     /// <summary>
     /// QFSM state.
     /// </summary>
-    class QFSMState
+    public class QFSMState
     {
         public string Name;
 
@@ -70,6 +70,11 @@ public class XFSMLite
     public string State
     {
         get { return mCurState; }
+    }
+
+    public QFSMState CurState
+    {
+        get { return mStateDict[mCurState]; }
     }
 
     /// <summary>

@@ -67,6 +67,9 @@ public struct ContactData
     /// Intersection point between these two hitboxes. Place a hit effect at this location.
     /// </summary>
     public Vector2 Point;
+
+    public float RemainTime;
+    public XFSMLite.QFSMState State;
 }
 
 

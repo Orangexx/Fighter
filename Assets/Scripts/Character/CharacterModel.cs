@@ -19,7 +19,7 @@ public class CharacterModel : MonoSingleton<CharacterModel>
     public int Level { private get; set; }
     public int SkillPoint { private get; set; }
     public int Power { private get; set; }
-
+    public float Poise;
     public void Init()
     {
         Hp.Value = 100;

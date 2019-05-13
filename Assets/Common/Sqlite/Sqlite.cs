@@ -535,6 +535,19 @@ public class Sqlite
         return ts;
     }
 
+    public List<T> SelectTable<T>(string tableName)
+    {
+        string sql = "select * from " + tableName;
+        List<T> ts = new List<T>();
+
+        foreach (var tc in ExcuteSelectQuery<T>(sql))
+        {
+            ts.Add((T)tc);
+        }
+
+        return ts;
+    }
+
 
     //查询函数
     //IConfig是自定义的配置类接口，最好使数据库中的配置类都继承同一个接口，方便以后扩展

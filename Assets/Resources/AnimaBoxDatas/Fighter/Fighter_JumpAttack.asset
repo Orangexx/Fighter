@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13468a78d3cce94489f0ee83e699635, type: 3}
+  m_Name: Fighter_JumpAttack
+  m_EditorClassIdentifier: 
+  clip: {fileID: 7400000, guid: 6548e0d4c6f49004998b3033b80268b8, type: 2}
+  framedata:
+  - collider:
+    - rect:
+        x: -22
+        y: 1
+        width: 44
+        height: 69
+      type: 0
+    time: 0
+  - collider:
+    - rect:
+        x: -48
+        y: 9
+        width: 44
+        height: 63
+      type: 0
+    - rect:
+        x: -4
+        y: -1
+        width: 52
+        height: 37
+      type: 1
+    time: 0.2
+  - collider:
+    - rect:
+        x: -48
+        y: 9
+        width: 44
+        height: 63
+      type: 0
+    - rect:
+        x: -4
+        y: -1
+        width: 52
+        height: 37
+      type: 1
+    time: 0.5
+  strength: 0
+  damage: 0
+  force: {x: 0, y: 0}
+  hitFx: {fileID: 0}

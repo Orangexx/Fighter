@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13468a78d3cce94489f0ee83e699635, type: 3}
+  m_Name: Fighter_DaoDi
+  m_EditorClassIdentifier: 
+  clip: {fileID: 7400000, guid: d7f84b0ed2c0a464b975862e7e192696, type: 2}
+  framedata:
+  - collider:
+    - rect:
+        x: -32
+        y: 0
+        width: 64
+        height: 103
+      type: 0
+    time: 0
+  - collider:
+    - rect:
+        x: -50
+        y: 1
+        width: 103
+        height: 48
+      type: 0
+    time: 0.16666667
+  - collider:
+    - rect:
+        x: -51
+        y: 1
+        width: 104
+        height: 48
+      type: 0
+    time: 0.33333334
+  - collider:
+    - rect:
+        x: -56
+        y: 11
+        width: 118
+        height: 41
+      type: 0
+    time: 0.5
+  - collider:
+    - rect:
+        x: -56
+        y: 11
+        width: 118
+        height: 41
+      type: 0
+    time: 0.6666667
+  - collider:
+    - rect:
+        x: -56
+        y: 11
+        width: 118
+        height: 41
+      type: 0
+    time: 0.8333333
+  - collider:
+    - rect:
+        x: -56
+        y: 11
+        width: 118
+        height: 33
+      type: 0
+    time: 1.1666666
+  strength: 0
+  damage: 0
+  force: {x: 0, y: 0}
+  hitFx: {fileID: 0}

@@ -1,0 +1,77 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13468a78d3cce94489f0ee83e699635, type: 3}
+  m_Name: Fighter_XiaTi
+  m_EditorClassIdentifier: 
+  clip: {fileID: 7400000, guid: 919ea04c2b0745e459892e4e3bfaefc0, type: 2}
+  framedata:
+  - collider:
+    - rect:
+        x: -33
+        y: -1
+        width: 68
+        height: 107
+      type: 0
+    time: 0
+  - collider:
+    - rect:
+        x: -23
+        y: -1
+        width: 48
+        height: 109
+      type: 0
+    time: 0.125
+  - collider:
+    - rect:
+        x: -46
+        y: -1
+        width: 48
+        height: 109
+      type: 0
+    - rect:
+        x: 3
+        y: 20
+        width: 58
+        height: 48
+      type: 1
+    time: 0.25
+  - collider:
+    - rect:
+        x: -47
+        y: -1
+        width: 49
+        height: 109
+      type: 0
+    - rect:
+        x: 3
+        y: 20
+        width: 58
+        height: 48
+      type: 1
+    time: 0.375
+  - collider:
+    - rect:
+        x: -47
+        y: -1
+        width: 49
+        height: 105
+      type: 0
+    - rect:
+        x: 2
+        y: 14
+        width: 45
+        height: 50
+      type: 1
+    time: 0.5
+  strength: 0
+  damage: 0
+  force: {x: 0, y: 0}
+  hitFx: {fileID: 0}
