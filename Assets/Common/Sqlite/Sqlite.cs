@@ -621,15 +621,19 @@ public class Sqlite
 
                 //对象的属性赋值
 
-                if (!(reader.GetValue(i).ToString() == "") && !(reader.GetValue(i).GetType() == typeof(long)))
+                if (!(reader.GetValue(i).ToString() == "") && !(reader.GetValue(i).GetType() == typeof(long)) && info.PropertyType != typeof(float))
                 {
                     info.SetValue(config, reader.GetValue(i), null);
                 }
-                else if (!(reader.GetValue(i).ToString() == ""))
+                else if (!(reader.GetValue(i).ToString() == "") && info.PropertyType != typeof(float))
                 {
                     Debug.Log("进入 integer1");
                     info.SetValue(config, Convert.ToInt32(reader.GetValue(i)), null);
                     Debug.Log("进入 integer2");
+                }
+                else if(!(reader.GetValue(i).ToString() == ""))
+                {
+                    info.SetValue(config, Convert.ToSingle(reader.GetValue(i), null));
                 }
                 else
                 {

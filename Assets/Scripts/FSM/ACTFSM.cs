@@ -51,7 +51,7 @@ public class ACTFSM : MonoBehaviour
     private const int MAX_HITBOXES = 10;
     #endregion
 
-    public bool FlipX = false;
+    public bool FlipX { protected set; get; }
 
     #region Init
     private void Awake()

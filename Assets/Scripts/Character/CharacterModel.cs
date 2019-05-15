@@ -7,11 +7,16 @@ using System.Threading.Tasks;
 
 class CharacterModel:Model
 {
-    private void Update()
+    public override void Init(IConfig cfg)
     {
-        if(Poise<0)
-        {
-            Poise += 0.1f;
-        }
+        base.Init(cfg);
+        CharacterConfig mCfg = (CharacterConfig)cfg;
+        Hp = mCfg.HP;
+        Power = mCfg.Power;
+        Poise = mCfg.Poise;
+        Level = mCfg.Level;
+        PoiseValue = 0;
+        AttackSpeed = mCfg.AttackSpeed;
+        MoveSpeed = mCfg.MoveSpeed;
     }
 }

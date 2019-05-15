@@ -18,6 +18,7 @@ public class GameRoot : MonoBehaviour
     private void Awake()
     {
         ResMgr.Init();
+        ConfigManager.Instance.Init();
         mGameDevSetting = AssetDatabase.LoadAssetAtPath<GameDevSetting>("Assets/DevSetting.asset");
         mCharactor = (GameObject)Instantiate(mResLoader.LoadSync(mGameDevSetting.CharactorPath));
         Instantiate(mResLoader.LoadSync(mGameDevSetting.ThiefPath));

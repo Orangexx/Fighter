@@ -4,12 +4,25 @@ using UnityEngine;
 using UniRx;
 using QFramework;
 
-public class Model:MonoBehaviour
+public class Model : MonoBehaviour
 {
+    public float PoiseValue;
     public float Poise;
     public int Hp;
-    public int Power;
+    public float Power;
     public int Level;
+    public float AttackSpeed;
+    public float MoveSpeed;
+
+    public virtual void Init(IConfig cfg)
+    {
+    }
+
+    private void Update()
+    {
+        if (Poise != 0 && PoiseValue < 0)
+            PoiseValue += Poise;
+    }
 }
 
 

@@ -8,18 +8,18 @@ public partial class MonsterConfig : IConfig
 	public string Name { get; set; }
 
 	[ConfigField("Poise")]
-	public int Poise  { get; set; }
+	public float Poise  { get; set; }
 
 	[ConfigField("HP")]
 	public int HP  { get; set; }
 
 	[ConfigField("Power")]
-	public int Power  { get; set; }
+	public float Power  { get; set; }
 
 	[ConfigField("MoveSpeed")]
-	public int MoveSpeed  { get; set; }
+	public float MoveSpeed  { get; set; }
 
 	[ConfigField("AttackSpeed")]
-	public int AttackSpeed  { get; set; }
+	public float AttackSpeed  { get; set; }
 
 }

@@ -57,6 +57,11 @@ public static class ConfigCreator
                 strBuilder.AppendFormat("\tpublic int {0} ", tableInfo[i + 1]);
                 strBuilder.AppendLine(" { get; set; }");
             }
+            else if (tableInfo[i + 2] == "FLOAT")
+            {
+                strBuilder.AppendFormat("\tpublic float {0} ", tableInfo[i + 1]);
+                strBuilder.AppendLine(" { get; set; }");
+            }
             strBuilder.AppendLine();
         }
 
