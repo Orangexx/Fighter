@@ -8,3 +8,4 @@ public interface ICharacter
 
     void HitboxContact(ContactData contactData);
 }
+

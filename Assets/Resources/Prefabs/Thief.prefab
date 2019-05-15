@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114280516826502862}
   - component: {fileID: 114312706313778930}
   - component: {fileID: 50360718954383740}
+  - component: {fileID: 114619169302545762}
   m_Layer: 12
   m_Name: Thief
   m_TagString: Untagged
@@ -102,10 +103,12 @@ MonoBehaviour:
   mMapLayer:
     serializedVersion: 2
     m_Bits: 4096
+  mModel: {fileID: 0}
   mJumpSpeed: 0
   mPixelPerUnit: 100
   mPhyBoxCount: 3
   FlipX: 0
+  mTarget: {fileID: 0}
 --- !u!114 &114312706313778930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -119,6 +122,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mTarget: {fileID: 0}
   mFSM: {fileID: 0}
+--- !u!114 &114619169302545762
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1107388999500204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28aa7b8755fde2942b2d09926f24b8f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Poise: 0
+  Hp: 0
+  Power: 0
+  Level: 0
 --- !u!212 &212573137746820962
 SpriteRenderer:
   m_ObjectHideFlags: 1

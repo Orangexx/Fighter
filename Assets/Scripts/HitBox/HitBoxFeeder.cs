@@ -124,8 +124,8 @@ public class HitBoxFeeder : MonoBehaviour
                 PoiseDamage = feeder.m_Strength,
                 Force = feeder.m_Force / 1000f,
                 Point = contactPoint,
-                RemainTime = mRemainTime,
-                State = mState
+                RemainTime = feeder.mRemainTime,
+                State = feeder.mState,
                 //fxID = feeder.m_FXUID
             });
     }

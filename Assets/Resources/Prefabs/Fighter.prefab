@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4591455117540158}
   - component: {fileID: 212532432569874072}
+  - component: {fileID: 114682667828175428}
   - component: {fileID: 95297996841080300}
   - component: {fileID: 114514669355047138}
   - component: {fileID: 114572262729130058}
@@ -102,9 +103,11 @@ MonoBehaviour:
   mMapLayer:
     serializedVersion: 2
     m_Bits: 256
+  mModel: {fileID: 0}
   mJumpSpeed: 6.5
   mPixelPerUnit: 100
   mPhyBoxCount: 3
+  FlipX: 0
   UP: 0
   DOWN: 0
   LEFT: 0
@@ -130,6 +133,21 @@ MonoBehaviour:
   mRunSpeed: 5
   mInSkySpeed: 1
   mOtherSpeed: 1
+--- !u!114 &114682667828175428
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1887683006425480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a02feaac220261488603547adfcbf9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Poise: 0
+  Hp: 0
+  Power: 0
+  Level: 0
 --- !u!212 &212532432569874072
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -504,8 +504,6 @@ public class CharacterFSM : ACTFSM
     public KeyCode SKILL1;
     public KeyCode DUNFU;
 
-    private float mPoise = 0f;
-
     protected override void _InitPath()
     {
         base._InitPath();
@@ -528,9 +526,9 @@ public class CharacterFSM : ACTFSM
             { "技能2",new FSMTrigger(() => { return Input.GetKey(SKILL2); })},
             { "技能3",new FSMTrigger(() => { return Input.GetKey(SKILL3); })},
             { "蹲伏",new FSMTrigger(() => {return Input.GetKey(DUNFU); }) },
-            { "击倒",new FSMTrigger(()=>{ return false; })},
-            { "受击",new FSMTrigger(() => {return mPoise<0; })},
-            {"恢复",new FSMTrigger(() => { return mPoise>=0; }) }
+            { "击倒",new FSMTrigger(()=>{ return mModel.Poise<-5; })},
+            { "受击",new FSMTrigger(() => {return mModel.Poise<0; })},
+            {"恢复",new FSMTrigger(() => { return mModel.Poise>=0; }) }
         };
     }
 
@@ -538,6 +536,7 @@ public class CharacterFSM : ACTFSM
     {
         base._InitOther();
         _SetInputKey();
+
     }
 
     private void _SetInputKey()
@@ -571,15 +570,6 @@ public class CharacterFSM : ACTFSM
                 return eCharacterState.Normal;
         }
 
-    }
-
-    public void OnHurted(float poiseDamage)
-    {
-        mPoise -= poiseDamage;
-        //todo
-        //Debug.Log()
-        Observable.EveryUpdate().Subscribe(_ => { mPoise += mPoise < 0 ? 0.02f : 0; });
-        //this.mQFSMLite.HandleEvent("Hurt");
     }
 }
 

@@ -7,6 +7,8 @@ using QFramework;
 [QFramework.QMonoSingletonPath("[Manager]/HitBoxManager")]
 public class HitBoxManager : MonoSingleton<HitBoxManager>
 {
+    public GameObject HitFx;
+
     private struct ContactPair
     {
         public HitBoxFeeder a;
@@ -18,6 +20,13 @@ public class HitBoxManager : MonoSingleton<HitBoxManager>
     public void AddContact(HitBoxFeeder a,HitBoxFeeder b)
     {
         mContackPairs.Add(new ContactPair { a = a, b = b });
+    }
+
+    public void PlayHitFX(Vector3 position)
+    {
+        HitFx.SetActive(false);
+        HitFx.transform.position = position;
+        HitFx.SetActive(true);
     }
 
     private void LateUpdate()

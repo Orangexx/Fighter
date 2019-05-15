@@ -15,10 +15,14 @@ public class CharacterMovement : MonoBehaviour,ICharacter
     [SerializeField] private float mOtherSpeed;
 
     private CharacterFSM mFSM;
+    private CharacterModel mCharacterModel;
     private List<XFSMLite.QFSMState> mHurtedStates = new List<XFSMLite.QFSMState>();
 
     public bool FlipX { get; private set; }
-
+    void Awake()
+    {
+        mCharacterModel = GetComponent<CharacterModel>();
+    }
     // Use this for initialization
     void Start()
     {
@@ -31,6 +35,7 @@ public class CharacterMovement : MonoBehaviour,ICharacter
     void Update()
     {
         eCharacterState state = mFSM.GetState();
+
 
         switch (state)
         {
@@ -118,7 +123,8 @@ public class CharacterMovement : MonoBehaviour,ICharacter
                 StartCoroutine(Wait(contactData.RemainTime, () => mHurtedStates.Remove(contactData.State)));
                 //todo
                 mRigbody.AddForce(contactData.Force);
-                mFSM.OnHurted(contactData.PoiseDamage);
+                mCharacterModel.Poise -= contactData.PoiseDamage;
+                HitBoxManager.Instance.PlayHitFX(contactData.Point);
                 break;
             case HitboxType.GUARD:
                 break;

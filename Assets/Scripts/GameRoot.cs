@@ -13,6 +13,7 @@ public class GameRoot : MonoBehaviour
 
     private GameObject mCharactor;
     private MainCamera mMainCamera;
+    private GameObject mHitFX;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class GameRoot : MonoBehaviour
         Instantiate(mResLoader.LoadSync(mGameDevSetting.ThiefPath));
         mMainCamera = mResLoader.LoadSync<GameObject>(mGameDevSetting.MainCamePrefabPath).Instantiate().GetComponent<MainCamera>();
         GlobalManager.Instance.Init(mCharactor, mMainCamera, mGameDevSetting);
+        HitBoxManager.Instance.HitFx = Instantiate(mResLoader.LoadSync<GameObject>("Resources/Prefabs/HitFXPrefab"));
     }
 
     private void Start()

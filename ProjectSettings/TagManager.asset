@@ -23,7 +23,7 @@ TagManager:
   - 
   - CharacterTrigger
   - EnemyTrigger
-  - 
+  - FX
   - 
   - 
   - 
@@ -55,4 +55,7 @@ TagManager:
     locked: 0
   - name: Character
     uniqueID: 2617400127
+    locked: 0
+  - name: FX
+    uniqueID: 74686053
     locked: 0

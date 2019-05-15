@@ -14,14 +14,14 @@ public class GlobalManager : Singleton<GlobalManager>
 
 
     //私有资源，只给外界提供方法去用
-    private GameObject mCharactor;
+    public GameObject Charactor { private set;  get; }
 
     private GlobalManager() { }
 
     public void Init(GameObject charactor,MainCamera mainCamera, GameDevSetting devSetting)
     {
         GameDevSetting = devSetting;
-        mCharactor = charactor;
+        Charactor = charactor;
         MainCamera = mainCamera;
         //Init Other Managers.
         BgManager.Instance.Init();
@@ -29,7 +29,7 @@ public class GlobalManager : Singleton<GlobalManager>
 
     public Vector2 GetCharactorPos()
     {
-        return mCharactor.transform.position;
+        return Charactor.transform.position;
     }
 
 }

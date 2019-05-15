@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using QFramework;
+using UniRx;
 
 public class MonsterAI : MonoBehaviour,ICharacter
 {
@@ -10,20 +12,24 @@ public class MonsterAI : MonoBehaviour,ICharacter
 
     public bool FlipX { get; private set; }
 
-    public void HitboxContact(ContactData contactData)
-    {
-
-    }
-
     void Awake()
     {
         FlipX = false;
-        //mFSM = this.GetComponent<ACTFSM>();
+        mFSM = this.GetComponent<ACTFSM>();
     }
 
-    // Use this for initialization
-    void Start ()
+    void Start()
     {
-		
-	}
+
+    }
+
+    public virtual void HitboxContact(ContactData contactData)
+    {
+
+    }
+
+    //public virtual void 
+
+
+    
 }
