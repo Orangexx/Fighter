@@ -21,14 +21,11 @@ public class GameRoot : MonoBehaviour
         ConfigManager.Instance.Init();
         mGameDevSetting = AssetDatabase.LoadAssetAtPath<GameDevSetting>("Assets/DevSetting.asset");
         mCharactor = (GameObject)Instantiate(mResLoader.LoadSync(mGameDevSetting.CharactorPath));
-        Instantiate(mResLoader.LoadSync(mGameDevSetting.ThiefPath));
         mMainCamera = mResLoader.LoadSync<GameObject>(mGameDevSetting.MainCamePrefabPath).Instantiate().GetComponent<MainCamera>();
+
         GlobalManager.Instance.Init(mCharactor, mMainCamera, mGameDevSetting);
+        EnemyManager.Instance.Init();
+        BgManager.Instance.Init();
         HitBoxManager.Instance.HitFx = Instantiate(mResLoader.LoadSync<GameObject>("Resources/Prefabs/HitFXPrefab"));
-    }
-
-    private void Start()
-    {
-
     }
 }

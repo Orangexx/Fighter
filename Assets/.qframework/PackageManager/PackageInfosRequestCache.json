@@ -4525,6 +4525,12 @@
       "readme": {
         "items": [
           {
+            "version": "v0.2.0",
+            "content": "open source",
+            "author": "liangxie",
+            "date": "now"
+          },
+          {
             "version": "0.1.1",
             "content": "初步提交",
             "author": "liangxie",
@@ -4533,6 +4539,22 @@
         ]
       },
       "PackageVersions": [
+        {
+          "Version": "v0.2.0",
+          "Type": 0,
+          "AccessRight": 0,
+          "DownloadUrl": "http://liangxiegame.com/media/UIWidgetsReduxPersist_v0.2.0.unitypackage",
+          "InstallPath": "Assets/QFramework/UIWidgetsReduxPersist/",
+          "Readme": {
+            "version": "v0.2.0",
+            "content": "open source",
+            "author": "liangxie",
+            "date": "now"
+          },
+          "Name": "UIWidgetsReduxPersist",
+          "VersionNumber": 200,
+          "FileName": "UIWidgetsReduxPersist_v0.2.0.unitypackage"
+        },
         {
           "Version": "0.1.1",
           "Type": 0,
@@ -4550,12 +4572,12 @@
           "FileName": "UIWidgetsReduxPersist_0.1.1.unitypackage"
         }
       ],
-      "Version": "0.1.1",
-      "DownloadUrl": "http://liangxiegame.com/media/UIWidgetsReduxPersist_0.1.1.unitypackage",
+      "Version": "v0.2.0",
+      "DownloadUrl": "http://liangxiegame.com/media/UIWidgetsReduxPersist_v0.2.0.unitypackage",
       "InstallPath": "Assets/QFramework/UIWidgetsReduxPersist/",
       "Type": 0,
       "AccessRight": 0,
-      "VersionNumber": 101,
+      "VersionNumber": 200,
       "Installed": false
     },
     {

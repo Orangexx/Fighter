@@ -15,44 +15,28 @@ MonoBehaviour:
   framedata:
   - collider:
     - rect:
-        x: -53
+        x: -9
         y: 8
-        width: 107
-        height: 44
+        width: 11
+        height: 13
       type: 0
     time: 0
   - collider:
     - rect:
-        x: -45
-        y: 5
-        width: 90
-        height: 48
+        x: -9
+        y: 8
+        width: 11
+        height: 13
       type: 0
-    time: 0.125
+    time: 0.2
   - collider:
     - rect:
-        x: -52
-        y: 14
-        width: 108
-        height: 36
+        x: -9
+        y: 8
+        width: 11
+        height: 13
       type: 0
-    time: 0.25
-  - collider:
-    - rect:
-        x: -52
-        y: 14
-        width: 108
-        height: 36
-      type: 0
-    time: 0.375
-  - collider:
-    - rect:
-        x: -52
-        y: 14
-        width: 108
-        height: 36
-      type: 0
-    time: 0.875
+    time: 0.4
   strength: 0
   damage: 0
   force: {x: 0, y: 0}

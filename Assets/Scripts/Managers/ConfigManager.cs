@@ -1,50 +1,16 @@
-using System.Collections;
+锘縰sing System;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using QFramework;
-using UnityEditor;
+using UnityEngine;
 
-public class GlobalManager : Singleton<GlobalManager>
-{
-
-    //公共资源，或者通过脚本内部的限制提供接口
-    public int MapLevel = 3;
-    public GameDevSetting GameDevSetting { get; private set; }
-    public MainCamera MainCamera { get; private set; }
-
-
-    //私有资源，只给外界提供方法去用
-    public GameObject Charactor { private set;  get; }
-
-
-
-    private GlobalManager()
-    {
-    }
-    public void Init(GameObject charactor,MainCamera mainCamera, GameDevSetting devSetting)
-    {
-        //初始化配置表
-       
-
-        GameDevSetting = devSetting;
-        Charactor = charactor;
-        MainCamera = mainCamera;
-        //Init Other Managers.
-        BgManager.Instance.Init();
-    }
-
-
-    public Vector2 GetCharactorPos()
-    {
-        return Charactor.transform.position;
-    }
-
-}
-
-public class ConfigManager:Singleton<ConfigManager>
+public class ConfigManager : Singleton<ConfigManager>
 {
     private List<CharacterConfig> lst_character_cfg = new List<CharacterConfig>();
     private Dictionary<string, MonsterConfig> dic_monster_cfg = new Dictionary<string, MonsterConfig>();
+    private Dictionary<int, List<LevelConfig>> dic_level_cfgs = new Dictionary<int, List<LevelConfig>>();
 
     private ConfigManager()
     {
@@ -60,6 +26,14 @@ public class ConfigManager:Singleton<ConfigManager>
             if (!dic_monster_cfg.ContainsKey(cfg.Name))
                 dic_monster_cfg[cfg.Name] = cfg;
         }
+        foreach (var cfg in sqlite.SelectTable<LevelConfig>())
+        {
+            if (!dic_level_cfgs.ContainsKey(cfg.Level))
+                dic_level_cfgs[cfg.Level] = new List<LevelConfig>();
+
+            dic_level_cfgs[cfg.Level].Add(cfg);
+        }
+
         sqlite.Close();
     }
 
@@ -79,6 +53,14 @@ public class ConfigManager:Singleton<ConfigManager>
             return dic_monster_cfg[monster];
         else
             return null;
+    }
+
+    public List<LevelConfig> GetLevelConfigs(int level)
+    {
+        if (!dic_level_cfgs.ContainsKey(level))
+            return null;
+
+        return dic_level_cfgs[level];
     }
 
 }

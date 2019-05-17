@@ -164,7 +164,8 @@ public class ACTFSM : MonoBehaviour
             }
         });
 
-        //重置运动状态  单独处理跳跃
+        //重置运动状态  单独处理跳跃、Idle 的平衡值重置
+        //其实都可以通过进行帧事件配置完成，但目前没时间做了
         mStates.ForEach(state =>
         {
             List<StateTrigger> triggers = state.GetStateTriggers();
@@ -172,7 +173,20 @@ public class ACTFSM : MonoBehaviour
             {
                 int j = i;
 
-
+                if(triggers[j].NextStateName.Contains ("Idle"))
+                {
+                    mXFSMLite.AddTranslation(state.StateName, triggers[j].NextStateName, triggers[j].NextStateName, new XFSMLite.ToNextStateFunc((target) =>
+                    {
+                        mLastFrame = -1;
+                        mTriggerTime = 0f;
+                        mHitboxTime = 0f;
+                        mRigbody.velocity = new Vector2(0, mRigbody.velocity.y);
+                        mAnimator.Play(triggers[j].NextStateName);
+                        mModel.PoiseValue = 0;
+                        Debug.LogFormat("{0} ——> {1}", state.StateName, triggers[j].NextStateName);
+                    }));
+                    continue;
+                }
                 if (triggers[j].NextStateName == "JumpStart")
                 {
                     mXFSMLite.AddTranslation(state.StateName, triggers[j].NextStateName, triggers[j].NextStateName, new XFSMLite.ToNextStateFunc((target) =>

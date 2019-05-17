@@ -10,11 +10,18 @@ public class GameDevSetting : ScriptableObject
     public string BgFarCamPrefabPath = "resources://Prefabs/Camera/CameraBgFar";
 
 
+    //中层背景路径
     public string BgMidSpritePath = "resources://Sprites/BgMid/BgMid";
+    //滚动远景路径
     public string BgFarSpritePath = "resources://Sprites/BgFar/BgFar";
 
+    //玩家预制体路径
     public string CharactorPath = "resources://Prefabs/Fighter";
-    public string ThiefPath = "resources://Prefabs/Thief";
+    //敌人预制体路径
+    public Dictionary<string,string> dic_monster_path = new Dictionary<string, string>
+    {
+        {"Thief","resources://Prefabs/Thief"}
+    };
     public string MainCamePrefabPath = "Resources/Prefabs/Camera/MainCamera";
 
     public float BgMidLength = 10.74f;

@@ -11,14 +11,13 @@ public class BgFarController : MonoBehaviour
 
     void Awake()
     {
-        var target = GlobalManager.Instance.GetCharactorPos();
-        lastX = target.x;
+        lastX = GlobalManager.Instance.MainCamera.transform.position.x;
         offsetX = 0;
         matPropID1 = Shader.PropertyToID("_ScrollX");
     }
     void LateUpdate()
     {
-        MatScroll.SetFloat(matPropID1, offsetX += (GlobalManager.Instance.GetCharactorPos().x - lastX) / RatioMove1);
-        lastX = GlobalManager.Instance.GetCharactorPos().x;
+        MatScroll.SetFloat(matPropID1, offsetX += (GlobalManager.Instance.MainCamera.transform.position.x - lastX) / RatioMove1);
+        lastX = GlobalManager.Instance.MainCamera.transform.position.x;
     }
 }
