@@ -36,6 +36,11 @@ namespace QFramework.Fighter
             mSaveBtn.AddCallback(new UnityEngine.Events.UnityAction(() =>
             {
                 mSetSqlite.UpdateTable(mInputSettings, "Type");
+                if(GlobalManager.Instance.Charactor != null)
+                    if(GlobalManager.Instance.Charactor.GetComponent<CharacterFSM>() != null)
+                    {
+                        GlobalManager.Instance.Charactor.GetComponent<CharacterFSM>().ReloadInputKey();
+                    }
             }));
 
             mCancelBtn.AddCallback(new UnityEngine.Events.UnityAction(() =>

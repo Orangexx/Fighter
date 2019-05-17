@@ -46,8 +46,21 @@ public class EnemyManager : MonoSingleton<EnemyManager>
             return;
 
         if (dic_name_enemylst[name].Contains(enemyGO))
+        {
+            Destroy(enemyGO);
             dic_name_enemylst[name].Remove(enemyGO);
-        
+            if (dic_name_enemylst[name].Count <= 0)
+                dic_name_enemylst.Remove(name);
+        }
+
+
+        GlobalManager.Instance.CharacterModel.AddExp(ConfigManager.Instance.GetMonsterConfig(name).Exp);
+
+        if (dic_name_enemylst.Count <= 0)
+        {
+            LevelManager.Instance.ClearAllWall();
+            LevelManager.Instance.SetNextRoom();
+        }
     }
 }
 

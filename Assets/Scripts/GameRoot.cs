@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using QFramework;
 using UnityEditor;
+using QFramework.Example;
+using QFramework.Fighter;
 
-public class GameRoot : MonoBehaviour
+public class GameRoot : MonoSingleton<GameRoot>
 {
 
     ResLoader mResLoader = ResLoader.Allocate();
@@ -25,7 +27,9 @@ public class GameRoot : MonoBehaviour
 
         GlobalManager.Instance.Init(mCharactor, mMainCamera, mGameDevSetting);
         EnemyManager.Instance.Init();
+        LevelManager.Instance.Init(GlobalManager.Instance.MapLevel);
         BgManager.Instance.Init();
         HitBoxManager.Instance.HitFx = Instantiate(mResLoader.LoadSync<GameObject>("Resources/Prefabs/HitFXPrefab"));
+        UIMgr.OpenPanel<MainPanel>();
     }
 }

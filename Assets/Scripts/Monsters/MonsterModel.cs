@@ -8,17 +8,19 @@ class MonsterModel : Model
 {
     private bool mIsInited = false;
     private string mName;
+    public int Exp;
 
     public override void Init(IConfig cfg)
     {
         base.Init(cfg);
         MonsterConfig mCfg = (MonsterConfig)cfg;
+        mName = mCfg.Name;
         Hp = mCfg.HP;
         Power = mCfg.Power;
         Poise = mCfg.Poise;
         PoiseValue = 0;
-        AttackSpeed = mCfg.AttackSpeed;
-        MoveSpeed = mCfg.MoveSpeed;
+        Speed = mCfg.Speed;
+        Exp = mCfg.Exp;
         mIsInited = true;
     }
 
@@ -26,7 +28,7 @@ class MonsterModel : Model
     {
         if (!mIsInited)
             return;
-        if (Hp < 0)
+        if (Hp <= 0)
             EnemyManager.Instance.OnEnemyDead(mName, this.gameObject);
     }
 }

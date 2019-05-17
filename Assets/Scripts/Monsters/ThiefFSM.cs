@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 class ThiefFSM : ACTFSM, ICharacter
 {
     [SerializeField] private Transform mTarget;
+    [SerializeField] private Slider mHpSlider;
     private List<XFSMLite.QFSMState> mHurtedStates = new List<XFSMLite.QFSMState>();
     private MonsterModel mThiefModel;
-
-    public new bool FlipX { get; private set; }
 
     protected override void _InitPath()
     {
@@ -45,6 +45,8 @@ class ThiefFSM : ACTFSM, ICharacter
         base._InitOtherFinally();
         mTarget = GlobalManager.Instance.Charactor.transform;
         FlipX = false;
+        mHpSlider.maxValue = mModel.Hp;
+        mHpSlider.value = mModel.Hp;
     }
 
     public void Update()
@@ -87,6 +89,7 @@ class ThiefFSM : ACTFSM, ICharacter
 
     private bool _Attack1()
     {
+        _Rotate();
         if (Mathf.Abs(mTarget.position.x - transform.position.x) < 0.6)
             return true;
         return false;
@@ -94,9 +97,30 @@ class ThiefFSM : ACTFSM, ICharacter
 
     private bool _Attack2()
     {
+        _Rotate();
         if (Mathf.Abs(mTarget.position.x - transform.position.x) < 0.2)
             return true;
         return false;
+    }
+
+    private void _Rotate()
+    {
+        if (mTarget.position.x > transform.position.x)
+        {
+            if (FlipX)
+            {
+                transform.Rotate(Vector2.up, 180);
+                FlipX = !FlipX;
+            }
+        }
+        else
+        {
+            if (!FlipX)
+            {
+                transform.Rotate(Vector2.up, 180);
+                FlipX = !FlipX;
+            }
+        }
     }
 
     public void HitboxContact(ContactData contactData)
@@ -113,9 +137,10 @@ class ThiefFSM : ACTFSM, ICharacter
                 Debug.LogFormat("[HitBox]: {0}", contactData.State.Name);
                 mHurtedStates.Add(contactData.State);
                 StartCoroutine(GameUtils.Wait(contactData.RemainTime, () => mHurtedStates.Remove(contactData.State)));
-                //todo
                 mRigbody.AddForce(contactData.Force);
                 mModel.PoiseValue -= contactData.PoiseDamage;
+                mModel.Hp -= (int)contactData.Damage*10;
+                mHpSlider.value = mModel.Hp;
                 HitBoxManager.Instance.PlayHitFX(contactData.Point);
                 break;
             case HitboxType.GUARD:

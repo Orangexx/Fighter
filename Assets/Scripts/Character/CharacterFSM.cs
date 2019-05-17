@@ -85,6 +85,12 @@ public class CharacterFSM : ACTFSM, ICharacter
         DUNFU = (KeyCode)System.Enum.Parse(typeof(KeyCode), inpuSetting[9].Key);
         setSqlite.Close();
     }
+
+    public void ReloadInputKey()
+    {
+        _SetInputKey();
+    }
+
     #endregion
 
     #region MoveMent
@@ -173,6 +179,8 @@ public class CharacterFSM : ACTFSM, ICharacter
                 //todo
                 mRigbody.AddForce(contactData.Force);
                 mCharacterModel.PoiseValue -= contactData.PoiseDamage;
+                mCharacterModel.Hp -= (int)contactData.Damage;
+                mCharacterModel.OnHpChanged.Invoke();
                 HitBoxManager.Instance.PlayHitFX(contactData.Point);
                 break;
             case HitboxType.GUARD:

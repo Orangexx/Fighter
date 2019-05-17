@@ -160,5 +160,11 @@ public class XFSMLite
     {
         mStateDict.Clear();
     }
+
+    public void OnDes()
+    {
+        InStateDisposables.Clear();
+        ToNextStateDisposables.Clear();
+    }
 }
 

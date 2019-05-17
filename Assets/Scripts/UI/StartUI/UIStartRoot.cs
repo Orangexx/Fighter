@@ -11,6 +11,7 @@ namespace QFramework.Fighter
         private void Awake()
         {
             ResMgr.Init();
+            GlobalManager.Instance.DeleteAllManager();
         }
 
         private IEnumerator Start()

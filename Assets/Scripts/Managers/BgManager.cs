@@ -45,16 +45,16 @@ public class BgManager : MonoSingleton<BgManager>
     {
         if (!isMid)
         {
-            mBgFar.sprite = mBgLoader.LoadSprite(GlobalManager.Instance.GameDevSetting.BgFarSpritePath + GlobalManager.Instance.MapLevel);
-            Debug.LogFormat("[BgFar]:加载Sprite BgFar{0},{1}", GlobalManager.Instance.MapLevel, mBgFar.sprite != null);
+            mBgFar.sprite = mBgLoader.LoadSprite(GlobalManager.Instance.GameDevSetting.BgFarSpritePath + LevelManager.Instance.CurLevel);
+            Debug.LogFormat("[BgFar]:加载Sprite BgFar{0},{1}", LevelManager.Instance.CurLevel, mBgFar.sprite != null);
             if (mBgFar.sprite == null) return false;
         }
         else
         {
             for (int i = 0; i < mBgMids.Length; i++)
             {
-                mBgMids[i].sprite = mBgLoader.LoadSprite(GlobalManager.Instance.GameDevSetting.BgMidSpritePath + GlobalManager.Instance.MapLevel);
-                Debug.LogFormat("[BgMid]:加载Sprite BgMid{0},{1}", GlobalManager.Instance.MapLevel, mBgMids[i].sprite != null);
+                mBgMids[i].sprite = mBgLoader.LoadSprite(GlobalManager.Instance.GameDevSetting.BgMidSpritePath + LevelManager.Instance.CurLevel);
+                Debug.LogFormat("[BgMid]:加载Sprite BgMid{0},{1}", LevelManager.Instance.CurLevel, mBgMids[i].sprite != null);
                 if (mBgMids[i].sprite == null) return false;
             }
         }

@@ -17,4 +17,5 @@ MonoBehaviour:
   BgFarSpritePath: resources://Sprites/BgFar/BgFar
   CharactorPath: Resources/Prefabs/Fighter
   MainCamePrefabPath: Resources/Prefabs/Camera/MainCamera
+  BarrierWallPrefabPath: Resources/Prefabs/Map/Barrier Wall
   BgMidLength: 10.74

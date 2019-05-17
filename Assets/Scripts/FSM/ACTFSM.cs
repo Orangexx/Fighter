@@ -376,6 +376,11 @@ public class ACTFSM : MonoBehaviour
         return -1;
     }
 
+    private void OnDestroy()
+    {
+        mXFSMLite.OnDes();
+    }
+
     #region TirggerFun
     protected bool _IsGround()
     {

@@ -16,10 +16,10 @@ public partial class MonsterConfig : IConfig
 	[ConfigField("Power")]
 	public float Power  { get; set; }
 
-	[ConfigField("MoveSpeed")]
-	public float MoveSpeed  { get; set; }
+	[ConfigField("Speed")]
+	public float Speed  { get; set; }
 
-	[ConfigField("AttackSpeed")]
-	public float AttackSpeed  { get; set; }
+	[ConfigField("Exp")]
+	public int Exp  { get; set; }
 
 }

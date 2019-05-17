@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using QFramework;
+using System;
 
 public class Model : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class Model : MonoBehaviour
     public int Hp;
     public float Power;
     public int Level;
-    public float AttackSpeed;
-    public float MoveSpeed;
+    public float Speed;
+
 
     public virtual void Init(IConfig cfg)
     {

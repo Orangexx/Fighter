@@ -50,7 +50,7 @@ TagManager:
   - name: Map
     uniqueID: 3894016515
     locked: 0
-  - name: Thief
+  - name: Monster
     uniqueID: 1851995849
     locked: 0
   - name: Character

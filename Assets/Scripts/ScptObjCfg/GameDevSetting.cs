@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[CreateAssetMenu(menuName = "GameDevSetting")]
 public class GameDevSetting : ScriptableObject
 {
     public string BgMidPrefabPath = "resources://Prefabs/Bg/BgMid";
@@ -23,6 +21,8 @@ public class GameDevSetting : ScriptableObject
         {"Thief","resources://Prefabs/Thief"}
     };
     public string MainCamePrefabPath = "Resources/Prefabs/Camera/MainCamera";
+
+    public string BarrierWallPrefabPath = "Resources/Prefabs/Map/Barrier Wall";
 
     public float BgMidLength = 10.74f;
 }

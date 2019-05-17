@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
 using UnityEngine.SceneManagement;
+using QFramework.Example;
 
 namespace QFramework.Fighter
 {
@@ -38,9 +39,10 @@ namespace QFramework.Fighter
 
             BtnStart.AddCallback(new UnityEngine.Events.UnityAction(() =>
             {
-                GlobalManager.Instance.MapLevel = 2;
-                SceneManager.LoadScene(1);
+                GlobalManager.Instance.MapLevel = 1;
+                Time.timeScale = 1;
                 UIMgr.CloseAllPanel();
+                SceneManager.LoadScene(1);
             }));
 		}
 
