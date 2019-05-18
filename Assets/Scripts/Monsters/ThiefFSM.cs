@@ -6,8 +6,28 @@ class ThiefFSM : ACTFSM, ICharacter
 {
     [SerializeField] private Transform mTarget;
     [SerializeField] private Slider mHpSlider;
+    [SerializeField] private float mSpeed = 4f;
+    [SerializeField] private float mHatredAmount = 0f;
     private List<XFSMLite.QFSMState> mHurtedStates = new List<XFSMLite.QFSMState>();
     private MonsterModel mThiefModel;
+
+    public class Command
+    {
+        public string Name;
+        public float CurCD;
+        public float Range;
+        public float CD;
+    }
+
+    
+
+    [SerializeField] private Dictionary<string, Command> dic_skill_cd = new Dictionary<string, Command>()
+    {
+        {"Attack1",new Command{Name = "Attack1",CurCD = 0,Range = 1,CD = 4} },
+        {"Attack2",new Command{Name = "Attack2",CurCD = 0,Range = 0.5f,CD = 4}},
+        {"Move",new Command{ Name = "Move",CurCD = 0,Range = 2,CD = 5} }
+    };
+
 
     protected override void _InitPath()
     {
@@ -49,7 +69,7 @@ class ThiefFSM : ACTFSM, ICharacter
         mHpSlider.value = mModel.Hp;
     }
 
-    public void Update()
+    public void LateUpdate()
     {
         if (mXFSMLite.State == "Thief_Walk")
         {
@@ -57,13 +77,7 @@ class ThiefFSM : ACTFSM, ICharacter
         }
     }
 
-    private bool _Move()
-    {
-        if (Mathf.Abs(mTarget.position.x - transform.position.x) > 2)
-            return true;
 
-        return false;
-    }
 
     private void _InMove()
     {
@@ -74,7 +88,7 @@ class ThiefFSM : ACTFSM, ICharacter
                 transform.Rotate(Vector2.up, 180);
                 FlipX = !FlipX;
             }
-            mRigbody.velocity = new Vector2(5f, 0f);
+            mRigbody.velocity = new Vector2(mSpeed, 0f);
         }
         else
         {
@@ -83,23 +97,58 @@ class ThiefFSM : ACTFSM, ICharacter
                 transform.Rotate(Vector2.up, 180);
                 FlipX = !FlipX;
             }
-            mRigbody.velocity = new Vector2(-5f, 0f);
+            mRigbody.velocity = new Vector2(-mSpeed, 0f);
         }
     }
 
     private bool _Attack1()
     {
         _Rotate();
-        if (Mathf.Abs(mTarget.position.x - transform.position.x) < 0.6)
-            return true;
+        var info = dic_skill_cd["Attack1"];
+        if (Mathf.Abs(mTarget.position.x - transform.position.x) < info.Range && info.CurCD == 0)
+        {
+            mHatredAmount += 0.05f;
+            if(mHatredAmount >= 1)
+            {
+                mHatredAmount = 0;
+                _SetCD(info);
+                return true;
+            }
+        }
         return false;
     }
 
     private bool _Attack2()
     {
         _Rotate();
-        if (Mathf.Abs(mTarget.position.x - transform.position.x) < 0.2)
-            return true;
+        var info = dic_skill_cd["Attack2"];
+        if (Mathf.Abs(mTarget.position.x - transform.position.x) < info.Range && info.CurCD == 0)
+        {
+            mHatredAmount += 0.05f;
+            if (mHatredAmount >= 1)
+            {
+                mHatredAmount = 0;
+                _SetCD(info);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool _Move()
+    {
+        var info = dic_skill_cd["Move"];
+        var attack1 = dic_skill_cd["Attack1"];
+        var attack2 = dic_skill_cd["Attack2"];
+        if (Mathf.Abs(mTarget.position.x - transform.position.x) > info.Range && info.CurCD == 0)
+        {
+            if(attack1.CurCD == 0 || attack2.CurCD == 0)
+            {
+                _SetCD(info);
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -123,6 +172,12 @@ class ThiefFSM : ACTFSM, ICharacter
         }
     }
 
+    private void _SetCD(Command info)
+    {
+        info.CurCD = info.CD;
+        StartCoroutine(GameUtils.Wait(info.CD, new System.Action(() => { info.CurCD = 0f; })));
+    }
+
     public void HitboxContact(ContactData contactData)
     {
         if (contactData.TheirHitbox.transform.parent == contactData.MyHitbox.transform.parent)
@@ -137,9 +192,23 @@ class ThiefFSM : ACTFSM, ICharacter
                 Debug.LogFormat("[HitBox]: {0}", contactData.State.Name);
                 mHurtedStates.Add(contactData.State);
                 StartCoroutine(GameUtils.Wait(contactData.RemainTime, () => mHurtedStates.Remove(contactData.State)));
-                mRigbody.AddForce(contactData.Force);
                 mModel.PoiseValue -= contactData.PoiseDamage;
-                mModel.Hp -= (int)contactData.Damage*10;
+                StartCoroutine(GameUtils.Wait(Time.deltaTime, new System.Action(() =>
+                 {
+                     Debug.Log("111111111111111");
+                     if (mXFSMLite.State == "Thief_HurtInSky")
+                     {
+                         if (contactData.Force.y != 0)
+                             mRigbody.velocity = new Vector2(contactData.Force.x, 3);
+                         else
+                             mRigbody.velocity = new Vector2(contactData.Force.x, 1);
+                     }
+                     else
+                         mRigbody.velocity = contactData.Force;
+                 })));
+
+
+                mModel.Hp -= (int)contactData.Damage;
                 mHpSlider.value = mModel.Hp;
                 HitBoxManager.Instance.PlayHitFX(contactData.Point);
                 break;

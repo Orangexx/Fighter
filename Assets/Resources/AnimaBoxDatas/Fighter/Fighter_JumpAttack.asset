@@ -49,7 +49,7 @@ MonoBehaviour:
         height: 37
       type: 1
     time: 0.5
-  strength: 0
+  strength: 2
   damage: 0
-  force: {x: 0, y: 0}
+  force: {x: 1, y: 0}
   hitFx: {fileID: 0}

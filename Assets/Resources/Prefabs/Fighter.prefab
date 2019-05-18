@@ -135,8 +135,9 @@ MonoBehaviour:
   Hp: 0
   Power: 0
   Level: 0
-  AttackSpeed: 0
-  MoveSpeed: 0
+  Speed: 0
+  Exp: 0
+  ExpNeed: 0
 --- !u!212 &212532432569874072
 SpriteRenderer:
   m_ObjectHideFlags: 1

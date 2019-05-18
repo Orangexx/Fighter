@@ -157,7 +157,7 @@ Rigidbody2D:
   m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 0.8
+  m_GravityScale: 0.5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -227,7 +227,7 @@ MonoBehaviour:
   mSpriteRenderer: {fileID: 212573137746820962}
   mMapLayer:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 256
   mModel: {fileID: 0}
   mJumpSpeed: 0
   mPixelPerUnit: 100
@@ -277,8 +277,8 @@ MonoBehaviour:
   Hp: 0
   Power: 0
   Level: 0
-  AttackSpeed: 0
-  MoveSpeed: 0
+  Speed: 0
+  Exp: 0
 --- !u!114 &114714805453699760
 MonoBehaviour:
   m_ObjectHideFlags: 1

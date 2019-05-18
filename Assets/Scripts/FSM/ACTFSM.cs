@@ -173,7 +173,7 @@ public class ACTFSM : MonoBehaviour
             {
                 int j = i;
 
-                if(triggers[j].NextStateName.Contains ("Idle"))
+                if (triggers[j].NextStateName.Contains("Idle"))
                 {
                     mXFSMLite.AddTranslation(state.StateName, triggers[j].NextStateName, triggers[j].NextStateName, new XFSMLite.ToNextStateFunc((target) =>
                     {
@@ -206,7 +206,8 @@ public class ACTFSM : MonoBehaviour
                     mLastFrame = -1;
                     mTriggerTime = 0f;
                     mHitboxTime = 0f;
-                    mRigbody.velocity = new Vector2(0, mRigbody.velocity.y);
+                    if (!triggers[j].NextStateName.Contains("Hurt"))
+                        mRigbody.velocity = new Vector2(0, mRigbody.velocity.y);
                     mAnimator.Play(triggers[j].NextStateName);
                     Debug.LogFormat("{0} ——> {1}", state.StateName, triggers[j].NextStateName);
                 }));

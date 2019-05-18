@@ -122,7 +122,7 @@ public class HitBoxFeeder : MonoBehaviour
                 TheirHitbox = feeder,
                 Damage = feeder.m_Damage,
                 PoiseDamage = feeder.m_Strength,
-                Force = feeder.m_Force / 1000f,
+                Force = feeder.m_Force,
                 Point = contactPoint,
                 RemainTime = feeder.mRemainTime,
                 State = feeder.mState,

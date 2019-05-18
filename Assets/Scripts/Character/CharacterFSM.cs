@@ -177,7 +177,15 @@ public class CharacterFSM : ACTFSM, ICharacter
                 mHurtedStates.Add(contactData.State);
                 StartCoroutine(GameUtils.Wait(contactData.RemainTime, () => mHurtedStates.Remove(contactData.State)));
                 //todo
-                mRigbody.AddForce(contactData.Force);
+                if (mXFSMLite.State == "HurtInSky")
+                {
+                    if (contactData.Force.y != 0)
+                        mRigbody.velocity = new Vector2(contactData.Force.x, 2);
+                    else
+                        mRigbody.velocity = new Vector2(contactData.Force.x, 1);
+                }
+                else
+                    mRigbody.velocity = contactData.Force + mRigbody.velocity;
                 mCharacterModel.PoiseValue -= contactData.PoiseDamage;
                 mCharacterModel.Hp -= (int)contactData.Damage;
                 mCharacterModel.OnHpChanged.Invoke();
