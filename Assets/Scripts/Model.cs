@@ -14,15 +14,17 @@ public class Model : MonoBehaviour
     public int Level;
     public float Speed;
 
+    private void Awake()
+    {
+        Observable.Interval(TimeSpan.FromSeconds(0.016f)).Subscribe(_ =>
+        {
+            if (Poise != 0 && PoiseValue < 0)
+                PoiseValue += Poise;
+        }).AddTo(this);
+    }
 
     public virtual void Init(IConfig cfg)
     {
-    }
-
-    private void Update()
-    {
-        if (Poise != 0 && PoiseValue < 0)
-            PoiseValue += Poise;
     }
 }
 

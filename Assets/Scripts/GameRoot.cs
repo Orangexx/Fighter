@@ -21,11 +21,14 @@ public class GameRoot : MonoSingleton<GameRoot>
     {
         ResMgr.Init();
         ConfigManager.Instance.Init();
-        mGameDevSetting = AssetDatabase.LoadAssetAtPath<GameDevSetting>("Assets/DevSetting.asset");
+        mGameDevSetting = mResLoader.LoadSync<GameDevSetting>("Resources/DevSetting");
+        //mGameDevSetting = AssetDatabase.LoadAssetAtPath<GameDevSetting>("Assets/DevSetting.asset");
         mCharactor = (GameObject)Instantiate(mResLoader.LoadSync(mGameDevSetting.CharactorPath));
         mMainCamera = mResLoader.LoadSync<GameObject>(mGameDevSetting.MainCamePrefabPath).Instantiate().GetComponent<MainCamera>();
 
         GlobalManager.Instance.Init(mCharactor, mMainCamera, mGameDevSetting);
+        AudioManager.Instance.Init();
+        AudioManager.Instance.PlayBGM("BGM1");
         EnemyManager.Instance.Init();
         LevelManager.Instance.Init(GlobalManager.Instance.MapLevel);
         BgManager.Instance.Init();

@@ -361,8 +361,10 @@ namespace QFramework
                 return mCachedSpriteDict[spriteName];
             }
 #endif
-
-            return LoadSync<Sprite>(spriteName);
+            var texture1 = LoadSync(spriteName) as Texture2D;
+            var sprite1 = Sprite.Create(texture1, new Rect(0, 0, texture1.width, texture1.height),
+                Vector2.one * 0.5f);
+            return sprite1;
         }
 
 

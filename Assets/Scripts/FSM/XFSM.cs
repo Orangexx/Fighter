@@ -1,59 +1,52 @@
-using UnityEngine;
-using System.Collections;
-using QFramework;
 using UniRx;
-
-
 using System.Collections.Generic;
-/// <summary>
-/// QFSM lite.
-/// </summary>
+
 public class XFSMLite
 {
     private CompositeDisposable InStateDisposables = new CompositeDisposable();
-    private CompositeDisposable ToNextStateDisposables = new CompositeDisposable();
-
     public delegate void ToNextStateFunc(params object[] param);
     public delegate void InStateFunc(params object[] param);
+    public delegate void OnStateBegin(params object[] param);
 
-
-    /// <summary>
-    /// QFSM state.
-    /// </summary>
-    public class QFSMState
+    public class XFSMState
     {
         public string Name;
 
-        public QFSMState(string name)
+        public XFSMState(string name)
         {
             Name = name;
         }
-        public QFSMState(string name, InStateFunc inState)
+        //public XFSMState(string name, InStateFunc inState)
+        //{
+        //    Name = name;
+        //    InState = inState;
+        //}
+
+        public XFSMState(string name, InStateFunc inState,OnStateBegin onBegin = null)
         {
             Name = name;
             InState = inState;
+            OnStateBegin = onBegin;
         }
 
         //当前状态的监听方法
         public InStateFunc InState;
-                                   
+        public OnStateBegin OnStateBegin;                           
+
         /// <summary>
         /// 图中的指出的有向线段
         /// </summary>
-        public readonly Dictionary<string, QFSMTranslation> TranslationDict = new Dictionary<string, QFSMTranslation>();
+        public readonly Dictionary<string, XFSMTranslation> TranslationDict = new Dictionary<string, XFSMTranslation>();
     }
 
-    /// <summary>
-    /// Translation 
-    /// </summary>
-    public class QFSMTranslation
+    public class XFSMTranslation
     {
         public string FromState;
         public string Name;
         public string ToState;
         public ToNextStateFunc OnTranslationCallback; // 回调函数
 
-        public QFSMTranslation(string fromState, string name, string toState, ToNextStateFunc onTranslationCallback)
+        public XFSMTranslation(string fromState, string name, string toState, ToNextStateFunc onTranslationCallback)
         {
             FromState = fromState;
             ToState = toState;
@@ -62,34 +55,16 @@ public class XFSMLite
         }
     }
 
-    /// <summary>
-    /// The state of the m current.
-    /// </summary>
-    string mCurState;
-
-    public string State
+    public string State { get; private set; }
+    public XFSMState CurState
     {
-        get { return mCurState; }
+        get { return mStateDict[State]; }
     }
+    Dictionary<string, XFSMState> mStateDict = new Dictionary<string, XFSMState>();
 
-    public QFSMState CurState
+    public void AddState(string name, InStateFunc inState = null,OnStateBegin onStateBegin = null)
     {
-        get { return mStateDict[mCurState]; }
-    }
-
-    /// <summary>
-    /// The m state dict.
-    /// </summary>
-    Dictionary<string, QFSMState> mStateDict = new Dictionary<string, QFSMState>();
-
-    public void AddState(string name)
-    {
-        mStateDict[name] = new QFSMState(name);
-    }
-
-    public void AddState(string name, InStateFunc inState)
-    {
-        mStateDict[name] = new QFSMState(name, inState);
+        mStateDict[name] = new XFSMState(name, inState,onStateBegin);
     }
 
     public bool HasState(string name)
@@ -97,48 +72,20 @@ public class XFSMLite
         return mStateDict.ContainsKey(name);
     }
 
-    /// <summary>
-    /// Adds the translation.
-    /// </summary>
-    /// <param name="fromState">From state.</param>
-    /// <param name="name">Name.</param>
-    /// <param name="toState">To state.</param>
-    /// <param name="callfunc">Callfunc.</param>
     public void AddTranslation(string fromState, string name, string toState, ToNextStateFunc callfunc)
     {
-        mStateDict[fromState].TranslationDict[name] = new QFSMTranslation(fromState, name, toState, callfunc);
+        mStateDict[fromState].TranslationDict[name] = new XFSMTranslation(fromState, name, toState, callfunc);
     }
 
-    /// <summary>
-    /// Start the specified name.
-    /// </summary>
-    /// <param name="name">Name.</param>
-    public void Start(string name)
-    {
-        InStateDisposables.Clear();
-
-        Observable.EveryUpdate()
-            .Subscribe(_ =>
-            { mStateDict[name].InState(); })
-            .AddTo(InStateDisposables);
-        mCurState = name;
-
-    }
-
-    /// <summary>
-    /// Handles the event.
-    /// </summary>
-    /// <param name="name">Name.</param>
-    /// <param name="param">Parameter.</param>
     public void HandleEvent(string name, params object[] param)
     {
-        if (mCurState != null && mStateDict[mCurState].TranslationDict.ContainsKey(name))
+        if (State != null && mStateDict[State].TranslationDict.ContainsKey(name))
         {
-            ToNextStateDisposables.Clear();
             InStateDisposables.Clear();
 
-            var tempTranslation = mStateDict[mCurState].TranslationDict[name];
-            tempTranslation.OnTranslationCallback(param);
+            var tempTranslation = mStateDict[State].TranslationDict[name];
+            tempTranslation.OnTranslationCallback.Invoke(param);
+            mStateDict[tempTranslation.ToState].OnStateBegin.Invoke();
 
             if (mStateDict[tempTranslation.ToState].InState != null)
             {
@@ -149,13 +96,23 @@ public class XFSMLite
             }
 
 
-            mCurState = tempTranslation.ToState;
+            State = tempTranslation.ToState;
         }
     }
 
-    /// <summary>
-    /// Clear this instance.
-    /// </summary>
+    public void Start(string name)
+    {
+        InStateDisposables.Clear();
+
+        mStateDict[name].OnStateBegin.Invoke();
+        Observable.EveryUpdate()
+            .Subscribe(_ =>
+            { mStateDict[name].InState(); })
+            .AddTo(InStateDisposables);
+        State = name;
+
+    }
+
     public void Clear()
     {
         mStateDict.Clear();
@@ -164,7 +121,6 @@ public class XFSMLite
     public void OnDes()
     {
         InStateDisposables.Clear();
-        ToNextStateDisposables.Clear();
     }
 }
 

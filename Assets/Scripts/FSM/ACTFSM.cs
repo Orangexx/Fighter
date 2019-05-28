@@ -9,6 +9,7 @@ public class ACTFSM : MonoBehaviour
 {
     private delegate void InState();
     protected delegate bool FSMTrigger();
+    private ResLoader mResLoader = ResLoader.Allocate();
 
     [Header("Setting")]
     [SerializeField] protected string mHitboxDataPath;
@@ -98,7 +99,7 @@ public class ACTFSM : MonoBehaviour
         mStates.ForEach(state =>
         {
             mHitboxData.Add(state.StateName,
-                AssetDatabase.LoadAssetAtPath<XHitboxAnimation>(
+                mResLoader.LoadSync<XHitboxAnimation>(
                     String.Format(mHitboxDataPath, state.StateName)));
         });
     }
@@ -160,6 +161,11 @@ public class ACTFSM : MonoBehaviour
                     {
                         if (hitboxData != null) _GetHitboxFunc(hitboxData)();
                         _GetTriggerFunc(triggers)();
+                    }),
+                    new XFSMLite.OnStateBegin((target) =>
+                    {
+                        if (!string.IsNullOrEmpty(state.Audio))
+                            AudioManager.Instance.PlayEffect(state.Audio);
                     }));
             }
         });

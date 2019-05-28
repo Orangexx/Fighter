@@ -78,7 +78,7 @@ public struct ContactData
     public Vector2 Point;
 
     public float RemainTime;
-    public XFSMLite.QFSMState State;
+    public XFSMLite.XFSMState State;
 }
 
 

@@ -1,5 +1,5 @@
 /****************************************************************************
- * 2018.12 DESKTOP-CFTQOJO
+ * 2019.5 DESKTOP-ERI3UES
  ****************************************************************************/
 
 public partial class StateMap : IConfig
@@ -15,5 +15,8 @@ public partial class StateMap : IConfig
 
 	[ConfigField("StateInfoID")]
 	public int StateInfoID  { get; set; }
+
+	[ConfigField("Audio")]
+	public string Audio { get; set; }
 
 }

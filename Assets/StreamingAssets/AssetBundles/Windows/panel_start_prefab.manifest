@@ -1,0 +1,42 @@
+ManifestFileVersion: 0
+CRC: 2538435205
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: e513e3df68f093acde98ee022b5ba61b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 6c12739d7d16ae7d03680e701373b003
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 51241c8449949cd40a6ca725ddda3217, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 4211833ca4e7a4984b2d973425a62933, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 128
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 222
+  Script: {instanceID: 0}
+- Class: 224
+  Script: {instanceID: 0}
+Assets:
+- Assets/Resources/Prefabs/UI/StartUI/Panel_Start.prefab
+Dependencies: []

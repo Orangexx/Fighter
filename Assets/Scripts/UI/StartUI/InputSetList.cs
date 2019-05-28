@@ -26,7 +26,7 @@ namespace QFramework.Fighter
         {
             mData = uiData as InputSetListData ?? new InputSetListData();
             //please add init code here
-            mSetSqlite = new Sqlite(Application.dataPath + "/SQLites/InputSetting.db");
+            mSetSqlite = new Sqlite(Application.dataPath + "/Resources/SQLites/InputSetting.db");
             mInputSettings = mSetSqlite.SelectTable<InputSetting>();
             _InitItems();
         }

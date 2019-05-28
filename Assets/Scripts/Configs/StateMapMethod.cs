@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public partial class StateMap : IConfig
 {
-
     private List<StateTrigger> mTriggers = new List<StateTrigger>();
 
     private void _Init()

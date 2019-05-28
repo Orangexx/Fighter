@@ -8,7 +8,7 @@ class ThiefFSM : ACTFSM, ICharacter
     [SerializeField] private Slider mHpSlider;
     [SerializeField] private float mSpeed = 4f;
     [SerializeField] private float mHatredAmount = 0f;
-    private List<XFSMLite.QFSMState> mHurtedStates = new List<XFSMLite.QFSMState>();
+    private List<XFSMLite.XFSMState> mHurtedStates = new List<XFSMLite.XFSMState>();
     private MonsterModel mThiefModel;
 
     public class Command
@@ -32,8 +32,8 @@ class ThiefFSM : ACTFSM, ICharacter
     protected override void _InitPath()
     {
         base._InitPath();
-        mHitboxDataPath = "Assets/Resources/AnimaBoxDatas/Thief/Thief_{0}.asset";
-        mStateMapPath = Application.dataPath + "/SQLites/Fighter.db";
+        mHitboxDataPath = "Resources/AnimaBoxDatas/Thief/Thief_{0}";
+        mStateMapPath = Application.dataPath + "/Resources/SQLites/Fighter.db";
         mStateMapTableName = "ThiefStateMap";
     }
 
@@ -195,7 +195,6 @@ class ThiefFSM : ACTFSM, ICharacter
                 mModel.PoiseValue -= contactData.PoiseDamage;
                 StartCoroutine(GameUtils.Wait(Time.deltaTime, new System.Action(() =>
                  {
-                     Debug.Log("111111111111111");
                      if (mXFSMLite.State == "Thief_HurtInSky")
                      {
                          if (contactData.Force.y != 0)

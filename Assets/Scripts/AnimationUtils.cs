@@ -14,6 +14,8 @@ namespace Utils
             return animator.runtimeAnimatorController.animationClips;
         }
 
+#if UNITY_EDITOR
+
         public static Sprite[] GetClipSprites(AnimationClip animationClip)
         {
             var sprites = new Sprite[0];
@@ -49,7 +51,9 @@ namespace Utils
 
             return times;
         }
+#endif
     }
+
 
     public static class CommonUtils
     {
@@ -65,4 +69,3 @@ namespace Utils
         }
     }
 }
-

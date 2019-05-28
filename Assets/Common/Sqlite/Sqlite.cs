@@ -627,9 +627,7 @@ public class Sqlite
                 }
                 else if (!(reader.GetValue(i).ToString() == "") && info.PropertyType != typeof(float))
                 {
-                    Debug.Log("进入 integer1");
                     info.SetValue(config, Convert.ToInt32(reader.GetValue(i)), null);
-                    Debug.Log("进入 integer2");
                 }
                 else if(!(reader.GetValue(i).ToString() == ""))
                 {

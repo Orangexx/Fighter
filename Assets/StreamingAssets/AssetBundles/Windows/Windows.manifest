@@ -1,0 +1,22 @@
+ManifestFileVersion: 0
+CRC: 1113905061
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: inputsetlist_prefab
+      Dependencies: {}
+    Info_1:
+      Name: panel_start_prefab
+      Dependencies: {}
+    Info_2:
+      Name: mainpanel_prefab
+      Dependencies: {}
+    Info_3:
+      Name: settingpanel_prefab
+      Dependencies: {}
+    Info_4:
+      Name: losepanel_prefab
+      Dependencies: {}
+    Info_5:
+      Name: winpanel_prefab
+      Dependencies: {}

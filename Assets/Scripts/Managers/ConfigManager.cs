@@ -22,7 +22,7 @@ public class ConfigManager : Singleton<ConfigManager>
         if (mInited)
             return;
         mInited = true;
-        Sqlite sqlite = new Sqlite(Application.dataPath + "/SQLites/Fighter.db");
+        Sqlite sqlite = new Sqlite(Application.dataPath + "/Resources/SQLites/Fighter.db");
         lst_character_cfg = sqlite.SelectTable<CharacterConfig>();
         foreach (var cfg in sqlite.SelectTable<MonsterConfig>())
         {

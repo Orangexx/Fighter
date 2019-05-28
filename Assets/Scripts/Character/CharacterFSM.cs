@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UnityEditor;
-using RuntimeEditor;
 
 public class CharacterFSM : ACTFSM, ICharacter
 {
@@ -27,14 +26,14 @@ public class CharacterFSM : ACTFSM, ICharacter
     [SerializeField] private float mInSkySpeed;
     [SerializeField] private float mOtherSpeed;
     private CharacterModel mCharacterModel;
-    private List<XFSMLite.QFSMState> mHurtedStates = new List<XFSMLite.QFSMState>();
+    private List<XFSMLite.XFSMState> mHurtedStates = new List<XFSMLite.XFSMState>();
 
     #region Init
     protected override void _InitPath()
     {
         base._InitPath();
-        mHitboxDataPath = "Assets/Resources/AnimaBoxDatas/Fighter/Fighter_{0}.asset";
-        mStateMapPath = Application.dataPath + "/SQLites/Fighter.db";
+        mHitboxDataPath = "Resources/AnimaBoxDatas/Fighter/Fighter_{0}";
+        mStateMapPath = Application.dataPath + "/Resources/SQLites/Fighter.db";
     }
     protected override void _InitTriggerDic()
     {
@@ -71,7 +70,7 @@ public class CharacterFSM : ACTFSM, ICharacter
     }
     private void _SetInputKey()
     {
-        var setSqlite = new Sqlite(Application.dataPath + "/SQLites/InputSetting.db");
+        var setSqlite = new Sqlite(Application.dataPath + "/Resources/SQLites/InputSetting.db");
         var inpuSetting = setSqlite.SelectTable<InputSetting>();
         UP = (KeyCode)System.Enum.Parse(typeof(KeyCode), inpuSetting[0].Key);
         DOWN = (KeyCode)System.Enum.Parse(typeof(KeyCode), inpuSetting[1].Key);
@@ -169,6 +168,10 @@ public class CharacterFSM : ACTFSM, ICharacter
         switch (contactData.TheirHitbox.Type)
         {
             case HitboxType.TRIGGER:
+                if(contactData.MyHitbox.Type == HitboxType.HURT)
+                {
+                    AudioManager.Instance.PlayEffect("Hit" + ((int)UnityEngine.Random.Range(1,3)).ToString());
+                }
                 break;
             case HitboxType.HURT:
                 if (mHurtedStates.Contains(contactData.State))

@@ -47,6 +47,7 @@ public class GlobalManager : MonoSingleton<GlobalManager>
         Destroy(EnemyManager.Instance.gameObject);
         Destroy(HitBoxManager.Instance.gameObject);
         Destroy(LevelManager.Instance.gameObject);
+        Destroy(AudioManager.Instance.gameObject);
         Destroy(this.gameObject);
     }
 

@@ -15,7 +15,7 @@ public class HitBoxFeeder : MonoBehaviour
     private Vector2 m_Force;
     private bool m_DidHit = false;
     private float mRemainTime;
-    private XFSMLite.QFSMState mState;
+    private XFSMLite.XFSMState mState;
     //public int Id { get; private set; }
     public HitboxType Type { get; private set; }
 
@@ -28,15 +28,8 @@ public class HitBoxFeeder : MonoBehaviour
         Collider.enabled = false;
     }
 
-#if UNITY_EDITOR
-    private void OnEnable()
-    {
-        Collider = GetComponent<BoxCollider2D>();
-        Owner = GetComponentInParent<ICharacter>();
-    }
-#endif
     public void Feed(Vector2 boxSize, Vector2 boxOffset, HitboxType type,
-        float damage, float strength, Vector2 forceRange, bool isTrigger,float remainTiem,XFSMLite.QFSMState state)
+        float damage, float strength, Vector2 forceRange, bool isTrigger,float remainTiem,XFSMLite.XFSMState state)
     {
         Type = type;
         m_Damage = damage;
