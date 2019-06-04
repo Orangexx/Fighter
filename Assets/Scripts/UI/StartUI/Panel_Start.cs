@@ -8,9 +8,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
 using UnityEngine.SceneManagement;
-using QFramework.Example;
 
-namespace QFramework.Fighter
+namespace Fighter
 {
 	public class Panel_StartData : UIPanelData
 	{
@@ -32,18 +31,25 @@ namespace QFramework.Fighter
 
 		protected override void RegisterUIEvent()
 		{
-            BtnSetting.AddCallback(new UnityEngine.Events.UnityAction(() =>
+            BtnIntpuSet.AddCallback(new UnityEngine.Events.UnityAction(() =>
             {
                 UIMgr.OpenPanel<InputSetList>();
             }));
 
             BtnStart.AddCallback(new UnityEngine.Events.UnityAction(() =>
             {
-                GlobalManager.Instance.MapLevel = 1;
-                Time.timeScale = 1;
-                UIMgr.CloseAllPanel();
-                SceneManager.LoadScene(1);
+                GlobalManager.Instance.InitMainScene(1);
             }));
+
+            BtnAudioSet.AddCallback(() =>
+            {
+                UIMgr.OpenPanel<AudioSettingPanel>();
+            });
+
+            BtnLoad.AddCallback(() =>
+            {
+                UIMgr.OpenPanel<LevelPanel>();
+            });
 		}
 
 		protected override void OnShow()

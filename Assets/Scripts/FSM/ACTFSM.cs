@@ -1,8 +1,8 @@
 using QFramework;
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
+using Fighter;
 
 
 public class ACTFSM : MonoBehaviour
@@ -165,7 +165,7 @@ public class ACTFSM : MonoBehaviour
                     new XFSMLite.OnStateBegin((target) =>
                     {
                         if (!string.IsNullOrEmpty(state.Audio))
-                            AudioManager.Instance.PlayEffect(state.Audio);
+                            Fighter.AudioManager.Instance.PlayEffect(state.Audio);
                     }));
             }
         });

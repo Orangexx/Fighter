@@ -11,10 +11,20 @@
 namespace QAssetBundle
 {
     
+    public class Audiosettingpanel_prefab
+    {
+        public const string BundleName = "AUDIOSETTINGPANEL_PREFAB";
+        public const string AUDIOSETTINGPANEL = "AUDIOSETTINGPANEL";
+    }
     public class Inputsetlist_prefab
     {
         public const string BundleName = "INPUTSETLIST_PREFAB";
         public const string INPUTSETLIST = "INPUTSETLIST";
+    }
+    public class Levelpanel_prefab
+    {
+        public const string BundleName = "LEVELPANEL_PREFAB";
+        public const string LEVELPANEL = "LEVELPANEL";
     }
     public class Losepanel_prefab
     {

@@ -25,7 +25,9 @@ public class GameDevSetting : ScriptableObject
 
     public string BarrierWallPrefabPath = "Resources/Prefabs/Map/Barrier Wall";
 
-    public string AudioPaht = "Resources/Audio/";
+    public string AudioPath = "Resources/Audio/";
+
+    public string MapRootPath = "Resources/Prefabs/Map/MapRoot";
 
     public List<string> AudioNames = new List<string>()
     {
@@ -33,7 +35,9 @@ public class GameDevSetting : ScriptableObject
         "Attack2",
         "Hit1",
         "Hit2",
-        "BGM1"
+        "BGM1",
+        "BGM2",
+        "BGM3"
     };
 
 

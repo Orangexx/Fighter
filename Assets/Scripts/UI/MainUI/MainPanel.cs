@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
 
-namespace QFramework.Example
+namespace Fighter
 {
     public class MainPanelData : UIPanelData
 	{
@@ -23,7 +23,7 @@ namespace QFramework.Example
 		{
 			mData = uiData as MainPanelData ?? new MainPanelData();
             //please add init code here
-            mCharacterModel = GlobalManager.Instance.Charactor.GetComponent<CharacterModel>();
+            mCharacterModel = GlobalManager.Instance.Character.GetComponent<CharacterModel>();
             mCharacterModel.OnHpChanged += _SetHpSlider;
             mCharacterModel.OnExpChanged += _SetExpSlider;
             mCharacterModel.OnLevelChanged += _SetLevel;
@@ -62,6 +62,7 @@ namespace QFramework.Example
             mCharacterModel.OnHpChanged -= _SetHpSlider;
             mCharacterModel.OnExpChanged -= _SetExpSlider;
             mCharacterModel.OnLevelChanged -= _SetLevel;
+            Setting.RemoveAllCallback();
         }
 
         private void _SetHpSlider()

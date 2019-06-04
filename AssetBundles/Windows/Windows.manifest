@@ -1,22 +1,28 @@
 ManifestFileVersion: 0
-CRC: 1113905061
+CRC: 768778712
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: inputsetlist_prefab
       Dependencies: {}
     Info_1:
-      Name: panel_start_prefab
-      Dependencies: {}
-    Info_2:
       Name: mainpanel_prefab
       Dependencies: {}
-    Info_3:
+    Info_2:
       Name: settingpanel_prefab
       Dependencies: {}
-    Info_4:
+    Info_3:
       Name: losepanel_prefab
       Dependencies: {}
-    Info_5:
+    Info_4:
       Name: winpanel_prefab
+      Dependencies: {}
+    Info_5:
+      Name: audiosettingpanel_prefab
+      Dependencies: {}
+    Info_6:
+      Name: panel_start_prefab
+      Dependencies: {}
+    Info_7:
+      Name: levelpanel_prefab
       Dependencies: {}

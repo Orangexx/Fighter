@@ -66,7 +66,6 @@ public class HitBoxFeeder : MonoBehaviour
     private HitBoxFeeder GetFeederFromCollision(Collider2D collision)
     {
         var feeder = collision.GetComponent<HitBoxFeeder>();
-
         if (feeder == null) return null;
         if (feeder.m_DidHit == true) return null;
 

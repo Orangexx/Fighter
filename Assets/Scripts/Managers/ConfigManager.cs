@@ -6,65 +6,74 @@ using System.Threading.Tasks;
 using QFramework;
 using UnityEngine;
 
-public class ConfigManager : Singleton<ConfigManager>
+namespace Fighter
 {
-    private bool mInited = false;
-    private List<CharacterConfig> lst_character_cfg = new List<CharacterConfig>();
-    private Dictionary<string, MonsterConfig> dic_monster_cfg = new Dictionary<string, MonsterConfig>();
-    private Dictionary<int, List<LevelConfig>> dic_level_cfgs = new Dictionary<int, List<LevelConfig>>();
-
-    private ConfigManager()
+    public class ConfigManager : Singleton<ConfigManager>
     {
-    }
+        private bool mInited = false;
+        private List<CharacterConfig> lst_character_cfg = new List<CharacterConfig>();
+        private Dictionary<string, MonsterConfig> dic_monster_cfg = new Dictionary<string, MonsterConfig>();
+        private Dictionary<int, List<LevelConfig>> dic_level_cfgs = new Dictionary<int, List<LevelConfig>>();
 
-    public void Init()
-    {
-        if (mInited)
-            return;
-        mInited = true;
-        Sqlite sqlite = new Sqlite(Application.dataPath + "/Resources/SQLites/Fighter.db");
-        lst_character_cfg = sqlite.SelectTable<CharacterConfig>();
-        foreach (var cfg in sqlite.SelectTable<MonsterConfig>())
+        private ConfigManager()
         {
-            if (!dic_monster_cfg.ContainsKey(cfg.Name))
-                dic_monster_cfg[cfg.Name] = cfg;
-        }
-        foreach (var cfg in sqlite.SelectTable<LevelConfig>())
-        {
-            if (!dic_level_cfgs.ContainsKey(cfg.Level))
-                dic_level_cfgs[cfg.Level] = new List<LevelConfig>();
-
-            if (!dic_level_cfgs[cfg.Level].Contains(cfg))
-                dic_level_cfgs[cfg.Level].Add(cfg);
         }
 
-        sqlite.Close();
-    }
-
-    public CharacterConfig GetCharacterConfig(int level)
-    {
-        foreach (var cfg in lst_character_cfg)
+        public void Init()
         {
-            if (cfg.Level == level)
-                return cfg;
-        }
-        return null;
-    }
+            if (mInited)
+                return;
+            mInited = true;
+            Sqlite sqlite = new Sqlite(Application.dataPath + "/Resources/SQLites/Fighter.db");
+            lst_character_cfg = sqlite.SelectTable<CharacterConfig>();
+            foreach (var cfg in sqlite.SelectTable<MonsterConfig>())
+            {
+                if (!dic_monster_cfg.ContainsKey(cfg.Name))
+                    dic_monster_cfg[cfg.Name] = cfg;
+            }
+            foreach (var cfg in sqlite.SelectTable<LevelConfig>())
+            {
+                if (!dic_level_cfgs.ContainsKey(cfg.Level))
+                    dic_level_cfgs[cfg.Level] = new List<LevelConfig>();
 
-    public MonsterConfig GetMonsterConfig(string monster)
-    {
-        if (dic_monster_cfg.ContainsKey(monster))
-            return dic_monster_cfg[monster];
-        else
+                if (!dic_level_cfgs[cfg.Level].Contains(cfg))
+                    dic_level_cfgs[cfg.Level].Add(cfg);
+            }
+
+            sqlite.Close();
+        }
+
+        public int GetLevelCount()
+        {
+            return dic_level_cfgs.Count;
+        }
+
+        public CharacterConfig GetCharacterConfig(int level)
+        {
+            foreach (var cfg in lst_character_cfg)
+            {
+                if (cfg.Level == level)
+                    return cfg;
+            }
             return null;
+        }
+
+        public MonsterConfig GetMonsterConfig(string monster)
+        {
+            if (dic_monster_cfg.ContainsKey(monster))
+                return dic_monster_cfg[monster];
+            else
+                return null;
+        }
+
+        public List<LevelConfig> GetLevelConfigs(int level)
+        {
+            if (!dic_level_cfgs.ContainsKey(level))
+                return null;
+
+            return dic_level_cfgs[level];
+        }
+
     }
-
-    public List<LevelConfig> GetLevelConfigs(int level)
-    {
-        if (!dic_level_cfgs.ContainsKey(level))
-            return null;
-
-        return dic_level_cfgs[level];
-    }
-
 }
+

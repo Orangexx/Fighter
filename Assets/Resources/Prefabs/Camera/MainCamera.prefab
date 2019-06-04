@@ -101,5 +101,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mLeftBound: 0
-  mRightBound: 10
-  mWidth: 0
+  mRightBound: 100

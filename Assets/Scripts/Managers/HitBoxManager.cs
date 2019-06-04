@@ -2,12 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using QFramework;
-
+using UniRx;
 
 [QFramework.QMonoSingletonPath("[Manager]/HitBoxManager")]
 public class HitBoxManager : MonoSingleton<HitBoxManager>
 {
-    public GameObject HitFx;
+    private GameObject HitFx;
+    private ResLoader mResLoader = ResLoader.Allocate();
+    private CompositeDisposable mLife = new CompositeDisposable();
+
+    public void Init()
+    {
+        HitFx = mResLoader.LoadSync<GameObject>("Resources/Prefabs/HitFXPrefab").Instantiate();
+    }
+
+    public void ShowMainGame()
+    {
+        Observable.EveryLateUpdate().Subscribe(_ =>
+        {
+            mContackPairs.Sort(ContactComparison);
+
+            for (int i = 0; i < mContackPairs.Count; i++)
+                mContackPairs[i].a.HandleContact(mContackPairs[i].b);
+
+            mContackPairs.Clear();
+        }).AddTo(mLife);
+    }
+
+    public void LeaveMainGame()
+    {
+        mLife.Clear();
+    }
 
     private struct ContactPair
     {
@@ -27,16 +52,6 @@ public class HitBoxManager : MonoSingleton<HitBoxManager>
         HitFx.SetActive(false);
         HitFx.transform.position = position;
         HitFx.SetActive(true);
-    }
-
-    private void LateUpdate()
-    {
-        mContackPairs.Sort(ContactComparison);
-
-        for (int i = 0; i < mContackPairs.Count; i++)
-            mContackPairs[i].a.HandleContact(mContackPairs[i].b);
-
-        mContackPairs.Clear();
     }
 
     private int ContactComparison(ContactPair x, ContactPair y)

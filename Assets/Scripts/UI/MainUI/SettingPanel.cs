@@ -10,7 +10,7 @@ using QFramework;
 using QFramework.Fighter;
 using UnityEngine.SceneManagement;
 
-namespace QFramework.Example
+namespace Fighter
 {
     public class SettingPanelData : UIPanelData
     {
@@ -41,9 +41,12 @@ namespace QFramework.Example
 
             Button_MainMenu.AddCallback(() =>
             {
-                UIMgr.CloseAllPanel();
-                UIMgr.OpenPanel<Panel_Start>();
-                SceneManager.LoadScene(0);
+                GlobalManager.Instance.HideMainScene();
+            });
+
+            Button_AudioSet.AddCallback(() =>
+            {
+                UIMgr.OpenPanel<AudioSettingPanel>();
             });
         }
 

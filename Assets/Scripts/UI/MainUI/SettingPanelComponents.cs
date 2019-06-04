@@ -2,7 +2,7 @@
  * 2019.5 DESKTOP-ERI3UES
  ****************************************************************************/
 
-namespace QFramework.Example
+namespace Fighter
 {
 	using UnityEngine;
 	using UnityEngine.UI;
@@ -14,13 +14,15 @@ namespace QFramework.Example
 		[SerializeField] public Button Button_Resume;
 		[SerializeField] public Button Button_MainMenu;
 		[SerializeField] public Button Button_InputSet;
-
+        [SerializeField] public Button Button_AudioSet;
 		protected override void ClearUIComponents()
 		{
 			Button_Resume = null;
 			Button_MainMenu = null;
 			Button_InputSet = null;
-		}
+            Button_AudioSet = null;
+
+        }
 
 		private SettingPanelData mPrivateData = null;
 

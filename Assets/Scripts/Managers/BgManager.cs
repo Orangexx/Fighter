@@ -1,85 +1,105 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using QFramework;
+using UniRx;
 
-[QFramework.QMonoSingletonPath("[Manager]/BgManager")]
-public class BgManager : MonoSingleton<BgManager>
+namespace Fighter
 {
-    private bool isInited = false;
-    private ResLoader mBgLoader = ResLoader.Allocate();
-    private int mCurrentBgMid;
-    private int mLeftBgMid;
-    private int mRightBgMid;
-    private float mBgMidLength;
-
-    private SpriteRenderer mBgFar;
-    private SpriteRenderer[] mBgMids = new SpriteRenderer[3];
-
-    public void Init()
+    [QFramework.QMonoSingletonPath("[Manager]/BgManager")]
+    public class BgManager : MonoSingleton<BgManager>
     {
-        mBgFar = mBgLoader.LoadSync<GameObject>(GlobalManager.Instance.GameDevSetting.BgFarCamPrefabPath)
-                .Instantiate()
-                .GetComponentInChildren<SpriteRenderer>();
+        private bool isInited = false;
+        private ResLoader mBgLoader = ResLoader.Allocate();
+        private int mCurrentBgMid;
+        private int mLeftBgMid;
+        private int mRightBgMid;
+        private float mBgMidLength;
 
-        var bgMid = mBgLoader.LoadSync<GameObject>(GlobalManager.Instance.GameDevSetting.BgMidPrefabPath)
-                      .Instantiate();
-        for (int i = 0; i < mBgMids.Length; i++)
+
+        private GameObject mResBgFar;
+        private GameObject mResBgMid;
+
+        private GameObject mBgFar;
+        private GameObject mBgMid;
+        private SpriteRenderer mBgFarSprite;
+        private SpriteRenderer[] mBgMidSprites = new SpriteRenderer[3];
+
+        private CompositeDisposable mLife = new CompositeDisposable();
+        public void Init()
         {
-            mBgMids = bgMid.GetComponentsInChildren<SpriteRenderer>();
+            mResBgFar = mBgLoader.LoadSync<GameObject>(GlobalManager.Instance.GameDevSetting.BgFarCamPrefabPath);
+            mResBgMid = mBgLoader.LoadSync<GameObject>(GlobalManager.Instance.GameDevSetting.BgMidPrefabPath);
+            mBgMidLength = GlobalManager.Instance.GameDevSetting.BgMidLength * mResBgMid.transform.localScale.x;
+
+            isInited = true;
         }
 
-
-        SetBackground(true);
-        SetBackground(false);
-
-        mLeftBgMid = 0;
-        mCurrentBgMid = 1;
-        mRightBgMid = 2;
-        mBgMidLength = GlobalManager.Instance.GameDevSetting.BgMidLength * bgMid.transform.localScale.x;
-
-        isInited = true;
-    }
-
-    public bool SetBackground(bool isMid = false)
-    {
-        if (!isMid)
+        public void ShowMainGame()
         {
-            mBgFar.sprite = mBgLoader.LoadSprite(GlobalManager.Instance.GameDevSetting.BgFarSpritePath + LevelManager.Instance.CurLevel);
-            Debug.LogFormat("[BgFar]:加载Sprite BgFar{0},{1}", LevelManager.Instance.CurLevel, mBgFar.sprite != null);
-            if (mBgFar.sprite == null) return false;
-        }
-        else
-        {
-            for (int i = 0; i < mBgMids.Length; i++)
+            mBgFar = mResBgFar.Instantiate();
+            mBgFarSprite = mBgFar.GetComponentInChildren<SpriteRenderer>();
+            mBgMid = mResBgMid.Instantiate();
+            for (int i = 0; i < mBgMidSprites.Length; i++)
             {
-                mBgMids[i].sprite = mBgLoader.LoadSprite(GlobalManager.Instance.GameDevSetting.BgMidSpritePath + LevelManager.Instance.CurLevel);
-                Debug.LogFormat("[BgMid]:加载Sprite BgMid{0},{1}", LevelManager.Instance.CurLevel, mBgMids[i].sprite != null);
-                if (mBgMids[i].sprite == null) return false;
+                mBgMidSprites = mBgMid.GetComponentsInChildren<SpriteRenderer>();
             }
-        }
-        return true;
-    }
-    private void LateUpdate()
-    {
-        if (!isInited) return;
+            SetBackground(true);
+            SetBackground(false);
+            mLeftBgMid = 0;
+            mCurrentBgMid = 1;
+            mRightBgMid = 2;
 
-        if (mBgMids[mCurrentBgMid].transform.position.x + mBgMidLength /2  < GlobalManager.Instance.GetCharactorPos().x)
-        {
-            mBgMids[mLeftBgMid].transform.Translate(new Vector2(mBgMidLength * 3, 0));
-            var tem = mCurrentBgMid;
-            mCurrentBgMid = mRightBgMid;
-            mRightBgMid = mLeftBgMid;
-            mLeftBgMid = tem;
+            Observable.EveryLateUpdate().Subscribe(_ =>
+            {
+                if (!isInited) return;
+
+                if (mBgMidSprites[mCurrentBgMid].transform.position.x + mBgMidLength / 2 < GlobalManager.Instance.GetCharactorPos().x)
+                {
+                    mBgMidSprites[mLeftBgMid].transform.Translate(new Vector2(mBgMidLength * 3, 0));
+                    var tem = mCurrentBgMid;
+                    mCurrentBgMid = mRightBgMid;
+                    mRightBgMid = mLeftBgMid;
+                    mLeftBgMid = tem;
+                }
+
+                if (mBgMidSprites[mCurrentBgMid].transform.position.x - mBgMidLength / 2 > GlobalManager.Instance.GetCharactorPos().x)
+                {
+                    mBgMidSprites[mRightBgMid].transform.Translate(new Vector2(-mBgMidLength * 3, 0));
+                    var tem = mCurrentBgMid;
+                    mCurrentBgMid = mLeftBgMid;
+                    mLeftBgMid = mRightBgMid;
+                    mRightBgMid = tem;
+                }
+            }).AddTo(mLife);
         }
 
-        if (mBgMids[mCurrentBgMid].transform.position.x - mBgMidLength /2 > GlobalManager.Instance.GetCharactorPos().x)
+        public void LeaveMainGame()
         {
-            mBgMids[mRightBgMid].transform.Translate(new Vector2(-mBgMidLength * 3, 0));
-            var tem = mCurrentBgMid;
-            mCurrentBgMid = mLeftBgMid;
-            mLeftBgMid = mRightBgMid;
-            mRightBgMid = tem;
+            mBgFar.DestroySelf();
+            mBgFarSprite = null;
+            mBgMid.DestroySelf();
+            mLife.Clear();
+        }
+
+        public bool SetBackground(bool isMid = false)
+        {
+            if (!isMid)
+            {
+                mBgFarSprite.sprite = mBgLoader.LoadSprite(GlobalManager.Instance.GameDevSetting.BgFarSpritePath + LevelManager.Instance.CurLevel);
+                Debug.LogFormat("[BgFar]:加载Sprite BgFar{0},{1}", LevelManager.Instance.CurLevel, mBgFarSprite.sprite != null);
+                if (mBgFarSprite.sprite == null) return false;
+            }
+            else
+            {
+                for (int i = 0; i < mBgMidSprites.Length; i++)
+                {
+                    mBgMidSprites[i].sprite = mBgLoader.LoadSprite(GlobalManager.Instance.GameDevSetting.BgMidSpritePath + LevelManager.Instance.CurLevel);
+                    Debug.LogFormat("[BgMid]:加载Sprite BgMid{0},{1}", LevelManager.Instance.CurLevel, mBgMidSprites[i].sprite != null);
+                    if (mBgMidSprites[i].sprite == null) return false;
+                }
+            }
+            return true;
         }
     }
 }
+

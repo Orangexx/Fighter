@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using QFramework;
 
-namespace QFramework.Fighter
+namespace Fighter
 {
     public class InputSetListData : UIPanelData
     {
@@ -36,10 +36,10 @@ namespace QFramework.Fighter
             mSaveBtn.AddCallback(new UnityEngine.Events.UnityAction(() =>
             {
                 mSetSqlite.UpdateTable(mInputSettings, "Type");
-                if(GlobalManager.Instance.Charactor != null)
-                    if(GlobalManager.Instance.Charactor.GetComponent<CharacterFSM>() != null)
+                if(GlobalManager.Instance.Character != null)
+                    if(GlobalManager.Instance.Character.GetComponent<CharacterFSM>() != null)
                     {
-                        GlobalManager.Instance.Charactor.GetComponent<CharacterFSM>().ReloadInputKey();
+                        GlobalManager.Instance.Character.GetComponent<CharacterFSM>().ReloadInputKey();
                     }
             }));
 

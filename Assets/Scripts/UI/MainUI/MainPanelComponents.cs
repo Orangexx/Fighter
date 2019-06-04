@@ -2,7 +2,7 @@
  * 2019.5 DESKTOP-ERI3UES
  ****************************************************************************/
 
-namespace QFramework.Example
+namespace Fighter
 {
 	using UnityEngine;
 	using UnityEngine.UI;

@@ -2,7 +2,7 @@
  * 2019.3 DESKTOP-CFTQOJO
  ****************************************************************************/
 
-namespace QFramework.Fighter
+namespace Fighter
 {
 	using UnityEngine;
 	using UnityEngine.UI;
@@ -15,7 +15,8 @@ namespace QFramework.Fighter
 		[SerializeField] public Image Panel_StartBtns;
 		[SerializeField] public Button BtnStart;
 		[SerializeField] public Button BtnLoad;
-		[SerializeField] public Button BtnSetting;
+		[SerializeField] public Button BtnIntpuSet;
+        [SerializeField] public Button BtnAudioSet;
 
 		protected override void ClearUIComponents()
 		{
@@ -23,7 +24,8 @@ namespace QFramework.Fighter
 			Panel_StartBtns = null;
 			BtnStart = null;
 			BtnLoad = null;
-			BtnSetting = null;
+			BtnIntpuSet = null;
+            BtnAudioSet = null;
 		}
 
 		private Panel_StartData mPrivateData = null;

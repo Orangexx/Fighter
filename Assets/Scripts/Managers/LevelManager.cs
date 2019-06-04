@@ -6,92 +6,112 @@ using QFramework;
 using UnityEngine;
 using UniRx;
 
-[QFramework.QMonoSingletonPath("[Manager]/LevelManager")]
-public class LevelManager: MonoSingleton<LevelManager>
+
+namespace Fighter
 {
-    public int CurLevel { private set; get; }
-    private int mCurRoom;
-    private bool isSeted;
-    private List<LevelConfig> mCurConfigs;
-    private GameObject mBarrierWallTem;
-    private GameObject[] mWalls;
-    private ResLoader mResLoader = ResLoader.Allocate();
-
-    public void Init(int level)
+    [QFramework.QMonoSingletonPath("[Manager]/LevelManager")]
+    public class LevelManager : MonoSingleton<LevelManager>
     {
-        ResMgr.Init();
-        mBarrierWallTem = mResLoader.LoadSync<GameObject>(GlobalManager.Instance.GameDevSetting.BarrierWallPrefabPath);
-        mWalls = new GameObject[2]
+        public int CurLevel { private set; get; }
+        private int mCurRoom;
+        private bool isSeted;
+        private List<LevelConfig> mCurConfigs;
+        private GameObject mBarrierWallTem;
+        private GameObject[] mWalls;
+        private ResLoader mResLoader = ResLoader.Allocate();
+        private CompositeDisposable mLife = new CompositeDisposable();
+
+        public void Init()
         {
-            Instantiate(mBarrierWallTem),
-            Instantiate(mBarrierWallTem)
-        };
-        ClearAllWall();
-        CurLevel = level;
-        mCurRoom = 0;
-        mCurConfigs = ConfigManager.Instance.GetLevelConfigs(level);
-        SetRoom();
+            mBarrierWallTem = mResLoader.LoadSync<GameObject>(GlobalManager.Instance.GameDevSetting.BarrierWallPrefabPath);
+            mWalls = new GameObject[2]
+            {
+                Instantiate(mBarrierWallTem),
+                Instantiate(mBarrierWallTem)
+            };
+            HideAllWall();
+            isSeted = false;
+        }
 
-        Observable.EveryLateUpdate().Subscribe(_ =>
+        public void ShowMainGame(int level)
         {
-            if (!isSeted)
-                if (GlobalManager.Instance.Charactor.transform.position.x >= mCurConfigs[mCurRoom].StartPos + GlobalManager.Instance.MainCamera.HalfWidth)
-                    SetRoom();
-
-        }).AddTo(this);
-    }
-
-    public void ClearAllWall()
-    {
-        mWalls[0].SetActive(false);
-        mWalls[1].SetActive(false);
-    }
-
-    public void SetNextRoom()
-    {
-        isSeted = false;
-        mCurRoom++;
-        if (mCurRoom >= mCurConfigs.Count)
-        {
+            HideAllWall();
+            CurLevel = level;
             mCurRoom = 0;
-            CurLevel++;
-            mCurConfigs = ConfigManager.Instance.GetLevelConfigs(CurLevel);
-            if (mCurConfigs == null)
+            mCurConfigs = ConfigManager.Instance.GetLevelConfigs(level);
+            AudioManager.Instance.PlayBGM("BGM" + CurLevel.ToString());
+
+            Observable.EveryLateUpdate().Subscribe(_ =>
             {
-                GlobalManager.Instance.GameOver(true);
-                Destroy(this.gameObject);
-                return;
-            }
-            BgManager.Instance.SetBackground(false);
-            BgManager.Instance.SetBackground(true);
-            GlobalManager.Instance.Charactor.transform.position = new Vector2(2, 0);
+                if (!isSeted)
+                    if(mCurConfigs != null)
+                    if (GlobalManager.Instance.Character.transform.position.x >= mCurConfigs[mCurRoom].StartPos + GlobalManager.Instance.MainCamera.HalfWidth)
+                        SetRoom();
+
+            }).AddTo(mLife);
         }
-        GlobalManager.Instance.MainCamera.SetRange(0,mCurConfigs[mCurRoom].EndPos);
-    }
 
-    private void SetRoom()
-    {
-        isSeted = true;
-        var cfg = mCurConfigs[mCurRoom];
-        mWalls[0].transform.position = new Vector3(cfg.StartPos, 0);
-        mWalls[1].transform.position = new Vector3(cfg.EndPos, 0);
-        mWalls[0].SetActive(true);
-        mWalls[1].SetActive(true);
-        string[] monsterStrs = cfg.Monsters.Split('|');
-
-        foreach (var str in monsterStrs)
+        public void LeavelMainGame()
         {
-            string[] monster = str.Split('.');
-            if (monster.Length != 2) continue;
+            for (int i = 0; i < mWalls.Length; i++)
+                mWalls[i].Hide();
 
-
-            for (int i = 0; i < monster[1].ToInt(); i++)
-            {
-                EnemyManager.Instance.CreatEnemy(monster[0], new Vector2(Random.Range(cfg.StartPos, cfg.EndPos),0));
-            }
+            isSeted = false;
+            mLife.Clear();
         }
 
-        GlobalManager.Instance.MainCamera.SetRange(mCurConfigs[mCurRoom].StartPos, mCurConfigs[mCurRoom].EndPos);
-    }
+        public void HideAllWall()
+        {
+            mWalls[0].SetActive(false);
+            mWalls[1].SetActive(false);
+        }
 
+        public void SetNextRoom()
+        {
+            isSeted = false;
+            mCurRoom++;
+            if (mCurRoom >= mCurConfigs.Count)
+            {
+                mCurRoom = 0;
+                CurLevel++;
+                mCurConfigs = ConfigManager.Instance.GetLevelConfigs(CurLevel);
+                if (mCurConfigs == null)
+                {
+                    GlobalManager.Instance.GameOver(true);
+                    mLife.Clear();
+                    return;
+                }
+                BgManager.Instance.SetBackground(false);
+                BgManager.Instance.SetBackground(true);
+                AudioManager.Instance.PlayBGM("BGM" + CurLevel.ToString());
+                GlobalManager.Instance.Character.transform.position = new Vector2(2, 0);
+            }
+            GlobalManager.Instance.MainCamera.SetRange(0, mCurConfigs[mCurRoom].EndPos);
+        }
+
+        private void SetRoom()
+        {
+            isSeted = true;
+            var cfg = mCurConfigs[mCurRoom];
+            mWalls[0].transform.position = new Vector3(cfg.StartPos, 0);
+            mWalls[1].transform.position = new Vector3(cfg.EndPos, 0);
+            mWalls[0].SetActive(true);
+            mWalls[1].SetActive(true);
+            string[] monsterStrs = cfg.Monsters.Split('|');
+
+            foreach (var str in monsterStrs)
+            {
+                string[] monster = str.Split('.');
+                if (monster.Length != 2) continue;
+
+
+                for (int i = 0; i < monster[1].ToInt(); i++)
+                {
+                    EnemyManager.Instance.CreatEnemy(monster[0], new Vector2(Random.Range(cfg.StartPos, cfg.EndPos), 0));
+                }
+            }
+
+            GlobalManager.Instance.MainCamera.SetRange(mCurConfigs[mCurRoom].StartPos, mCurConfigs[mCurRoom].EndPos);
+        }
+    }
 }

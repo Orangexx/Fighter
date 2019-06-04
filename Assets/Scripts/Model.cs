@@ -5,28 +5,33 @@ using UniRx;
 using QFramework;
 using System;
 
-public class Model : MonoBehaviour
+namespace Fighter
 {
-    public float PoiseValue;
-    public float Poise;
-    public int Hp;
-    public float Power;
-    public int Level;
-    public float Speed;
-
-    private void Awake()
+    public class Model : MonoBehaviour
     {
-        Observable.Interval(TimeSpan.FromSeconds(0.016f)).Subscribe(_ =>
+        public float PoiseValue;
+        public float Poise;
+        public int Hp;
+        public float Power;
+        public int Level;
+        public float Speed;
+
+        private void Awake()
         {
-            if (Poise != 0 && PoiseValue < 0)
-                PoiseValue += Poise;
-        }).AddTo(this);
-    }
+            Observable.Interval(TimeSpan.FromSeconds(0.016f)).Subscribe(_ =>
+            {
+                if (Poise != 0 && PoiseValue < 0)
+                    PoiseValue += Poise;
+            }).AddTo(this);
+        }
 
-    public virtual void Init(IConfig cfg)
-    {
+        public virtual void Init(IConfig cfg)
+        {
+        }
     }
 }
+
+
 
 
 

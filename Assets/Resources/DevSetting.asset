@@ -18,11 +18,14 @@ MonoBehaviour:
   CharactorPath: resources://Prefabs/Fighter
   MainCamePrefabPath: Resources/Prefabs/Camera/MainCamera
   BarrierWallPrefabPath: Resources/Prefabs/Map/Barrier Wall
-  AudioPaht: Resources/Audio/
+  AudioPath: Resources/Audio/
+  MapRootPath: Resources/Prefabs/Map/MapRoot
   AudioNames:
   - Attack1
   - Attack2
   - Hit1
   - Hit2
   - BGM1
+  - BGM2
+  - BGM3
   BgMidLength: 10.74
